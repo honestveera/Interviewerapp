@@ -8,6 +8,7 @@
     <tr>
       <th class="text-info">Interviewername</th>
       <th class="text-info">Candidatename</th>
+      <th class="text-info">Skills</th>
       <th class="text-info" >Feedback</th>
       <th class="text-info">Status</th>
       <th colspan="3"></th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= interviewerfeedback.interviewername %></td>
         <td><%= interviewerfeedback.candidatename %></td>
+        <td><%= interviewerfeedback.skills %></td>
         <td><%= interviewerfeedback.feedback %></td>
         <td><%= interviewerfeedback.status %></td>
         <td><%= link_to 'Show', interviewerfeedback,:class=>"btn btn-primary btn-sm"%></td>

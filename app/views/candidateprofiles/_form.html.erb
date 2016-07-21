@@ -19,27 +19,27 @@
      <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
   <div class="field">
-    <%= f.label :candidatename %><br>
+    <%= f.label :candidatename ,"Candidate Name"%><br>
     <%= f.text_field :candidatename,:placeholder=>"Candidate Name" %>
   </div>
   <div class="field">
-    <%= f.label :candidateemail %><br>
+    <%= f.label :candidateemail,"Candidate Email" %><br>
     <%= f.text_field :candidateemail,:placeholder=>"Candidate Email"  %>
   </div>
   <div class="field">
-    <%= f.label :candidatecontact %><br>
+    <%= f.label :candidatecontact,"Candidate Contact"%><br>
     <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact"%>
   </div>
   <div class="field">
-    <%= f.label :skills %><br>
+    <%= f.label :skills,"Skills" %><br>
     <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--" %>
   </div>
   <div class="field">
-    <%= f.label :YOE %><br>
+    <%= f.label :YOE,"Year Of Experience " %><br>
     <%= f.text_area :YOE,:placeholder=>"Year Of Experience",:id=>"textarea" %>
   </div>
   <div class="field">
-    <%= f.label :companyname %><br>
+    <%= f.label :companyname,"Company Name"%><br>
     <%= f.select :companyname,options_from_collection_for_select(Company.all,"companyname","companyname"),:prompt=>"--Select CompanyName--"%>
   </div>
 </div>
@@ -47,29 +47,29 @@
 <div class="col-lg-3 col-lg-offset-1">
     <div class="input-group">
       <div class="field">
-        <%= f.label :companyemail %><br>
+        <%= f.label :companyemail,"Comapany Email"%><br>
         <%= f.select :companyemail,options_from_collection_for_select(Company.all,"companyemail","companyemail"),:prompt=>"--Select CompanyName--"%>
       </div>
   <div class="field">
-    <%= f.label :interviewername %><br>
+    <%= f.label :interviewername,"Interviewer Name"%><br>
     <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--" %>
 
   </div>
   <div class="field">
-    <%= f.label :intervieweremail %><br>
+    <%= f.label :intervieweremail ,"Interviewer Mail"%><br>
     <%=f.select :intervieweremail,options_from_collection_for_select(Interviewer.all,"companyemail","companyemail"), :prompt => "--Select InterviewerMail--" %>
   </div>
   <div class="field">
-    <%= f.label :scheduledate %><br>
+    <%= f.label :scheduledate,"Schedule Date" %><br>
     <%=f.select :scheduledate,options_from_collection_for_select(Calender.all,"dates","dates"), :prompt => "--Select ScheduleDate--" %>
 
   </div>
   <div class="field">
-    <%= f.label :scheduletime %><br>
+    <%= f.label :scheduletime,"Schedule Time"%><br>
     <%=f.select :scheduletime,options_from_collection_for_select(Calender.all,"times","times"), :prompt => "--Select ScheduleTime--" %>
   </div>
   <div class="field">
-    <%= f.label :jobdescription %><br>
+    <%= f.label :jobdescription,"Job Description" %><br>
     <%= f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea"  %>
   </div>
 </div>
