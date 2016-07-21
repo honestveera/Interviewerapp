@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Candidateprofiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Candidatename</th>
+      <th>Candidateemail</th>
+      <th>Candidatecontact</th>
+      <th>Skills</th>
+      <th>Yoe</th>
+      <th>Interviewername</th>
+      <th>Intervieweremail</th>
+      <th>Scheduledate</th>
+      <th>Scheduletime</th>
+      <th>Jobdescription</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidateprofiles.each do |candidateprofile| %>
+      <tr>
+        <td><%= candidateprofile.candidatename %></td>
+        <td><%= candidateprofile.candidateemail %></td>
+        <td><%= candidateprofile.candidatecontact %></td>
+        <td><%= candidateprofile.skills %></td>
+        <td><%= candidateprofile.YOE %></td>
+        <td><%= candidateprofile.interviewername %></td>
+        <td><%= candidateprofile.intervieweremail %></td>
+        <td><%= candidateprofile.scheduledate %></td>
+        <td><%= candidateprofile.scheduletime %></td>
+        <td><%= candidateprofile.jobdescription %></td>
+        <td><%= link_to 'Show', candidateprofile %></td>
+        <td><%= link_to 'Edit', edit_candidateprofile_path(candidateprofile) %></td>
+        <td><%= link_to 'Destroy', candidateprofile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Candidateprofile', new_candidateprofile_path %>

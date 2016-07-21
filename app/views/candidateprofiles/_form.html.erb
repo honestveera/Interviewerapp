@@ -1,0 +1,85 @@
+<%= form_for(@candidateprofile) do |f| %>
+
+
+  <% if @candidateprofile.errors.any? %>
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <div >
+      <h2><%= pluralize(@candidateprofile.errors.count, "error") %> prohibited this candidateprofile from being saved:</h2>
+
+      <ul>
+      <% @candidateprofile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    </div>
+  <% end %>
+  <div class="row">
+     <div class="col-lg-4 col-lg-offset-2">
+         <div class="input-group">
+  <div class="field">
+    <%= f.label :candidatename %><br>
+    <%= f.text_field :candidatename,:placeholder=>"Candidate Name" %>
+  </div>
+  <div class="field">
+    <%= f.label :candidateemail %><br>
+    <%= f.text_field :candidateemail,:placeholder=>"Candidate Email"  %>
+  </div>
+  <div class="field">
+    <%= f.label :candidatecontact %><br>
+    <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact"%>
+  </div>
+  <div class="field">
+    <%= f.label :skills %><br>
+    <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--" %>
+  </div>
+  <div class="field">
+    <%= f.label :YOE %><br>
+    <%= f.text_area :YOE,:placeholder=>"Year Of Experience",:id=>"textarea" %>
+  </div>
+  <div class="field">
+    <%= f.label :companyname %><br>
+    <%= f.select :companyname,options_from_collection_for_select(Company.all,"companyname","companyname"),:prompt=>"--Select CompanyName--"%>
+  </div>
+</div>
+</div>
+<div class="col-lg-3 col-lg-offset-1">
+    <div class="input-group">
+      <div class="field">
+        <%= f.label :companyemail %><br>
+        <%= f.select :companyemail,options_from_collection_for_select(Company.all,"companyemail","companyemail"),:prompt=>"--Select CompanyName--"%>
+      </div>
+  <div class="field">
+    <%= f.label :interviewername %><br>
+    <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--" %>
+
+  </div>
+  <div class="field">
+    <%= f.label :intervieweremail %><br>
+    <%=f.select :intervieweremail,options_from_collection_for_select(Interviewer.all,"companyemail","companyemail"), :prompt => "--Select InterviewerMail--" %>
+  </div>
+  <div class="field">
+    <%= f.label :scheduledate %><br>
+    <%=f.select :scheduledate,options_from_collection_for_select(Calender.all,"dates","dates"), :prompt => "--Select ScheduleDate--" %>
+
+  </div>
+  <div class="field">
+    <%= f.label :scheduletime %><br>
+    <%=f.select :scheduletime,options_from_collection_for_select(Calender.all,"times","times"), :prompt => "--Select ScheduleTime--" %>
+  </div>
+  <div class="field">
+    <%= f.label :jobdescription %><br>
+    <%= f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea"  %>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div  class="col-lg-4 col-lg-offset-5">
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-primary btn-lg",:style=>"margin-left: -40px;"%>
+  </div>
+</div>
+</div>
+</div>
+<% end %>

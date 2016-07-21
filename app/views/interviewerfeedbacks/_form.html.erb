@@ -1,0 +1,43 @@
+<%= form_for(@interviewerfeedback) do |f| %>
+
+  <% if @interviewerfeedback.errors.any? %>
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <div >
+      <h2><%= pluralize(@interviewerfeedback.errors.count, "error") %> prohibited this interviewerfeedback from being saved:</h2>
+
+      <ul>
+      <% @interviewerfeedback.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+     <div class="col-lg-4 col-lg-offset-4">
+         <div class="input-group">
+
+  <div class="field">
+    <%= f.label :interviewername %><br>
+    <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--" %>
+   </div>
+  <div class="field">
+    <%= f.label :candidatename %><br>
+    <%=f.select :candidatename,options_from_collection_for_select(Candidateprofile.all,"candidatename","candidatename"), :prompt => "--Select Candidate--" %>
+  </div>
+  <div class="field">
+    <%= f.label :feedback %><br>
+    <%= f.text_area :feedback,:id=>"textarea"%>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-primary btn-lg"%>
+  </div>
+   </div>
+  </div>
+</div>
+<% end %>

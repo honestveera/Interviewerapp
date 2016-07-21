@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Companies</h1>
+<div class="table-responsive">
+<table class="table table-bordered table-hover sortable">
+  <thead class="bg-success">
+    <tr>
+      <th class="text-info">Companyname</th>
+      <th class="text-info">Companyaddress</th>
+      <th class="text-info">Contactperson</th>
+      <th class="text-info">Contactnumber</th>
+      <th class="text-info">Companyemail</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.companyname %></td>
+        <td><%= company.companyaddress %></td>
+        <td><%= company.contactperson %></td>
+        <td><%= company.contactnumber %></td>
+        <td><%= company.companyemail %></td>
+        <td><%= link_to 'Show', company,:class=>"btn btn-primary btn-sm"%></td>
+        <td><%= link_to 'Edit', edit_company_path(company),:class=>"btn btn-info btn-sm" %></td>
+        <td><%= link_to 'Destroy', company, method: :delete,:class=>"btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Company', new_company_path %>

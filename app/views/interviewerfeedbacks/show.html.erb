@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Interviewername:</strong>
+  <%= @interviewerfeedback.interviewername %>
+</p>
+
+<p>
+  <strong>Candidatename:</strong>
+  <%= @interviewerfeedback.candidatename %>
+</p>
+
+<p>
+  <strong>Feedback:</strong>
+  <%= @interviewerfeedback.feedback %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @interviewerfeedback.status %>
+</p>
+
+<%= link_to 'Edit', edit_interviewerfeedback_path(@interviewerfeedback) %> |
+<%= link_to 'Back', interviewerfeedbacks_path %>
