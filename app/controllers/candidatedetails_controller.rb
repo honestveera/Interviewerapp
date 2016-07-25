@@ -1,6 +1,11 @@
 class CandidatedetailsController < ApplicationController
   before_action :set_candidatedetail, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate
+   def authenticate
+     if ((session[:companyemail]||session[:password]=="")||((session[:companyemail]||session[:password])==nil))
+        redirect_to root_url
+     end
+   end
   # GET /candidatedetails
   # GET /candidatedetails.json
   def index
@@ -69,6 +74,6 @@ class CandidatedetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidatedetail_params
-      params.require(:candidatedetail).permit(:candidatename, :candidateemail, :candidatecontact, :yoe, :skills, :jobdescription)
+      params.require(:candidatedetail).permit(:candidatename, :candidateemail, :candidatecontact, :yoe, :skills, :jobdescription,:attachedfile)
     end
 end

@@ -17,11 +17,13 @@
             <%= f.label :dates %><br>
             <%= f.date_select :dates %>
           </div>
-          <div class="field">
-            <%= f.label :times %><br>
-            <%= f.time_select :times%>
+          <div class='input-group date' id='datetimepicker2'>
+             <%= f.text_field :times%>
+              <span class="input-group-addon">
+              <span class="glyphicon glyphicon-time"></span>
+              </span>
           </div>
-          
+
           <div class="actions">
             <%= f.submit %>
           </div>

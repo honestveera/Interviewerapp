@@ -1,6 +1,12 @@
 class InterviewerfeedbacksController < ApplicationController
   before_action :set_interviewerfeedback, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate
 
+  def authenticate
+     if ((session[:companyemail]||session[:password]=="")||((session[:companyemail]||session[:password])==nil))
+        redirect_to root_url
+     end
+   end
   # GET /interviewerfeedbacks
   # GET /interviewerfeedbacks.json
   def index
@@ -69,6 +75,6 @@ class InterviewerfeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interviewerfeedback_params
-      params.require(:interviewerfeedback).permit(:interviewername, :candidatename,:skills,:feedback, :status)
+      params.require(:interviewerfeedback).permit(:interviewername, :candidatename,:skills,:feedback,:attachedfile, :status)
     end
 end

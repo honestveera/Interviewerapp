@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721114602) do
+ActiveRecord::Schema.define(version: 20160725111334) do
 
   create_table "calenders", force: :cascade do |t|
     t.date     "dates"
-    t.time     "times"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "times"
   end
 
   create_table "candidatedetails", force: :cascade do |t|
@@ -27,8 +27,12 @@ ActiveRecord::Schema.define(version: 20160721114602) do
     t.string   "yoe"
     t.string   "skills"
     t.text     "jobdescription"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "attachedfile_file_name"
+    t.string   "attachedfile_content_type"
+    t.integer  "attachedfile_file_size"
+    t.datetime "attachedfile_updated_at"
   end
 
   create_table "candidateprofiles", force: :cascade do |t|
@@ -67,12 +71,12 @@ ActiveRecord::Schema.define(version: 20160721114602) do
     t.text     "companyaddress"
     t.string   "contactperson"
     t.integer  "contactnumber"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "companyemail"
     t.string   "username"
     t.string   "password"
-    t.string   "conformpassword"
+    t.string   "password_confirmation"
   end
 
   create_table "interviewerfeedbacks", force: :cascade do |t|
@@ -80,9 +84,13 @@ ActiveRecord::Schema.define(version: 20160721114602) do
     t.string   "candidatename"
     t.text     "feedback"
     t.string   "status"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "skills"
+    t.string   "attachedfile_file_name"
+    t.string   "attachedfile_content_type"
+    t.integer  "attachedfile_file_size"
+    t.datetime "attachedfile_updated_at"
   end
 
   create_table "interviewers", force: :cascade do |t|
@@ -110,6 +118,14 @@ ActiveRecord::Schema.define(version: 20160721114602) do
     t.string   "skills"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

@@ -1,14 +1,10 @@
-class ExampleMailer < ApplicationMailer
+class ExampleMailer < ActionMailer::Base
    default from: "honestraj.it@gmail.com"
    def sample_email(user)
-      @user = user
-      mail(to: @user.candidateemail, subject: @user.interviewername,body:@user.scheduletime)
-      # mail(to: @user.intervieweremail, subject: @user.interviewername)
-    end
-    def sample_email1(user)
-       @user = user
-       mail(to: @user.intervieweremail, subject: @user.interviewername,body:@user.scheduletime)
-       # mail(to: @user.intervieweremail, subject: @user.interviewername)
-     end
+      @candidatesche = user
+      receipent=[@candidatesche.candidateemail,@user.intervieweremail]
+      mail(to: receipent, subject: @candidatesche.interviewername,body:@candidatesche.scheduletime)
+   end
+
 
 end

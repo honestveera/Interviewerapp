@@ -30,15 +30,25 @@
         </div>
         <div class="field">
           <%= f.label :yoe,"Year Of Experience" %><br>
-          <%= f.text_field :yoe,:placeholder=>"Year Of Experience" %>
+          <%= f.select :yoe, options_for_select([["1", "1"], ["2", "2"],["3", "3"],["4","4"],["5","5"]]),:prompt => "--Select Experience--" %>
         </div>
         <div class="field">
           <%= f.label :skills,"Skills"%><br>
-          <%= f.text_field :skills,:placeholder=>"Skills" %>
+          <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--" %>
         </div>
         <div class="field">
           <%= f.label :jobdescription,"Job Description"%><br>
-          <%= f.text_area :jobdescription,:placeholder=>"Job Description" %>
+          <%= f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea"%>
+        </div>
+        <div class="field">
+          <%= f.label :attachedfile,"Attached File"%><br>
+          <%= f.file_field :attachedfile%>
+        </div>
+        <div class="form-group">
+          <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
+        </div>
+        <div class="form-group">
+          <%= f.hidden_field "password",:class=>"required",:value => session[:password]%>
         </div>
         <div class="actions">
           <%= f.submit :class=>"btn btn-primary btn-lg"%>

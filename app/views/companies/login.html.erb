@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interview App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="login-form">
+    <h1 class="text-primary">Login</h1>
+  <%= form_for(Company.new,:url => { :action => "credential"}) do |f| %>
+     <% if flash[:error] -%>
+        <p class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:error]%></p>
+      <% end -%>
+      <% if flash[:danger] -%>
+         <p class="alert alert-danger fade in"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:error]%></p>
+       <% end -%>
+
+        <div class="row">
+               <div class="input-group">
+              <div class="form-group">
+                <%= f.label :companyemail,"Company Email"%><br>
+                <%= f.text_field :companyemail,:placeholder=>"Company Email" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password,"Company Password"%><br>
+                <%= f.password_field :password,:placeholder=>"Company Password" %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Login",:class=>"btn btn-primary btn-md" %>
+              </div>
+              <%= link_to 'Sign Up', signup_path,:class=>"btn btn-primary btn-md",:style=>"width:230px"%>
+            </div>
+
+        </div>
+      <% end %>
+      </div>
+</div>
+</body>
+</html>

@@ -1,3 +1,48 @@
-// Place all the styles related to the Companies controller here.
+
+  .login-form
+   {
+     background: #eee;
+     width: 330px;
+     margin: 9% auto 1% auto;
+     position: relative;
+     -webkit-border-radius: 0.4em;
+     -o-border-radius: 0.4em;
+     -moz-border-radius: 0.4em;
+     form
+     {
+        width: 60%;
+        margin: 0 auto;
+        padding: 6% 0 9% 0;
+     }
+     input[type="submit"]
+     {
+         width: 230px;
+         background-color:#21A957;
+     }
+     select
+     {
+         width: 230px;
+     }
+     input[type="text"] {
+        width: 230px;
+
+    }
+    #link
+    {
+    text-align: center;
+    font-size: 14px;
+    }
+    #textarea {
+       width: 230px;
+   }
+   input[type="number"] {
+      width: 230px;
+
+  }
+    input[type="password"] {
+       width: 230px;
+
+   }
+   }// Place all the styles related to the Companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/

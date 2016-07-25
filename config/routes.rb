@@ -12,12 +12,14 @@ Rails.application.routes.draw do
   get 'candidateprofile' => 'candidatedetails#new'
   get 'interviewerfeed' => 'interviewerfeedbacks#new'
   get 'candidatereports' => 'interviewerfeedbacks#index'
-  get 'companiesnew' => 'companies#new'
+  get 'signup' => 'companies#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+    get 'signout' => 'application#signout'
+    get 'login'  => 'companies#login'
+    post 'credential'  => 'companies#credential'
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root 'companies#login'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
