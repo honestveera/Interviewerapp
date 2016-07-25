@@ -28,9 +28,9 @@ class CandidateprofilesController < ApplicationController
 
     respond_to do |format|
       if @candidateprofile.save
-        ExampleMailer.sample_email(@candidateprofile).deliver_later
-        ExampleMailer.sample_email1(@candidateprofile).deliver_later
-        format.html { redirect_to candidateprofilesnew_url, notice: 'Candidateprofile was successfully created.' }
+        ExampleMailer.sample_email(@candidateprofile).deliver_now
+        ExampleMailer.sample_email1(@candidateprofile).deliver_now
+        format.html { redirect_to candidateschedule_url, notice: 'Candidateprofile was successfully created.' }
         format.json { render :show, status: :created, location: @candidateprofile }
       else
         format.html { render :new }

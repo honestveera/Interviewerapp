@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  candidatename: MyString
+  candidateemail: MyString
+  candidatecontact: 9.99
+  yoe: MyString
+  skills: MyString
+  jobdescription: MyText
+
+two:
+  candidatename: MyString
+  candidateemail: MyString
+  candidatecontact: 9.99
+  yoe: MyString
+  skills: MyString
+  jobdescription: MyText

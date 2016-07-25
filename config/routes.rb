@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
+  resources :candidatedetails
   resources :interviewerfeedbacks
   resources :candidateprofiles
-  resources :candidates
   resources :interviewers
   resources :companies
   resources :calenders
   resources :scheduletimes
   resources :skillsets
 
-  get 'candidateprofilesnew' => 'candidateprofiles#new'
+  get 'candidateschedule' => 'candidateprofiles#new'
+  get 'candidateprofile' => 'candidatedetails#new'
   get 'interviewerfeed' => 'interviewerfeedbacks#new'
   get 'candidatereports' => 'interviewerfeedbacks#index'
   get 'companiesnew' => 'companies#new'

@@ -11,13 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721044234) do
+ActiveRecord::Schema.define(version: 20160721114602) do
 
   create_table "calenders", force: :cascade do |t|
     t.date     "dates"
     t.time     "times"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "candidatedetails", force: :cascade do |t|
+    t.string   "candidatename"
+    t.string   "candidateemail"
+    t.decimal  "candidatecontact"
+    t.string   "yoe"
+    t.string   "skills"
+    t.text     "jobdescription"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "candidateprofiles", force: :cascade do |t|
@@ -33,8 +44,6 @@ ActiveRecord::Schema.define(version: 20160721044234) do
     t.text     "jobdescription"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.string   "companyname"
-    t.string   "companyemail"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -58,9 +67,12 @@ ActiveRecord::Schema.define(version: 20160721044234) do
     t.text     "companyaddress"
     t.string   "contactperson"
     t.integer  "contactnumber"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "companyemail"
+    t.string   "username"
+    t.string   "password"
+    t.string   "conformpassword"
   end
 
   create_table "interviewerfeedbacks", force: :cascade do |t|

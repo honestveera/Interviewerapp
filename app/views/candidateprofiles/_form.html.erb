@@ -38,18 +38,12 @@
     <%= f.label :YOE,"Year Of Experience " %><br>
     <%= f.text_area :YOE,:placeholder=>"Year Of Experience",:id=>"textarea" %>
   </div>
-  <div class="field">
-    <%= f.label :companyname,"Company Name"%><br>
-    <%= f.select :companyname,options_from_collection_for_select(Company.all,"companyname","companyname"),:prompt=>"--Select CompanyName--"%>
-  </div>
+
 </div>
 </div>
 <div class="col-lg-3 col-lg-offset-1">
     <div class="input-group">
-      <div class="field">
-        <%= f.label :companyemail,"Comapany Email"%><br>
-        <%= f.select :companyemail,options_from_collection_for_select(Company.all,"companyemail","companyemail"),:prompt=>"--Select CompanyName--"%>
-      </div>
+
   <div class="field">
     <%= f.label :interviewername,"Interviewer Name"%><br>
     <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--" %>
