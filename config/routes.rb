@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :candidatedetails
+  #resources :candidatedetails
   resources :interviewerfeedbacks
   resources :candidateprofiles
   resources :interviewers
@@ -9,17 +9,23 @@ Rails.application.routes.draw do
   resources :skillsets
 
   get 'candidateschedule' => 'candidateprofiles#new'
-  get 'candidateprofile' => 'candidatedetails#new'
+  get 'candidateentry' => 'candidatedetails#new'
   get 'interviewerfeed' => 'interviewerfeedbacks#new'
   get 'candidatereports' => 'interviewerfeedbacks#index'
   get 'signup' => 'companies#new'
+
+  resources :candidatedetails do
+    collection do
+      get :search
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-    get 'signout' => 'application#signout'
-    get 'login'  => 'companies#login'
-    post 'credential'  => 'companies#credential'
+  get 'signout' => 'application#signout'
+  get 'login'  => 'companies#login'
+  post 'credential'  => 'companies#credential'
   # You can have the root of your site routed with "root"
-   root 'companies#login'
+  root 'companies#login'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

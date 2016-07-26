@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725111334) do
+ActiveRecord::Schema.define(version: 20160726060538) do
 
   create_table "calenders", force: :cascade do |t|
     t.date     "dates"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20160725111334) do
   create_table "candidateprofiles", force: :cascade do |t|
     t.string   "candidatename"
     t.string   "candidateemail"
-    t.integer  "candidatecontact"
     t.string   "skills"
     t.text     "YOE"
     t.string   "interviewername"
@@ -48,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160725111334) do
     t.text     "jobdescription"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.decimal  "candidatecontact"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -70,13 +70,13 @@ ActiveRecord::Schema.define(version: 20160725111334) do
     t.string   "companyname"
     t.text     "companyaddress"
     t.string   "contactperson"
-    t.integer  "contactnumber"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "companyemail"
     t.string   "username"
     t.string   "password"
     t.string   "password_confirmation"
+    t.decimal  "contactnumber"
   end
 
   create_table "interviewerfeedbacks", force: :cascade do |t|

@@ -1,11 +1,13 @@
 Rails.application.configure do
+
+
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
 
   # Settings specified here will take precedence over those in config/application.rb.
- ActionMailer::Base.delivery_method = :smtp
-# SMTP settings for gmail
+  ActionMailer::Base.delivery_method = :smtp
+ # SMTP settings for gmail
   ActionMailer::Base.smtp_settings = {
        :address              => "smtp.gmail.com",
        :port                 => 587,
@@ -14,11 +16,9 @@ Rails.application.configure do
        :password             => "9994813212",
        :authentication       => "plain",
        :enable_starttls_auto => true
-       
+
  }
 
- config.action_mailer.raise_delivery_errors = true
- config.action_mailer.perform_deliveries = true
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

@@ -1,3 +1,16 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+# $ ->
+#     $('#candidateprofile_candidatename').change ->
+#       candidate = $(this).val()
+#       $.ajax
+#         type: 'GET'
+#         url: '/candidatedetails/search'
+#         dataType: 'json'
+#         data: 'candidatename': candidate
+#         success: (result) ->
+#            json=JSON.stringify(result)
+#            alert(json)
+#            return
+#         error: ->
+#           alert 'Error!'
+#           return
+#      return

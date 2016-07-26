@@ -1,6 +1,8 @@
 class CandidatedetailsController < ApplicationController
   before_action :set_candidatedetail, only: [:show, :edit, :update, :destroy]
   before_action :authenticate
+  respond_to :json, :html
+
    def authenticate
      if ((session[:companyemail]||session[:password]=="")||((session[:companyemail]||session[:password])==nil))
         redirect_to root_url
@@ -12,10 +14,16 @@ class CandidatedetailsController < ApplicationController
     @candidatedetails = Candidatedetail.all
   end
 
+  def  search
+    candidatename=params[:candidatename]
+    @detail=Candidatedetail.candidatedetail(candidatename)
+    respond_with(@detail, :include => :status)
+  end
+
   # GET /candidatedetails/1
   # GET /candidatedetails/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /candidatedetails/new
   def new
@@ -33,7 +41,7 @@ class CandidatedetailsController < ApplicationController
 
     respond_to do |format|
       if @candidatedetail.save
-        format.html { redirect_to candidateprofile_url, notice: 'Candidatedetail was successfully created.' }
+        format.html { redirect_to candidateentry_url, notice: 'Candidatedetail was successfully created.' }
         format.json { render :show, status: :created, location: @candidatedetail }
       else
         format.html { render :new }
