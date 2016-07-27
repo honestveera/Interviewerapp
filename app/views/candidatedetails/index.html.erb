@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
 
-<h1> Candidatedetails</h1>
-
-<table>
-  <thead>
+<h3> Candidatedetails</h3>
+<div class="table-responsive">
+<table class="table table-bordered table-hover sortable">
+  <thead class="bg-success">
     <tr>
       <th>Candidatename</th>
       <th>Candidateemail</th>
@@ -11,6 +11,7 @@
       <th>Yoe</th>
       <th>Skills</th>
       <th>Jobdescription</th>
+      <th>AttachedFile</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= candidatedetail.yoe %></td>
         <td><%= candidatedetail.skills %></td>
         <td><%= candidatedetail.jobdescription %></td>
+        <td><%= candidatedetail.attachedfile %></td>
         <td><%= link_to 'Show', candidatedetail %></td>
         <td><%= link_to 'Edit', edit_candidatedetail_path(candidatedetail) %></td>
         <td><%= link_to 'Destroy', candidatedetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,7 +33,8 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'New Candidatedetail', new_candidatedetail_path %>
+</div>

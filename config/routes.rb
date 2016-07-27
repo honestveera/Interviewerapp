@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   #resources :candidatedetails
   resources :interviewerfeedbacks
   resources :candidateprofiles
-  resources :interviewers
+  #resources :interviewers
   resources :companies
   resources :calenders
   resources :scheduletimes
@@ -19,6 +19,12 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :interviewers do
+    collection do
+      get :search
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'signout' => 'application#signout'

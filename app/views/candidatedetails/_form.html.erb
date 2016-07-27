@@ -18,15 +18,15 @@
          <div class="input-group">
         <div class="field">
           <%= f.label :candidatename,"Candidate Name" %><br>
-          <%= f.text_field :candidatename,:placeholder=>"Candidate Name" %>
+          <%= f.text_field :candidatename,:placeholder=>"Candidate Name",:class => "required",:required => true  %>
         </div>
         <div class="field">
           <%= f.label :candidateemail,"Candidate Email" %><br>
-          <%= f.text_field :candidateemail,:placeholder=>"Candidate Email" %>
+          <%= f.text_field :candidateemail,:placeholder=>"Candidate Email",:class => "required",:required => true  %>
         </div>
         <div class="field">
           <%= f.label :candidatecontact,"Candidates Contact " %><br>
-          <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact" %>
+          <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:class => "required",:required => true  %>
         </div>
         <div class="field">
           <%= f.label :yoe,"Year Of Experience" %><br>

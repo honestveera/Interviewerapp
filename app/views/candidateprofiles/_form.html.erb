@@ -24,19 +24,19 @@
   </div>
   <div class="field">
     <%= f.label :candidateemail,"Candidate Email" %><br>
-    <%= f.text_field :candidateemail,:placeholder=>"Candidate Email"  %>
+    <%= f.text_field :candidateemail,:placeholder=>"Candidate Email" ,:readonly => true%>
   </div>
   <div class="field">
     <%= f.label :candidatecontact,"Candidate Contact"%><br>
-    <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact"%>
+    <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:readonly => true%>
   </div>
   <div class="field">
     <%= f.label :skills,"Skills" %><br>
-    <%=f.text_field :skills,:placeholder=>"Candidate Skills"%>
+    <%=f.text_field :skills,:placeholder=>"Candidate Skills",:readonly => true%>
   </div>
   <div class="field">
     <%= f.label :YOE,"Year Of Experience " %><br>
-    <%= f.text_field :YOE,:placeholder=>"Year Of Experience",:id=>"textarea" %>
+    <%= f.text_field :YOE,:placeholder=>"Year Of Experience",:id=>"textarea",:readonly => true%>
   </div>
 
 </div>
@@ -51,7 +51,7 @@
   </div>
   <div class="field">
     <%= f.label :intervieweremail ,"Interviewer Mail"%><br>
-    <%=f.select :intervieweremail,options_from_collection_for_select(Interviewer.all,"companyemail","companyemail"), :prompt => "--Select InterviewerMail--" %>
+    <%=f.text_field :intervieweremail,:placeholder=>"Interviewer Mail",:readonly => true%>
   </div>
   <div class="field">
     <%= f.label :scheduledate,"Schedule Date" %><br>
@@ -83,27 +83,28 @@
 </div>
 </div>
 <% end %>
- <script type="text/javascript">
- $('#candidateprofile_candidatename').change(function(){
-   var q = $(this).val();
-   $.ajax({
-     type: "GET",
-     url: "/candidatedetails/search",
-     dataType: "json",
-     data: {'candidatename': q},
-     success:function(result){
-       var json=JSON.stringify(result);
-       var parse =$.parseJSON(json);
-       alert(json);
-       $('#candidateprofile_candidateemail').val(parse[0]['candidateemail']);
-       $('#candidateprofile_candidatecontact').val(parse[0]['candidatecontact']);
-       $('#candidateprofile_skills').val(parse[0]['skills']);
-       $('#textarea').val(parse[0]['yoe']);
-     },
-     error:function(){
-       alert("Error!");
-     }
-
-   })
- });
-</script>
+ <!-- //<script type="text/javascript">
+ // $('#candidateprofile_candidatename').change(function(){
+ //   var q = $(this).val();
+ //   $.ajax({
+ //     type: "GET",
+ //     url: "/candidatedetails/search",
+ //     dataType: "json",
+ //     data: {'candidatename': q},
+ //     success:function(result){
+ //       var json=JSON.stringify(result);
+ //       var parse =$.parseJSON(json);
+ //      //  alert(json);
+ //       $('#candidateprofile_candidateemail').val(parse[0]['candidateemail']);
+ //       var contact=parseFloat(parse[0]['candidatecontact']);
+ //       $('#candidateprofile_candidatecontact').val(contact);
+ //       $('#candidateprofile_skills').val(parse[0]['skills']);
+ //       $('#textarea').val(parse[0]['yoe']);
+ //     },
+ //     error:function(){
+ //       alert("Error!");
+ //     }
+ //
+ //   })
+ // });
+// </script> -->

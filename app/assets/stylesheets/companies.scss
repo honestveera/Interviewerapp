@@ -1,4 +1,75 @@
 
+.body
+ {
+     background-image: url("high.jpg");
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-attachment:fixed;
+     background-size: cover;
+     background-color: #464646;
+ }
+  .login-form1
+  {
+
+    width: 350px;
+    margin: 9% auto 1% auto;
+    position: relative;
+    -webkit-border-radius: 0.4em;
+    -o-border-radius: 0.4em;
+    -moz-border-radius: 0.4em;
+    .thumbnail {
+       background: #fffff;
+       width: 150px;
+       height: 150px;
+       margin: 0 auto 0px;
+       padding: 50px 30px;
+       border-top-left-radius: 100%;
+       border-top-right-radius: 100%;
+       border-bottom-left-radius: 100%;
+       border-bottom-right-radius: 100%;
+       box-sizing: border-box;
+   }
+    form
+    {
+       width: 60%;
+       margin: 0 auto;
+       padding: 6% 0 9% 0;
+    }
+    input[type="submit"]
+    {
+        width: 270px;
+        height: 45px;
+        background-color:#21A957;
+        margin-left: -13px;
+    }
+    input[type="text"] {
+       width: 270px;
+       outline: 0;
+        margin: 0 0 1px;
+        padding: 15px;
+        margin-left: -13px;
+        box-sizing: border-box;
+        font-size: 14px;
+
+   }
+   #link
+   {
+   text-align: center;
+   font-size: 14px;
+   }
+
+   input[type="password"] {
+      width: 270px;
+      outline: 0;
+       margin: 0 0 1px;
+       margin-left: -13px;
+       padding: 15px;
+       box-sizing: border-box;
+       font-size: 14px;
+
+  }
+  }
+
   .login-form
    {
      background: #eee;
@@ -8,6 +79,18 @@
      -webkit-border-radius: 0.4em;
      -o-border-radius: 0.4em;
      -moz-border-radius: 0.4em;
+     .thumbnail {
+        background: #fffff;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 0px;
+        padding: 50px 30px;
+        border-top-left-radius: 100%;
+        border-top-right-radius: 100%;
+        border-bottom-left-radius: 100%;
+        border-bottom-right-radius: 100%;
+        box-sizing: border-box;
+    }
      form
      {
         width: 60%;

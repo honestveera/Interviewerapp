@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Candidateprofiles</h1>
-
-<table>
-  <thead>
+<h3>Candidateprofiles</h3>
+<div class="table-responsive">
+<table class="table table-bordered table-hover sortable">
+  <thead class="bg-success">
     <tr>
-      <th>Candidatename</th>
-      <th>Candidateemail</th>
-      <th>Candidatecontact</th>
-      <th>Skills</th>
-      <th>Yoe</th>
-      <th>Interviewername</th>
-      <th>Intervieweremail</th>
-      <th>Scheduledate</th>
-      <th>Scheduletime</th>
-      <th>Jobdescription</th>
+      <th class="text-info">Candidatename</th>
+      <th class="text-info">Candidateemail</th>
+      <th class="text-info">Candidatecontact</th>
+      <th class="text-info">Skills</th>
+      <th class="text-info">Yoe</th>
+      <th class="text-info">Interviewername</th>
+      <th class="text-info">Intervieweremail</th>
+      <th class="text-info">Scheduledate</th>
+      <th class="text-info">Scheduletime</th>
+      <th class="text-info">Jobdescription</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,14 +32,15 @@
         <td><%= candidateprofile.scheduledate %></td>
         <td><%= candidateprofile.scheduletime %></td>
         <td><%= candidateprofile.jobdescription %></td>
-        <td><%= link_to 'Show', candidateprofile %></td>
-        <td><%= link_to 'Edit', edit_candidateprofile_path(candidateprofile) %></td>
-        <td><%= link_to 'Destroy', candidateprofile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', candidateprofile,:class=>"btn btn-primary btn-sm"%></td>
+        <td><%= link_to 'Edit', edit_candidateprofile_path(candidateprofile),:class=>"btn btn-info btn-sm"%></td>
+        <td><%= link_to 'Destroy', candidateprofile, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'New Candidateprofile', new_candidateprofile_path %>
+</div>

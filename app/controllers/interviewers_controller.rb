@@ -1,12 +1,18 @@
 class InterviewersController < ApplicationController
   before_action :set_interviewer, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html,:json
   # GET /interviewers
   # GET /interviewers.json
   def index
     @interviewers = Interviewer.all
   end
 
+
+  def  search
+    interviewername=params[:interviewername]
+    @detail=Interviewer.interviewerdetail(interviewername)
+    respond_with(@detail, :include => :status)
+  end
   # GET /interviewers/1
   # GET /interviewers/1.json
   def show

@@ -7,9 +7,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="body">
   <div class="login-form">
-    <h1 class="text-primary">Signup</h1>
+    <div class="thumbnail">
+      <img src="assets/Markuci.png" style="margin-top: -19px;"/>
+    </div>
 <%= form_for(@company) do |f| %>
         <% if @company.errors.any? %>
           <div class="alert alert-danger fade in">

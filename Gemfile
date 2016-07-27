@@ -32,7 +32,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem "paperclip", "~> 5.0.0"
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
-
+ gem "heroku"
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -47,6 +47,7 @@ end
 group :production, :staging do
   gem "pg"
   gem 'rails_12factor'
+  gem 'puma'
 end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
