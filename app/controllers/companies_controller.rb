@@ -50,7 +50,7 @@ class CompaniesController < ApplicationController
         format.html { redirect_to signup_url, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
-        format.html { render :new }
+        format.html { redirect_to signup_url}
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
