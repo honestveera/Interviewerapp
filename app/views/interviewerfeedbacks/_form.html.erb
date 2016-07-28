@@ -92,7 +92,7 @@
            </div>
            <div class="field">
              <%= f.label :overallassesment,"Overallassesment"%><br>
-             <%= f.text_field :overallassesment,:placeholder=>"Overallassesment"%>
+             <%= f.text_field :overallassesment,:placeholder=>"Overallassesment",:readonly=>true%>
            </div>
           <div class="field">
             <%= f.label :status,"Status"%><br>
@@ -178,7 +178,24 @@
          alert("Please select Flexibility!");
        }
        else {
-         alert("Process success");
+         var re=parseFloat($('#interviewerfeedback_relevanceexperience').val());
+         var perso=parseFloat($('#interviewerfeedback_personality').val());
+         var commu=parseFloat($('#interviewerfeedback_communication').val());
+         var ts=parseFloat($('#interviewerfeedback_technicalskills').val());
+         var as=parseFloat($('#interviewerfeedback_analyticalskills').val());
+         var jn=parseFloat($('#interviewerfeedback_jobknowledge').val());
+         var tm=parseFloat($('#interviewerfeedback_timemanagement').val());
+         var ct=parseFloat($('#interviewerfeedback_commitementtask').val());
+         var ls=parseFloat($('#interviewerfeedback_leadership').val());
+         var tw=parseFloat($('#interviewerfeedback_teamwork').val());
+         var gs=parseFloat($('#interviewerfeedback_goalsettings').val());
+         var cr=parseFloat($('#interviewerfeedback_creativity').val());
+         var fl=parseFloat($('#interviewerfeedback_flexibility').val());
+         var assert=parseFloat($('#interviewerfeedback_assertiveness').val());
+         var avg;
+         avg=parseFloat((re+perso+commu+ts+as+jn+tm+ct+ls+tw+gs+cr+fl+assert)/14);
+         $('#interviewerfeedback_overallassesment').val(avg);
+        //  $('#interviewerfeedback_relevanceexperience').attr("disabled",true)
        }
      }
     });
