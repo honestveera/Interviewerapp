@@ -19,7 +19,7 @@
          <div class="input-group">
           <div class="field">
             <%= f.label :interviewername,"Interviewer Name" %><br>
-            <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--" %>
+            <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--",:class=>"selectpicker"%>
            </div>
           <div class="field">
             <%= f.label :candidatename,"Candidate Name"%><br>
