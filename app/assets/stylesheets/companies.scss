@@ -75,18 +75,20 @@
 
   .login-form
    {
-     background: #eee;
      width: 330px;
-     margin: 9% auto 1% auto;
+     margin: 1% auto 3% auto;
      position: relative;
      -webkit-border-radius: 0.4em;
      -o-border-radius: 0.4em;
      -moz-border-radius: 0.4em;
+     .form-group {
+       margin-bottom: 4px;
+       }
      .thumbnail {
         background: #fffff;
         width: 150px;
         height: 150px;
-        margin: 0 auto 0px;
+        margin: 0 100px 0px;
         padding: 50px 30px;
         border-top-left-radius: 100%;
         border-top-right-radius: 100%;
@@ -102,15 +104,16 @@
      }
      input[type="submit"]
      {
-         width: 230px;
+         width: 270px;
          background-color:#21A957;
      }
      select
      {
-         width: 230px;
+         width: 270px;
      }
      input[type="text"] {
-        width: 230px;
+        width: 270px;
+        height: 35px;
 
     }
     #link
@@ -119,14 +122,17 @@
     font-size: 14px;
     }
     #textarea {
-       width: 230px;
+       width: 270px;
+       height: 70px;
    }
    input[type="number"] {
-      width: 230px;
+      width: 270px;
+      height: 35px;
 
   }
     input[type="password"] {
-       width: 230px;
+       width: 270px;
+       height: 35px;
 
    }
    }// Place all the styles related to the Companies controller here.

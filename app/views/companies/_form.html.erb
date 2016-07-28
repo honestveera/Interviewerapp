@@ -10,7 +10,7 @@
 <body class="body">
   <div class="login-form">
     <div class="thumbnail">
-      <img src="assets/Markuci.png" style="margin-top: -19px;"/>
+      <img src="assets/Markuci.png" style="margin-top: -20px;"/>
     </div>
 <%= form_for(@company) do |f| %>
         <% if @company.errors.any? %>
@@ -47,13 +47,13 @@
               <div class="form-group">
                 <%= f.password_field :password_confirmation,:placeholder=>"Confirm Password",:class => "required",:required => true %>
               </div>
-              <div class="checkboxy">
+              <div class="form-group">
               <input name="cecky" id="checky" value="1" type="checkbox" /><label class="terms">I accept the terms of use</label>
               </div>
               <div class="actions">
                 <%= f.submit :class=>"btn btn-primary btn-md" %>
               </div>
-              <%= link_to 'Login', root_path,:class=>"btn btn-primary btn-md",:style=>"width:230px"%>
+              <%= link_to 'Login', root_path,:class=>"btn btn-primary btn-md",:style=>"width:270px"%>
 
            </div>
         </div>
