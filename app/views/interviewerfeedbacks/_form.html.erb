@@ -15,43 +15,171 @@
   </div>
   <% end %>
   <div class="row">
-     <div class="col-lg-4 col-lg-offset-4">
+     <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
+          <div class="field">
+            <%= f.label :interviewername,"Interviewer Name" %><br>
+            <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--" %>
+           </div>
+          <div class="field">
+            <%= f.label :candidatename,"Candidate Name"%><br>
+            <%=f.select :candidatename,options_from_collection_for_select(Candidateprofile.all,"candidatename","candidatename"), :prompt => "--Select Candidate--" %>
+          </div>
+          <div class="field">
+            <%= f.label :skills,"Skills"%><br>
+            <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--" %>
+          </div>
+          <div class="field">
+            <%= f.label :relevanceexperience,"Relevance Experience"%><br>
+            <%= f.select :relevanceexperience, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select RelevanceExperience--" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :interviewername,"Interviewer Name" %><br>
-    <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--" %>
-   </div>
-  <div class="field">
-    <%= f.label :candidatename,"Candidate Name"%><br>
-    <%=f.select :candidatename,options_from_collection_for_select(Candidateprofile.all,"candidatename","candidatename"), :prompt => "--Select Candidate--" %>
-  </div>
-  <div class="field">
-    <%= f.label :skills,"Skills"%><br>
-    <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--" %>
-  </div>
-  <div class="field">
-    <%= f.label :feedback,"Feedback"%><br>
-    <%= f.text_area :feedback,:id=>"textarea"%>
-  </div>
-  <div class="field">
-    <%= f.label :attachedfile,"Attached File"%><br>
-    <%= f.file_field :attachedfile%>
-  </div>
-  <div class="field">
-    <%= f.label :status,"Status"%><br>
-    <%= f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--" %>
-  </div>
-  <div class="form-group">
-    <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
-  </div>
-  <div class="form-group">
-    <%= f.hidden_field "password",:class=>"required",:value => session[:password]%>
-  </div>
-  <div class="actions">
-    <%= f.submit :class=>"btn btn-primary btn-lg"%>
-  </div>
-   </div>
-  </div>
+          <div class="field">
+            <%= f.label :personality,"Personality"%><br>
+            <%= f.select :personality,options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Personality--"%>
+          </div>
+          <div class="field">
+            <%= f.label :communication,"Communication"%><br>
+            <%= f.select :communication, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Communication--" %>
+          </div>
+          <div class="field">
+            <%= f.label :technicalskills,"Technical Skills"%><br>
+            <%= f.select :technicalskills, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Technicalskills--" %>
+          </div>
+          <div class="field">
+            <%= f.label :analyticalskills,"Analytical Skills"%><br>
+            <%= f.select :analyticalskills, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Analyticalskills--" %>
+          </div>
+          <div class="field">
+            <%= f.label :jobknowledge,"Jobknowledge"%><br>
+            <%= f.select :jobknowledge, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Jobknowledge--" %>
+          </div>
+          <div class="field">
+            <%= f.label :timemanagement,"Timemanagement"%><br>
+            <%= f.select :timemanagement, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Timemanagement--" %>
+          </div>
+        </div>
+     </div>
+     <div class="col-lg-3 col-lg-offset-1">
+         <div class="input-group">
+           <div class="field">
+             <%= f.label :commitementtask,"Commitement Task"%><br>
+             <%= f.select :commitementtask, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Commitementtask--" %>
+           </div>
+           <div class="field">
+             <%= f.label :leadership,"Leadership"%><br>
+             <%= f.select :leadership, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Leadership--" %>
+           </div>
+           <div class="field">
+             <%= f.label :teamwork,"Teamwork"%><br>
+             <%= f.select :teamwork, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Teamwork--" %>
+           </div>
+           <div class="field">
+             <%= f.label :goalsettings,"Goalsettings"%><br>
+             <%= f.select :goalsettings, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Goalsettings--" %>
+           </div>
+           <div class="field">
+             <%= f.label :creativity,"Creativity"%><br>
+             <%= f.select :creativity, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Creativity--" %>
+           </div>
+           <div class="field">
+             <%= f.label :flexibility,"Flexibility"%><br>
+             <%= f.select :flexibility, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Flexibility--" %>
+           </div>
+           <div class="field">
+             <%= f.label :assertiveness,"Assertiveness"%><br>
+             <%= f.select :assertiveness, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Assertiveness--",:class=>"assertiveness"%>
+           </div>
+           <div class="field">
+             <%= f.label :overallassesment,"Overallassesment"%><br>
+             <%= f.text_field :overallassesment,:placeholder=>"Overallassesment"%>
+           </div>
+          <div class="field">
+            <%= f.label :status,"Status"%><br>
+            <%= f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--" %>
+          </div>
+          <div class="field">
+            <%= f.label :attachedfile,"Attached File"%><br>
+            <%= f.file_field :attachedfile%>
+          </div>
+          <div class="form-group">
+            <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
+          </div>
+          <div class="form-group">
+            <%= f.hidden_field "password",:class=>"required",:value => session[:password]%>
+          </div>
+        </div>
+       </div>
+       <div class="row">
+         <div  class="col-lg-4 col-lg-offset-5">
+          <div class="actions">
+            <%= f.submit :class=>"btn btn-primary btn-lg",:style=>"margin-left: -40px;"%>
+          </div>
+        </div>
+        </div>
+
 </div>
 <% end %>
+
+<script type="text/javascript">
+  $('#interviewerfeedback_assertiveness').change(function(){
+     if($('#interviewerfeedback_assertiveness option:selected').index()>0)
+     {
+       if($('#interviewerfeedback_relevanceexperience option:selected').index()==0)
+       {
+         alert("Please select relevance experience!");
+       }
+       else if($('#interviewerfeedback_personality option:selected').index()==0)
+       {
+         alert("Please select personality!");
+       }
+       else if($('#interviewerfeedback_communication option:selected').index()==0)
+       {
+         alert("Please select Communication!");
+       }
+       else if($('#interviewerfeedback_technicalskills option:selected').index()==0)
+       {
+         alert("Please select Technicalskills!");
+       }
+       else if($('#interviewerfeedback_analyticalskills option:selected').index()==0)
+       {
+         alert("Please select Analyticalskills!");
+       }
+       else if($('#interviewerfeedback_jobknowledge option:selected').index()==0)
+       {
+         alert("Please select Jobknowledge!");
+       }
+       else if($('#interviewerfeedback_timemanagement option:selected').index()==0)
+       {
+         alert("Please select Timemanagement!");
+       }
+       else if($('#interviewerfeedback_commitementtask option:selected').index()==0)
+       {
+         alert("Please select Commitementtask!");
+       }
+       else if($('#interviewerfeedback_leadership option:selected').index()==0)
+       {
+         alert("Please select Leadership!");
+       }
+       else if($('#interviewerfeedback_teamwork option:selected').index()==0)
+       {
+         alert("Please select Teamwork!");
+       }
+       else if($('#interviewerfeedback_goalsettings option:selected').index()==0)
+       {
+         alert("Please select Goalsettings!");
+       }
+       else if($('#interviewerfeedback_creativity option:selected').index()==0)
+       {
+         alert("Please select Creativity!");
+       }
+       else if($('#interviewerfeedback_flexibility option:selected').index()==0)
+       {
+         alert("Please select Flexibility!");
+       }
+       else {
+         alert("Process success");
+       }
+     }
+    });
+</script>

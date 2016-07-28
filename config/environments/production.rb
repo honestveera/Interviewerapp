@@ -12,7 +12,7 @@ Rails.application.configure do
     ActionMailer::Base.smtp_settings = {
          :address              => "smtp.gmail.com",
          :port                 => 587,
-         :domain               => "interviewerapp.herokuapp.com",
+         :domain               => "heroku.com",
          :user_name            => "honestraj.it@gmail.com",
          :password             => "9994813212",
          :authentication       => "plain",
