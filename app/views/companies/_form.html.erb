@@ -27,13 +27,13 @@
         <div class="row">
                <div class="input-group">
               <div class="form-group">
-                <%= f.text_field :companyname,:placeholder=>"Company Name",:class => "required",:required => true%>
+                <%= f.text_field :companyname,:placeholder=>"Company Name",:class => "required",:required=>true%>
               </div>
               <div class="form-group">
-              <%= f.text_area :companyaddress,:placeholder=>"Company Address",:id=>"textarea"%>
+              <%= f.text_area :companyaddress,:placeholder=>"Company Address",:class => "required",:required=>true,:id=>"textarea"%>
               </div>
               <div class="form-group">
-                  <%= f.text_field :contactperson,:placeholder=>"Contact Person" %>
+                  <%= f.text_field :contactperson,:placeholder=>"Contact Person",:class => "required",:required=>true%>
               </div>
               <div class="form-group">
                 <%= f.number_field :contactnumber,:placeholder=>"Contact Number",:class => "required",:required => true %>
@@ -42,7 +42,7 @@
                 <%= f.text_field :companyemail,:placeholder=>"Email",:class => "required",:required => true%>
               </div>
               <div class="form-group">
-                <%= f.password_field :password,:placeholder=>" Password",:class => "required",:required => true %>
+                <%= f.password_field :password,:placeholder=>" Password",:class => "required",:required => true%>
               </div>
               <div class="form-group">
                 <%= f.password_field :password_confirmation,:placeholder=>"Confirm Password",:class => "required",:required => true %>

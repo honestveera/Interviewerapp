@@ -20,7 +20,7 @@
          <div class="input-group">
   <div class="field">
     <%= f.label :candidatename ,"Candidate Name"%><br>
-    <%= f.select :candidatename,options_from_collection_for_select(Candidatedetail.all,"candidatename","candidatename"),:prompt=>"--Select Candidatename--"%>
+    <%= f.select :candidatename,options_from_collection_for_select(Candidatedetail.all,"id","candidatename"),:prompt=>"--Select Candidatename--"%>
   </div>
   <div class="field">
     <%= f.label :candidateemail,"Candidate Email" %><br>
@@ -46,7 +46,7 @@
 
   <div class="field">
     <%= f.label :interviewername,"Interviewer Name"%><br>
-    <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"interviewername","interviewername"), :prompt => "--Select Interviewer--" %>
+    <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"id","interviewername"), :prompt => "--Select Interviewer--" %>
 
   </div>
   <div class="field">
@@ -55,12 +55,12 @@
   </div>
   <div class="field">
     <%= f.label :scheduledate,"Schedule Date" %><br>
-    <%=f.select :scheduledate,options_from_collection_for_select(Calender.all,"dates","dates"), :prompt => "--Select ScheduleDate--" %>
+    <%=f.select :scheduledate,options_from_collection_for_select(Calender.all,"id","dates"), :prompt => "--Select ScheduleDate--" %>
 
   </div>
   <div class="field">
     <%= f.label :scheduletime,"Schedule Time"%><br>
-    <%=f.select :scheduletime,options_from_collection_for_select(Calender.all,"times","times"), :prompt => "--Select ScheduleTime--" %>
+    <%=f.select :scheduletime,options_from_collection_for_select(Calender.all,"id","times"), :prompt => "--Select ScheduleTime--" %>
   </div>
   <div class="field">
     <%= f.label :jobdescription,"Job Description" %><br>

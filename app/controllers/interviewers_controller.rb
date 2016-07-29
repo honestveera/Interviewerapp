@@ -9,7 +9,7 @@ class InterviewersController < ApplicationController
 
 
   def  search
-    interviewername=params[:interviewername]
+    interviewername=params[:id]
     @detail=Interviewer.interviewerdetail(interviewername)
     respond_with(@detail, :include => :status)
   end

@@ -5,11 +5,11 @@ $ ->
       type: 'GET'
       url: '/candidatedetails/search'
       dataType: 'json'
-      data: 'candidatename': q
+      data: 'id': q
       success: (result) ->
         json = JSON.stringify(result)
         parse = $.parseJSON(json)
-        #  alert(json);
+        alert(json);
         $('#candidateprofile_candidateemail').val parse[0]['candidateemail']
         contact = parseFloat(parse[0]['candidatecontact'])
         $('#candidateprofile_candidatecontact').val contact
@@ -26,7 +26,7 @@ $ ->
         type: 'GET'
         url: '/interviewers/search'
         dataType: 'json'
-        data: 'interviewername': name
+        data: 'id': name
         success: (result) ->
           json = JSON.stringify(result)
           parse = $.parseJSON(json)

@@ -15,7 +15,7 @@ class CandidatedetailsController < ApplicationController
   end
 
   def  search
-    candidatename=params[:candidatename]
+    candidatename=params[:id]
     @detail=Candidatedetail.candidatedetail(candidatename)
     respond_with(@detail, :include => :status)
   end

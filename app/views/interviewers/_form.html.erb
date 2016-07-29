@@ -27,7 +27,7 @@
             </div>
             <div class="field">
               <%= f.label :skills%><br>
-              <%= f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"),:prompt=>"Select Skills" %>
+              <%= f.select :skills,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skills--" %>
             </div>
             <div class="actions">
               <%= f.submit %>
