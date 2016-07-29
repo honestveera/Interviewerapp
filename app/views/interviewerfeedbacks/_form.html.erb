@@ -18,12 +18,18 @@
      <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
           <div class="field">
-            <%= f.label :interviewername,"Interviewer Name" %><br>
-            <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"id","interviewername"), :prompt => "--Select Interviewer--",:class=>"selectpicker"%>
+            <%=f.label "Interviewer Name" %><br>
+            <%=select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt => "--Select Interviewer--"%>
+           </div>
+           <div class="form-group">
+             <%= f.hidden_field :interviewername%>
            </div>
           <div class="field">
-            <%= f.label :candidatename,"Candidate Name"%><br>
-            <%=f.select :candidatename,options_from_collection_for_select(Candidateprofile.all,"id","candidatename"), :prompt => "--Select Candidate--" %>
+            <%= f.label "candidatename","Candidate Name"%><br>
+            <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.all,"id","candidatename"), :prompt => "--Select Candidate--" %>
+          </div>
+          <div class="form-group">
+            <%= f.hidden_field :candidatename%>
           </div>
           <div class="field">
             <%= f.label :skills,"Skills"%><br>
@@ -113,7 +119,7 @@
        <div class="row">
          <div  class="col-lg-4 col-lg-offset-5">
           <div class="actions">
-            <%= f.submit :class=>"btn btn-primary btn-lg",:style=>"margin-left: -40px;"%>
+            <%= f.submit :class=>"btn btn-primary btn-lg",:id=>"submit",:style=>"margin-left: -40px;"%>
           </div>
         </div>
         </div>
@@ -122,6 +128,18 @@
 <% end %>
 
 <script type="text/javascript">
+   $('#interviewername').change(function(){
+     var a=$('#interviewername option:selected').text();
+      $('#interviewerfeedback_interviewername').val(a)
+   });
+   $('#candidatename').change(function(){
+     var a=$('#candidatename option:selected').text();
+      $('#interviewerfeedback_candidatename').val(a)
+   });
+  //  $('#submit').click(function(){
+  //    $('#interviewerfeedback_interviewername option:selected').val()=$('#interviewerfeedback_interviewername option:selected').text();
+  //  });
+
   $('#interviewerfeedback_assertiveness').change(function(){
      if($('#interviewerfeedback_assertiveness option:selected').index()>0)
      {

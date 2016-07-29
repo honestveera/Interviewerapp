@@ -19,8 +19,12 @@
      <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
   <div class="field">
-    <%= f.label :candidatename ,"Candidate Name"%><br>
-    <%= f.select :candidatename,options_from_collection_for_select(Candidatedetail.all,"id","candidatename"),:prompt=>"--Select Candidatename--"%>
+    <%= f.label 'candidatename',"Candidate Name"%><br>
+    <%= select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("new"),"id","candidatename"),:prompt=>"--Select Candidatename--"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.hidden_field :candidatename%>
   </div>
   <div class="field">
     <%= f.label :candidateemail,"Candidate Email" %><br>
@@ -55,12 +59,12 @@
   </div>
   <div class="field">
     <%= f.label :scheduledate,"Schedule Date" %><br>
-    <%=f.select :scheduledate,options_from_collection_for_select(Calender.all,"id","dates"), :prompt => "--Select ScheduleDate--" %>
+    <%=f.select :scheduledate,options_from_collection_for_select(Calender.all,"dates","dates"), :prompt => "--Select ScheduleDate--" %>
 
   </div>
   <div class="field">
     <%= f.label :scheduletime,"Schedule Time"%><br>
-    <%=f.select :scheduletime,options_from_collection_for_select(Calender.all,"id","times"), :prompt => "--Select ScheduleTime--" %>
+    <%=f.select :scheduletime,options_from_collection_for_select(Calender.all,"times","times"), :prompt => "--Select ScheduleTime--" %>
   </div>
   <div class="field">
     <%= f.label :jobdescription,"Job Description" %><br>
@@ -71,6 +75,9 @@
   </div>
   <div class="form-group">
     <%= f.hidden_field "password",:class=>"required",:value => session[:password]%>
+  </div>
+  <div class="form-group">
+    <%=hidden_field_tag :identity%>
   </div>
 </div>
 </div>
@@ -83,7 +90,10 @@
 </div>
 </div>
 <% end %>
- <!-- //<script type="text/javascript">
+<!-- <script type="text/javascript">
+  $('#candidatename').change(function(){
+
+  });
  // $('#candidateprofile_candidatename').change(function(){
  //   var q = $(this).val();
  //   $.ajax({
@@ -107,4 +117,4 @@
  //
  //   })
  // });
-// </script> -->
+ </script> -->

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728055528) do
+ActiveRecord::Schema.define(version: 20160729120747) do
 
   create_table "calenders", force: :cascade do |t|
     t.date     "dates"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160728055528) do
     t.string   "attachedfile_content_type"
     t.integer  "attachedfile_file_size"
     t.datetime "attachedfile_updated_at"
+    t.string   "status"
   end
 
   create_table "candidateprofiles", force: :cascade do |t|

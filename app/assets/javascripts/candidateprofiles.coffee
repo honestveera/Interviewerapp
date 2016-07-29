@@ -1,6 +1,10 @@
 $ ->
-  $('#candidateprofile_candidatename').change ->
+  $('#candidatename').change ->
     q = $(this).val()
+    textmethod=$('#candidatename option:selected').text()
+    valuemethod=$('#candidatename option:selected').val()
+    $('#candidateprofile_candidatename').val textmethod
+    $('#identity').val valuemethod
     $.ajax
       type: 'GET'
       url: '/candidatedetails/search'
@@ -15,6 +19,7 @@ $ ->
         $('#candidateprofile_candidatecontact').val contact
         $('#candidateprofile_skills').val parse[0]['skills']
         $('#textarea').val parse[0]['yoe']
+        # session[:identity]=
         return
       error: ->
         alert 'Error!'

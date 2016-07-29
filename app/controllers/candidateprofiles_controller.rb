@@ -12,6 +12,7 @@ class CandidateprofilesController < ApplicationController
   # GET /candidateprofiles.json
   def index
     @candidateprofiles = Candidateprofile.all
+
   end
 
   # GET /candidateprofiles/1
@@ -35,6 +36,7 @@ class CandidateprofilesController < ApplicationController
 
     respond_to do |format|
       if @candidateprofile.save
+        Candidateprofile.updateprofilestatus(params[:identity])
         ExampleMailer.sample_email(@candidateprofile).deliver_now
         format.html { redirect_to candidateschedule_url, notice: 'Candidateprofile was successfully created.' }
         format.json { render :show, status: :created, location: @candidateprofile }
