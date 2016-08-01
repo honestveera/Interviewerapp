@@ -9,15 +9,15 @@ class CompaniesController < ApplicationController
 
    def credential
      @check=Company.allwhere(params[:company][:companyemail],params[:company][:password]).count
-   respond_to do |format|
-    if @check>=1
-      session[:comapanyemail]=params[:company][:companyemail]
-      session[:password]=params[:company][:password]
-      format.html { redirect_to candidatereports_url, notice: 'Login Successful.' }
-    else
-      format.html { redirect_to login_url, notice: 'LoginFailed'  }
-      flash[:error] = "Invalid Login"
-    end
+    respond_to do |format|
+        if @check>=1
+          session[:comapanyemail]=params[:company][:companyemail]
+          session[:password]=params[:company][:password]
+          format.html { redirect_to candidatereports_url }
+        else
+          format.html { redirect_to login_url}
+          flash[:error] = "Invalid Email and Password"
+        end
     end
    end
 

@@ -15,12 +15,18 @@
     </div>
     </div>
   <% end %>
+  <% if flash[:notice] %>
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <%= flash[:notice] %>
+   </div>
+  <% end %>
   <div class="row">
      <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
   <div class="field">
     <%= f.label 'candidatename',"Candidate Name"%><br>
-    <%= select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("new"),"id","candidatename"),:prompt=>"--Select Candidatename--"%>
+    <%= select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("new"),"id","candidatename"),:prompt=>"--Select Candidatename--",:class => "required",:required => true%>
   </div>
 
   <div class="form-group">
@@ -28,19 +34,19 @@
   </div>
   <div class="field">
     <%= f.label :candidateemail,"Candidate Email" %><br>
-    <%= f.text_field :candidateemail,:placeholder=>"Candidate Email" ,:readonly => true%>
+    <%= f.text_field :candidateemail,:placeholder=>"Candidate Email" ,:readonly => true,:class => "required",:required => true%>
   </div>
   <div class="field">
     <%= f.label :candidatecontact,"Candidate Contact"%><br>
-    <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:readonly => true%>
+    <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:readonly => true,:class => "required",:required => true%>
   </div>
   <div class="field">
     <%= f.label :skills,"Skills" %><br>
-    <%=f.text_field :skills,:placeholder=>"Candidate Skills",:readonly => true%>
+    <%=f.text_field :skills,:placeholder=>"Candidate Skills",:readonly => true,:class => "required",:required => true%>
   </div>
   <div class="field">
     <%= f.label :YOE,"Year Of Experience " %><br>
-    <%= f.text_field :YOE,:placeholder=>"Year Of Experience",:id=>"textarea",:readonly => true%>
+    <%= f.text_field :YOE,:placeholder=>"Year Of Experience",:id=>"textarea",:readonly => true,:class => "required",:required => true%>
   </div>
 
 </div>
@@ -50,12 +56,12 @@
 
   <div class="field">
     <%= f.label :interviewername,"Interviewer Name"%><br>
-    <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"id","interviewername"), :prompt => "--Select Interviewer--" %>
+    <%=f.select :interviewername,options_from_collection_for_select(Interviewer.all,"id","interviewername"), :prompt => "--Select Interviewer--",:class => "required",:required => true %>
 
   </div>
   <div class="field">
     <%= f.label :intervieweremail ,"Interviewer Mail"%><br>
-    <%=f.text_field :intervieweremail,:placeholder=>"Interviewer Mail",:readonly => true%>
+    <%=f.text_field :intervieweremail,:placeholder=>"Interviewer Mail",:readonly => true,:class => "required",:required => true%>
   </div>
   <div class="field">
     <%= f.label :scheduledate,"Schedule Date" %><br>
@@ -68,7 +74,7 @@
   </div>
   <div class="field">
     <%= f.label :jobdescription,"Job Description" %><br>
-    <%= f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea"  %>
+    <%= f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea" ,:class => "required",:required => true%>
   </div>
   <div class="form-group">
     <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
@@ -90,31 +96,59 @@
 </div>
 </div>
 <% end %>
-<!-- <script type="text/javascript">
-  $('#candidatename').change(function(){
+ <script type="text/javascript">
+ $('#candidatename').change(function() {
+   var q, textmethod, valuemethod;
+   q = $(this).val();
+   textmethod = $('#candidatename option:selected').text();
+   valuemethod = $('#candidatename option:selected').val();
+   $('#candidateprofile_candidatename').val(textmethod);
+   $('#identity').val(valuemethod);
+   $.ajax({
+     type: 'GET',
+     url: '/candidatedetails/search',
+     dataType: 'json',
+     data: {
+       'id': q
+     },
+     success: function(result) {
+       var contact, json, parse;
+       json = JSON.stringify(result);
+       parse = $.parseJSON(json);
+       alert(json);
+       $('#candidateprofile_candidateemail').val(parse[0]['candidateemail']);
+       contact = parseFloat(parse[0]['candidatecontact']);
+       $('#candidateprofile_candidatecontact').val(contact);
+       $('#candidateprofile_skills').val(parse[0]['skills']);
+       $('#textarea').val(parse[0]['yoe']);
+     },
+     error: function() {
+       alert('Error!');
+     }
+   });
+ });
 
-  });
- // $('#candidateprofile_candidatename').change(function(){
- //   var q = $(this).val();
- //   $.ajax({
- //     type: "GET",
- //     url: "/candidatedetails/search",
- //     dataType: "json",
- //     data: {'candidatename': q},
- //     success:function(result){
- //       var json=JSON.stringify(result);
- //       var parse =$.parseJSON(json);
- //      //  alert(json);
- //       $('#candidateprofile_candidateemail').val(parse[0]['candidateemail']);
- //       var contact=parseFloat(parse[0]['candidatecontact']);
- //       $('#candidateprofile_candidatecontact').val(contact);
- //       $('#candidateprofile_skills').val(parse[0]['skills']);
- //       $('#textarea').val(parse[0]['yoe']);
- //     },
- //     error:function(){
- //       alert("Error!");
- //     }
- //
- //   })
- // });
- </script> -->
+ $('#candidateprofile_interviewername').change(function() {
+   var name;
+   name = $(this).val();
+   $.ajax({
+     type: 'GET',
+     url: '/interviewers/search',
+     dataType: 'json',
+     data: {
+       'id': name
+     },
+     success: function(result) {
+       var json, parse;
+       json = JSON.stringify(result);
+       parse = $.parseJSON(json);
+       alert(json);
+       $("#candidateprofile_intervieweremail").val(parse[0]['companyemail']);
+     },
+     error: function() {
+       alert('Error!');
+     }
+   });
+ });
+
+ </script>

@@ -14,6 +14,12 @@
     </div>
   </div>
   <% end %>
+  <% if flash[:notice] %>
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <%= flash[:notice] %>
+   </div>
+  <% end %>
   <div class="row">
      <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
@@ -26,7 +32,7 @@
            </div>
           <div class="field">
             <%= f.label "candidatename","Candidate Name"%><br>
-            <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.all,"id","candidatename"), :prompt => "--Select Candidate--" %>
+            <%=select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--" %>
           </div>
           <div class="form-group">
             <%= f.hidden_field :candidatename%>

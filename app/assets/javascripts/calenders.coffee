@@ -5,4 +5,6 @@
 $(document).ready ->
   $('#datetimepicker2').datetimepicker
     format: 'LT'
-  return
+  $('#datetimepicker3').datetimepicker
+    format: 'DD-MM-YYYY'
+    

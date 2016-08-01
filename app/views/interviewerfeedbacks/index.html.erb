@@ -8,9 +8,12 @@
       <th class="text-info">Candidatename</th>
       <th class="text-info">Skills</th>
       <th class="text-info" >Attached File</th>
-        <th class="text-info">OverallRating</th>
+      <th class="text-info">OverallRating</th>
       <th class="text-info">Status</th>
-      <th colspan="3"></th>
+      <th class="text-info" >Show</th>
+      <!-- <th class="text-info">Edit</th> -->
+      <th class="text-info">Destroy</th>
+
     </tr>
   </thead>
 
@@ -24,12 +27,21 @@
         <td><%= interviewerfeedback.overallassesment %></td>
         <td><%= interviewerfeedback.status %></td>
         <td><%= link_to 'Show', interviewerfeedback,:class=>"btn btn-primary btn-sm"%></td>
-        <td><%= link_to 'Edit', edit_interviewerfeedback_path(interviewerfeedback),:class=>"btn btn-info btn-sm" %></td>
+        <!-- <td><%= link_to 'Edit', edit_interviewerfeedback_path(interviewerfeedback),:class=>"btn btn-info btn-sm" %></td> -->
         <td><%= link_to 'Destroy', interviewerfeedback, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
+<script type="text/javaScript">
+ $('.datatable').DataTable({
+    "paging": true,
+    "ordering": true,
+    "info": true,
+    "scrollY": "300px"
+  });
+
+</script>
 </div>
 <br>

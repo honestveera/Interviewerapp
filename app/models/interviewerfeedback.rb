@@ -2,4 +2,9 @@ class Interviewerfeedback < ActiveRecord::Base
    validates_presence_of :interviewername,:candidatename,:status
    has_attached_file :attachedfile, styles: {thumbnail: "60x60#"}
    validates_attachment :attachedfile, content_type: { content_type: "application/pdf" }
+   def self.updateprofilestatus id
+     a=Candidatedetail.find_by(id:id)
+     a.update(status:"interview")
+   end
+
 end

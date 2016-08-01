@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<div class="jumbotron">
 <p>
   <strong>Interviewername:</strong>
   <%= @interviewerfeedback.interviewername %>
@@ -9,11 +8,20 @@
   <strong>Candidatename:</strong>
   <%= @interviewerfeedback.candidatename %>
 </p>
+<p>
+  <strong>Skills:</strong>
+  <%= @interviewerfeedback.skills %>
+</p>
+<p>
+  <strong>Overallassesment:</strong>
+  <%= @interviewerfeedback.overallassesment %>
+</p>
+
 
 <p>
   <strong>Status:</strong>
   <%= @interviewerfeedback.status %>
 </p>
 
-<%= link_to 'Edit', edit_interviewerfeedback_path(@interviewerfeedback) %> |
 <%= link_to 'Back', interviewerfeedbacks_path %>
+</div>

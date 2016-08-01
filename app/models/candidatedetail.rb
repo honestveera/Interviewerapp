@@ -3,6 +3,6 @@ class Candidatedetail < ActiveRecord::Base
   validates_attachment :attachedfile, content_type: { content_type: "application/pdf" }
   scope :candidatedetail,->(id){where("id=?",id)}
   scope :candidatestatus,->(status){where("status=?",status)}
-
+  
 
 end

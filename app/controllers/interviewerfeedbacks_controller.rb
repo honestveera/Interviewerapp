@@ -34,6 +34,7 @@ class InterviewerfeedbacksController < ApplicationController
 
     respond_to do |format|
       if @interviewerfeedback.save
+        Interviewerfeedback.updateprofilestatus(params[:candidatename])
         format.html { redirect_to interviewerfeed_url, notice: 'Interviewerfeedback was successfully created.' }
         format.json { render :show, status: :created, location: @interviewerfeedback }
       else
