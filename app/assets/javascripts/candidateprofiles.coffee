@@ -19,7 +19,6 @@ $ ->
         $('#candidateprofile_candidatecontact').val contact
         $('#candidateprofile_skills').val parse[0]['skills']
         $('#textarea').val parse[0]['yoe']
-        # session[:identity]=
         return
       error: ->
         alert 'Error!'
