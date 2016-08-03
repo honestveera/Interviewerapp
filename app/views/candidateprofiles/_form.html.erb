@@ -65,13 +65,10 @@
   </div>
   <div class="field">
     <%= f.label :scheduledate,"Schedule Date" %><br>
-    <%=f.select :scheduledate,options_from_collection_for_select(Calender.all,"dates","dates"), :prompt => "--Select ScheduleDate--" %>
-
   </div>
   <div class="field">
     <%= f.label :scheduletime,"Schedule Time"%><br>
-    <%=f.select :scheduletime,options_from_collection_for_select(Calender.all,"times","times"), :prompt => "--Select ScheduleTime--" %>
-  </div>
+    </div>
   <div class="field">
     <%= f.label :jobdescription,"Job Description" %><br>
     <%= f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea" ,:class => "required",:required => true%>

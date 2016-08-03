@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   resources :candidateprofiles
   #resources :interviewers
   resources :companies
-  resources :calenders
-  resources :scheduletimes
   resources :skillsets
 
   get 'candidateschedule' => 'candidateprofiles#new'
