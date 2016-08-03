@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'candidateentry' => 'candidatedetails#new'
   get 'interviewerfeed' => 'interviewerfeedbacks#new'
   get 'candidatereports' => 'interviewerfeedbacks#index'
+  get 'candidateschedulereports' => 'candidateprofiles#index'
   get 'signup' => 'companies#new'
 
   resources :candidatedetails do

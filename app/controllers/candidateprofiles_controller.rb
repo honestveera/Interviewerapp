@@ -52,7 +52,7 @@ class CandidateprofilesController < ApplicationController
   def update
     respond_to do |format|
       if @candidateprofile.update(candidateprofile_params)
-        format.html { redirect_to @candidateprofile, notice: 'Candidateprofile was successfully updated.' }
+        format.html { redirect_to candidateschedule_url, notice: 'Candidateprofile was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidateprofile }
       else
         format.html { render :edit }
@@ -66,7 +66,7 @@ class CandidateprofilesController < ApplicationController
   def destroy
     @candidateprofile.destroy
     respond_to do |format|
-      format.html { redirect_to candidateprofiles_url, notice: 'Candidateprofile was successfully destroyed.' }
+      format.html { redirect_to candidateprofiles_url}
       format.json { head :no_content }
     end
   end

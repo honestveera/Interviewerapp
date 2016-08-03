@@ -35,9 +35,10 @@
         font-weight: bolder;
         position: relative;
    }
-   #select
+   select
   {
-    width:200px;
+    width:250px;
+    height: 35px;
     -webkit-appearance: button;
      -moz-appearance: button;
      -webkit-user-select: none;
@@ -60,6 +61,7 @@
      padding-bottom: 2px;
      text-overflow: ellipsis;
      white-space: nowrap;
+     background-color: white;
   }
 #select option:first-child
   {

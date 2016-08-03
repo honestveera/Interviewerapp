@@ -25,50 +25,64 @@
          <div class="input-group">
           <div class="field">
             <%=f.label "Interviewer Name" %><br>
-            <%=select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt => "--Select Interviewer--"%>
+            <%=select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt => "--Select Interviewer--",:class=>"form-control"%>
            </div>
            <div class="form-group">
              <%= f.hidden_field :interviewername%>
            </div>
           <div class="field">
             <%= f.label "candidatename","Candidate Name"%><br>
-            <%=select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--" %>
+            <%=select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control" %>
           </div>
           <div class="form-group">
             <%= f.hidden_field :candidatename%>
           </div>
           <div class="field">
             <%= f.label :skills,"Skills"%><br>
-            <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--" %>
+            <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--",:class=>"form-control" %>
           </div>
           <div class="field">
             <%= f.label :relevanceexperience,"Relevance Experience"%><br>
-            <%= f.select :relevanceexperience, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select RelevanceExperience--" %>
+            <% (1..5).each do |a|%>
+            <%= f.radio_button :relevanceexperience,a%>  <%=a%>
+            <% end %>
           </div>
 
           <div class="field">
             <%= f.label :personality,"Personality"%><br>
-            <%= f.select :personality,options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Personality--"%>
+            <% (1..5).each do |a|%>
+            <%= f.radio_button :personality,a%>  <%=a%>
+            <% end %>
           </div>
           <div class="field">
             <%= f.label :communication,"Communication"%><br>
-            <%= f.select :communication, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Communication--" %>
+            <% (1..5).each do |a|%>
+            <%= f.radio_button :communication, a%>  <%=a%>
+            <% end %>
           </div>
           <div class="field">
             <%= f.label :technicalskills,"Technical Skills"%><br>
-            <%= f.select :technicalskills, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Technicalskills--" %>
+            <% (1..5).each do |a|%>
+            <%= f.radio_button :technicalskills,a%>  <%=a%>
+            <% end %>
           </div>
           <div class="field">
             <%= f.label :analyticalskills,"Analytical Skills"%><br>
-            <%= f.select :analyticalskills, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Analyticalskills--" %>
+            <% (1..5).each do |a|%>
+            <%= f.radio_button :analyticalskills, a%>  <%=a%>
+            <% end %>
           </div>
           <div class="field">
             <%= f.label :jobknowledge,"Jobknowledge"%><br>
-            <%= f.select :jobknowledge, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Jobknowledge--" %>
-          </div>
+            <% (1..5).each do |a|%>
+            <%= f.radio_button :jobknowledge, a%>  <%=a%>
+            <% end %>
+            </div>
           <div class="field">
             <%= f.label :timemanagement,"Timemanagement"%><br>
-            <%= f.select :timemanagement, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Timemanagement--" %>
+            <% (1..5).each do |a|%>
+            <%= f.radio_button :timemanagement, a%>  <%=a%>
+            <% end %>
           </div>
         </div>
      </div>
@@ -76,39 +90,53 @@
          <div class="input-group">
            <div class="field">
              <%= f.label :commitementtask,"Commitement Task"%><br>
-             <%= f.select :commitementtask, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Commitementtask--" %>
-           </div>
+             <% (1..5).each do |a|%>
+             <%= f.radio_button :commitementtask, a%>  <%=a%>
+             <% end %>
+             </div>
            <div class="field">
              <%= f.label :leadership,"Leadership"%><br>
-             <%= f.select :leadership, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Leadership--" %>
+             <% (1..5).each do |a|%>
+             <%= f.radio_button :leadership, a%>  <%=a%>
+             <% end %>
            </div>
            <div class="field">
              <%= f.label :teamwork,"Teamwork"%><br>
-             <%= f.select :teamwork, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Teamwork--" %>
-           </div>
+             <% (1..5).each do |a|%>
+             <%= f.radio_button :teamwork, a%>  <%=a%>
+             <% end %>
+             </div>
            <div class="field">
              <%= f.label :goalsettings,"Goalsettings"%><br>
-             <%= f.select :goalsettings, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Goalsettings--" %>
-           </div>
+             <% (1..5).each do |a|%>
+             <%= f.radio_button :goalsettings, a%>  <%=a%>
+             <% end %>
+             </div>
            <div class="field">
              <%= f.label :creativity,"Creativity"%><br>
-             <%= f.select :creativity, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Creativity--" %>
-           </div>
+             <% (1..5).each do |a|%>
+             <%= f.radio_button :creativity, a%>  <%=a%>
+             <% end %>
+            </div>
            <div class="field">
              <%= f.label :flexibility,"Flexibility"%><br>
-             <%= f.select :flexibility, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Flexibility--" %>
+             <% (1..5).each do |a|%>
+             <%= f.radio_button :flexibility, a%>  <%=a%>
+             <% end %>
            </div>
            <div class="field">
              <%= f.label :assertiveness,"Assertiveness"%><br>
-             <%= f.select :assertiveness, options_for_select([["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5","5"]]),:prompt => "--Select Assertiveness--",:class=>"assertiveness"%>
+             <% (1..5).each do |a|%>
+             <%= f.radio_button :assertiveness, a,:class=>"assertiveness"%>  <%=a%>
+             <% end %>
            </div>
            <div class="field">
              <%= f.label :overallassesment,"Overallassesment"%><br>
-             <%= f.text_field :overallassesment,:placeholder=>"Overallassesment",:readonly=>true%>
+             <%= f.text_field :overallassesment,:placeholder=>"Overallassesment",:readonly=>true,:class=>"form-control"%>
            </div>
           <div class="field">
             <%= f.label :status,"Status"%><br>
-            <%= f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--" %>
+            <%= f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--",:class=>"form-control"%>
           </div>
           <div class="field">
             <%= f.label :attachedfile,"Attached File"%><br>
@@ -146,81 +174,30 @@
   //    $('#interviewerfeedback_interviewername option:selected').val()=$('#interviewerfeedback_interviewername option:selected').text();
   //  });
 
-  $('#interviewerfeedback_assertiveness').change(function(){
-     if($('#interviewerfeedback_assertiveness option:selected').index()>0)
-     {
-       if($('#interviewerfeedback_relevanceexperience option:selected').index()==0)
-       {
-         alert("Please select relevance experience!");
-       }
-       else if($('#interviewerfeedback_personality option:selected').index()==0)
-       {
-         alert("Please select personality!");
-       }
-       else if($('#interviewerfeedback_communication option:selected').index()==0)
-       {
-         alert("Please select Communication!");
-       }
-       else if($('#interviewerfeedback_technicalskills option:selected').index()==0)
-       {
-         alert("Please select Technicalskills!");
-       }
-       else if($('#interviewerfeedback_analyticalskills option:selected').index()==0)
-       {
-         alert("Please select Analyticalskills!");
-       }
-       else if($('#interviewerfeedback_jobknowledge option:selected').index()==0)
-       {
-         alert("Please select Jobknowledge!");
-       }
-       else if($('#interviewerfeedback_timemanagement option:selected').index()==0)
-       {
-         alert("Please select Timemanagement!");
-       }
-       else if($('#interviewerfeedback_commitementtask option:selected').index()==0)
-       {
-         alert("Please select Commitementtask!");
-       }
-       else if($('#interviewerfeedback_leadership option:selected').index()==0)
-       {
-         alert("Please select Leadership!");
-       }
-       else if($('#interviewerfeedback_teamwork option:selected').index()==0)
-       {
-         alert("Please select Teamwork!");
-       }
-       else if($('#interviewerfeedback_goalsettings option:selected').index()==0)
-       {
-         alert("Please select Goalsettings!");
-       }
-       else if($('#interviewerfeedback_creativity option:selected').index()==0)
-       {
-         alert("Please select Creativity!");
-       }
-       else if($('#interviewerfeedback_flexibility option:selected').index()==0)
-       {
-         alert("Please select Flexibility!");
-       }
-       else {
-         var re=parseFloat($('#interviewerfeedback_relevanceexperience').val());
-         var perso=parseFloat($('#interviewerfeedback_personality').val());
-         var commu=parseFloat($('#interviewerfeedback_communication').val());
-         var ts=parseFloat($('#interviewerfeedback_technicalskills').val());
-         var as=parseFloat($('#interviewerfeedback_analyticalskills').val());
-         var jn=parseFloat($('#interviewerfeedback_jobknowledge').val());
-         var tm=parseFloat($('#interviewerfeedback_timemanagement').val());
-         var ct=parseFloat($('#interviewerfeedback_commitementtask').val());
-         var ls=parseFloat($('#interviewerfeedback_leadership').val());
-         var tw=parseFloat($('#interviewerfeedback_teamwork').val());
-         var gs=parseFloat($('#interviewerfeedback_goalsettings').val());
-         var cr=parseFloat($('#interviewerfeedback_creativity').val());
-         var fl=parseFloat($('#interviewerfeedback_flexibility').val());
-         var assert=parseFloat($('#interviewerfeedback_assertiveness').val());
-         var avg;
-         avg=parseFloat((re+perso+commu+ts+as+jn+tm+ct+ls+tw+gs+cr+fl+assert)/14);
-         $('#interviewerfeedback_overallassesment').val(avg);
-        //  $('#interviewerfeedback_relevanceexperience').attr("disabled",true)
-       }
-     }
+  $('input[name="interviewerfeedback[assertiveness]"]').change(function(){
+        if(!$('input[name="interviewerfeedback[relevanceexperience]"]:checked').val())
+        {
+            alert("click relevanceexperience")
+        }
+        else
+        {
+        var re=parseFloat($('input[name="interviewerfeedback[relevanceexperience]"]:checked').val());
+        var perso=parseFloat($('input[name="interviewerfeedback[personality]"]:checked').val());
+        var commu=parseFloat($('input[name="interviewerfeedback[communication]"]:checked').val());
+        var ts=parseFloat($('input[name="interviewerfeedback[technicalskills]"]:checked').val());
+        var as=parseFloat($('input[name="interviewerfeedback[analyticalskills]"]:checked').val());
+        var jn=parseFloat($('input[name="interviewerfeedback[jobknowledge]"]:checked').val());
+        var tm=parseFloat($('input[name="interviewerfeedback[timemanagement]"]:checked').val());
+        var ct=parseFloat($('input[name="interviewerfeedback[commitementtask]"]:checked').val());
+        var ls=parseFloat($('input[name="interviewerfeedback[leadership]"]:checked').val());
+        var tw=parseFloat($('input[name="interviewerfeedback[teamwork]"]:checked').val());
+        var gs=parseFloat($('input[name="interviewerfeedback[goalsettings]"]:checked').val());
+        var cr=parseFloat($('input[name="interviewerfeedback[creativity]"]:checked').val());
+        var fl=parseFloat($('input[name="interviewerfeedback[flexibility]"]:checked').val());
+        var assert=parseFloat($('input[name="interviewerfeedback[assertiveness]"]:checked').val());
+        var avg;
+        avg=parseFloat((re+perso+commu+ts+as+jn+tm+ct+ls+tw+gs+cr+fl+assert)/14);
+        $('#interviewerfeedback_overallassesment').val(avg);
+          }
     });
 </script>

@@ -24,15 +24,15 @@
          <div class="input-group">
         <div class="field">
           <%= f.label :candidatename,"Candidate Name" %><br>
-          <%= f.text_field :candidatename,:placeholder=>"Candidate Name",:class => "required",:required => true  %>
+          <%= f.text_field :candidatename,:placeholder=>"Candidate Name",:class => "form-control required",:required => true  %>
         </div>
         <div class="field">
           <%= f.label :candidateemail,"Candidate Email" %><br>
-          <%= f.text_field :candidateemail,:placeholder=>"Candidate Email",:class => "required",:required => true  %>
+          <%= f.text_field :candidateemail,:placeholder=>"Candidate Email",:class => "form-control required",:required => true  %>
         </div>
         <div class="field">
           <%= f.label :candidatecontact,"Candidates Contact " %><br>
-          <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:class => "required",:required => true  %>
+          <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:class => "form-control required",:required => true  %>
         </div>
         <div class="field">
           <%= f.label :yoe,"Year Of Experience" %><br>
@@ -40,11 +40,11 @@
         </div>
         <div class="field">
           <%= f.label :skills,"Skills"%><br>
-          <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--" %>
+          <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--",:class => "form-control required"%>
         </div>
         <div class="field">
           <%= f.label :jobdescription,"Job Description"%><br>
-          <%= f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea"%>
+          <%= f.text_area :jobdescription,:placeholder=>"Job Description",:class=>"form-control",:id=>"textarea"%>
         </div>
         <div class="field">
           <%= f.label :attachedfile,"Attached File"%><br>

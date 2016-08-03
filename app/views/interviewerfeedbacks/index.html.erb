@@ -1,7 +1,7 @@
 <div class="jumbotron">
 <h3>Interviewerfeedbacks</h3>
 <div class="table-responsive">
-<table class="datatable table table-bordered table-hover sortable">
+<table class="datatable table table-bordered table-hover sortable" id="example">
   <thead class="bg-success">
     <tr>
       <th class="text-info">Interviewername</th>
@@ -19,7 +19,8 @@
 
   <tbody>
     <% @interviewerfeedbacks.each do |interviewerfeedback| %>
-      <tr>
+      <% if interviewerfeedback.status=="Pass"%>
+      <tr bgcolor="#80ff80">
         <td><%= interviewerfeedback.interviewername %></td>
         <td><%= interviewerfeedback.candidatename %></td>
         <td><%= interviewerfeedback.skills %></td>
@@ -30,6 +31,20 @@
         <!-- <td><%= link_to 'Edit', edit_interviewerfeedback_path(interviewerfeedback),:class=>"btn btn-info btn-sm" %></td> -->
         <td><%= link_to 'Destroy', interviewerfeedback, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm" %></td>
       </tr>
+      <% else %>
+      <tr bgcolor="#ff6666">
+        <td><%= interviewerfeedback.interviewername %></td>
+        <td><%= interviewerfeedback.candidatename %></td>
+        <td><%= interviewerfeedback.skills %></td>
+        <td><%= interviewerfeedback.attachedfile %></td>
+        <td><%= interviewerfeedback.overallassesment %></td>
+        <td><%= interviewerfeedback.status %></td>
+        <td><%= link_to 'Show', interviewerfeedback,:class=>"btn btn-primary btn-sm"%></td>
+        <!-- <td><%= link_to 'Edit', edit_interviewerfeedback_path(interviewerfeedback),:class=>"btn btn-info btn-sm" %></td> -->
+        <td><%= link_to 'Destroy', interviewerfeedback, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm" %></td>
+      </tr>
+      <%end%>
+
     <% end %>
   </tbody>
 </table>
@@ -41,6 +56,8 @@
     "info": true,
     "scrollY": "300px"
   });
+
+
 
 </script>
 </div>
