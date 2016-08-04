@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804095116) do
+ActiveRecord::Schema.define(version: 20160804111044) do
 
   create_table "calenders", force: :cascade do |t|
     t.date     "dates"
@@ -47,11 +47,14 @@ ActiveRecord::Schema.define(version: 20160804095116) do
     t.string   "scheduledate"
     t.string   "scheduletime"
     t.text     "jobdescription"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.decimal  "candidatecontact"
     t.string   "jobtitle"
+    t.integer  "candidatedetail_id"
   end
+
+  add_index "candidateprofiles", ["candidatedetail_id"], name: "index_candidateprofiles_on_candidatedetail_id"
 
   create_table "companies", force: :cascade do |t|
     t.string   "companyname"

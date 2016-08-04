@@ -36,6 +36,7 @@ gem "paperclip", "~> 5.0.0"
  gem 'bcrypt', '~> 3.1.7'
  gem "heroku"
  gem 'pry'
+ gem 'backup'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
