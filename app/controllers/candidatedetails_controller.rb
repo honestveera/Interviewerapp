@@ -15,8 +15,8 @@ class CandidatedetailsController < ApplicationController
   end
 
   def  search
-    candidatename=params[:id]
-    @detail=Candidatedetail.candidatedetail(candidatename)
+    candidateid=params[:id]
+    @detail=Candidatedetail.candidatedetail(candidateid)
     respond_with(@detail, :include => :status)
   end
 
@@ -82,6 +82,6 @@ class CandidatedetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidatedetail_params
-      params.require(:candidatedetail).permit(:candidatename, :candidateemail, :candidatecontact, :yoe, :skills, :jobdescription,:attachedfile,:status)
+      params.require(:candidatedetail).permit(:candidatename, :candidateemail, :candidatecontact, :yoe, :skills,:jobtitle, :jobdescription,:attachedfile,:status)
     end
 end

@@ -34,7 +34,6 @@ class InterviewerfeedbacksController < ApplicationController
 
     respond_to do |format|
       if @interviewerfeedback.save
-        Interviewerfeedback.updateprofilestatus(params[:candidatename])
         format.html { redirect_to interviewerfeed_url, notice: 'Interviewerfeedback was successfully created.' }
         format.json { render :show, status: :created, location: @interviewerfeedback }
       else
@@ -63,7 +62,7 @@ class InterviewerfeedbacksController < ApplicationController
   def destroy
     @interviewerfeedback.destroy
     respond_to do |format|
-      format.html { redirect_to interviewerfeedbacks_url, notice: 'Interviewerfeedback was successfully destroyed.' }
+      format.html { redirect_to interviewerfeedbacks_url }
       format.json { head :no_content }
     end
   end
@@ -76,6 +75,6 @@ class InterviewerfeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interviewerfeedback_params
-      params.require(:interviewerfeedback).permit(:interviewername, :candidatename,:skills,:attachedfile, :status,:relevanceexperience,:personality,:communication,:technicalskills,:analyticalskills,:jobknowledge,:timemanagement,:commitementtask,:leadership,:teamwork,:goalsettings,:creativity,:flexibility,:assertiveness,:overallassesment)
+      params.require(:interviewerfeedback).permit(:interviewername, :candidatename,:skills,:attachedfile, :status,:relevanceexperience,:personality,:communication,:technicalskills,:analyticalskills,:jobknowledge,:timemanagement,:commitementtask,:leadership,:teamwork,:goalsettings,:creativity,:flexibility,:assertiveness,:overallassesment,:scheduletime,:scheduledate)
     end
 end

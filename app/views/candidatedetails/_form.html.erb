@@ -20,7 +20,7 @@
    </div>
   <% end %>
   <div class="row">
-     <div class="col-lg-4 col-lg-offset-4">
+     <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
         <div class="field">
           <%= f.label :candidatename,"Candidate Name" %><br>
@@ -38,9 +38,17 @@
           <%= f.label :yoe,"Year Of Experience" %><br>
           <%= f.select :yoe, options_for_select([["1", "1"], ["2", "2"],["3", "3"],["4","4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"]]),:prompt => "--Select Experience--" %>
         </div>
+      </div>
+      </div>
+      <div class="col-lg-3 col-lg-offset-1">
+          <div class="input-group">
         <div class="field">
           <%= f.label :skills,"Skills"%><br>
           <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--",:class => "form-control required"%>
+        </div>
+        <div class="field">
+          <%= f.label :jobtitle,"Job Title"%><br>
+          <%= f.text_field :jobtitle,:placeholder=>"Job Title",:class=>"form-control required",:required=>true%>
         </div>
         <div class="field">
           <%= f.label :jobdescription,"Job Description"%><br>
@@ -50,6 +58,8 @@
           <%= f.label :attachedfile,"Attached File"%><br>
           <%= f.file_field :attachedfile%>
         </div>
+      </div>
+      </div>
         <div class="form-group">
           <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
         </div>
@@ -59,9 +69,13 @@
         <div class="form-group">
           <%= f.hidden_field :status,:value =>"new"%>
         </div>
-        <div class="actions">
-          <%= f.submit :class=>"btn btn-primary btn-lg"%>
+        <div class="row">
+          <div  class="col-lg-4 col-lg-offset-5">
+            <div class="actions">
+              <%= f.submit :class=>"btn btn-primary btn-lg",:style=>"margin-left: -40px;"%>
+            </div>
         </div>
+      </div>
    </div>
  </div>
 </div>

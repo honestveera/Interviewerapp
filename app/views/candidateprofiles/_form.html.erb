@@ -48,6 +48,10 @@
     <%= f.label :YOE,"Year Of Experience " %><br>
     <%= f.text_field :YOE,:placeholder=>"Year Of Experience",:id=>"textarea",:readonly => true,:class => "form-control required",:required => true%>
   </div>
+  <div class="field">
+    <%= f.label :jobtitle,"Job Title" %><br>
+    <%= f.text_field :jobtitle,:placeholder=>"Job Title",:readonly => true,:class => "form-control required",:required => true%>
+  </div>
 
 </div>
 </div>
@@ -86,7 +90,7 @@
     </div>
   <div class="field">
     <%= f.label :jobdescription,"Job Description" %><br>
-    <%= f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea" ,:class => "form-control required",:required => true%>
+    <%= f.text_area :jobdescription,:placeholder=>"Job Description",:readonly=>true,:class => "form-control required",:required => true%>
   </div>
   <div class="form-group">
     <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
@@ -99,6 +103,7 @@
   </div>
 </div>
 </div>
+
 <div class="row">
   <div  class="col-lg-4 col-lg-offset-5">
   <div class="actions">
@@ -110,11 +115,11 @@
 <% end %>
  <script type="text/javascript">
   $('#datetimepicker3').datetimepicker({
-                    format: 'LT'
-                });
+      format: 'LT'
+      });
   $('#datetimepicker4').datetimepicker({
-                                 format: 'DD-MM-YYYY'
-                             });
+       format: 'DD-MM-YYYY'
+      });
 
  $('#candidatename').change(function() {
    var q, textmethod, valuemethod;
@@ -140,6 +145,8 @@
        $('#candidateprofile_candidatecontact').val(contact);
        $('#candidateprofile_skills').val(parse[0]['skills']);
        $('#textarea').val(parse[0]['yoe']);
+       $('#candidateprofile_jobtitle').val(parse[0]['jobtitle']);
+       $('#candidateprofile_jobdescription').val(parse[0]['jobdescription']);
      },
      error: function() {
        alert('Error!');

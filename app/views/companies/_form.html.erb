@@ -12,7 +12,7 @@
     <div class="thumbnail">
       <img src="assets/Markuci.png" style="margin-top: -20px;"/>
     </div>
-<%= form_for(@company) do |f| %>
+   <%= form_for(@company) do |f| %>
         <% if @company.errors.any? %>
           <div class="alert alert-danger fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -24,10 +24,12 @@
             </ul>
           </div>
         <% end %>
+        <% if flash[:notice] -%>
         <div class="alert alert-success fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <%= flash[:notice] %>
          </div>
+         <% end -%>
         <div class="row">
                <div class="input-group">
               <div class="form-group">

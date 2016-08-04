@@ -1,6 +1,7 @@
 class CandidateprofilesController < ApplicationController
   before_action :set_candidateprofile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate
+  respond_to :json, :html
 
 
   def authenticate
@@ -15,6 +16,11 @@ class CandidateprofilesController < ApplicationController
 
   end
 
+  def  search
+    candidatescheduleid=params[:id]
+    @schedule=Candidateprofile.candidateprofile(candidatescheduleid)
+    respond_with(@schedule, :include => :status)
+  end
   # GET /candidateprofiles/1
   # GET /candidateprofiles/1.json
   def show
@@ -52,6 +58,7 @@ class CandidateprofilesController < ApplicationController
   def update
     respond_to do |format|
       if @candidateprofile.update(candidateprofile_params)
+        ExampleMailer.sample_email_update(@candidateprofile).deliver_now
         format.html { redirect_to candidateschedule_url, notice: 'Candidateprofile was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidateprofile }
       else
@@ -81,6 +88,6 @@ class CandidateprofilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidateprofile_params
-      params.require(:candidateprofile).permit(:candidatename, :candidateemail, :candidatecontact, :skills, :YOE, :interviewername, :intervieweremail, :scheduledate, :scheduletime, :jobdescription)
+      params.require(:candidateprofile).permit(:candidatename, :candidateemail, :candidatecontact, :skills, :YOE, :interviewername, :intervieweremail, :scheduledate, :scheduletime,:jobtitle,:jobdescription)
     end
 end

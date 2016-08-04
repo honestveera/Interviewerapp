@@ -1,4 +1,4 @@
 #/categories/search.json.jbuilder
 json.array!(@detail) do |category|
-  json.extract! category, :id, :candidatename,:candidateemail,:candidatecontact,:skills,:yoe
+  json.extract! category, :id, :candidatename,:candidateemail,:candidatecontact,:skills,:yoe,:jobtitle,:jobdescription
 end

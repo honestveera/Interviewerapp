@@ -23,24 +23,32 @@
   <div class="row">
      <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
-          <div class="field">
-            <%=f.label "Interviewer Name" %><br>
-            <%=select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt => "--Select Interviewer--",:class=>"form-control"%>
+           <div class="field">
+             <%= f.label "candidatename","Scheduled Candidate"%><br>
+             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.all,"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control" %>
            </div>
            <div class="form-group">
-             <%= f.hidden_field :interviewername%>
+             <%= f.hidden_field :candidatename%>
            </div>
-          <div class="field">
-            <%= f.label "candidatename","Candidate Name"%><br>
-            <%=select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.hidden_field :candidatename%>
-          </div>
+           <div class="field">
+            <%=f.label :interviewername,"Interviewer Name"%><br>
+            <%=f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control",:readonly=>true%>
+           </div>
+           <div class="field">
+            <%=f.label :scheduledate,"Schedule Date"%><br>
+            <%=f.text_field :scheduledate,:class=>"form-control",:placeholder=>"Schedule Date",:readonly=>true%>
+           </div>
+
+           <div class="field">
+            <%=f.label :scheduletime,"Schedule Time"%><br>
+            <%=f.text_field :scheduletime,:placeholder=>"Schedule Time",:class=>"form-control",:readonly=>true%>
+           </div>
+
           <div class="field">
             <%= f.label :skills,"Skills"%><br>
-            <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--",:class=>"form-control" %>
+            <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true%>
           </div>
+
           <div class="field">
             <%= f.label :relevanceexperience,"Relevance Experience"%><br>
             <% (1..5).each do |a|%>
@@ -78,16 +86,17 @@
             <%= f.radio_button :jobknowledge, a%>  <%=a%>
             <% end %>
             </div>
-          <div class="field">
-            <%= f.label :timemanagement,"Timemanagement"%><br>
-            <% (1..5).each do |a|%>
-            <%= f.radio_button :timemanagement, a%>  <%=a%>
-            <% end %>
-          </div>
+
         </div>
      </div>
      <div class="col-lg-3 col-lg-offset-1">
          <div class="input-group">
+           <div class="field">
+             <%= f.label :timemanagement,"Timemanagement"%><br>
+             <% (1..5).each do |a|%>
+             <%= f.radio_button :timemanagement, a%>  <%=a%>
+             <% end %>
+           </div>
            <div class="field">
              <%= f.label :commitementtask,"Commitement Task"%><br>
              <% (1..5).each do |a|%>
@@ -162,14 +171,39 @@
 <% end %>
 
 <script type="text/javascript">
-   $('#interviewername').change(function(){
-     var a=$('#interviewername option:selected').text();
-      $('#interviewerfeedback_interviewername').val(a)
+
+   $('#candidatename').change(function() {
+     var q, textmethod, valuemethod;
+     q = $(this).val();
+     alert(q);
+     textmethod = $('#candidatename option:selected').text();
+     valuemethod = $('#candidatename option:selected').val();
+     $('#interviewerfeedback_candidatename').val(textmethod);
+     //$('#identity').val(valuemethod);
+     $.ajax({
+       type: 'GET',
+       url: '/candidateprofiles/search',
+       dataType: 'json',
+       data: {
+         'id': q
+       },
+       success: function(result) {
+         var contact, json, parse;
+         json = JSON.stringify(result);
+         parse = $.parseJSON(json);
+         alert(json);
+         $('#interviewerfeedback_interviewername').val(parse[0]['interviewername']);
+         $('#interviewerfeedback_skills').val(parse[0]['skills']);
+         $('#interviewerfeedback_scheduledate').val(parse[0]['scheduledate']);
+         $('#interviewerfeedback_scheduletime').val(parse[0]['scheduletime']);
+
+         },
+        error: function() {
+         alert('Error!');
+       }
+     });
    });
-   $('#candidatename').change(function(){
-     var a=$('#candidatename option:selected').text();
-      $('#interviewerfeedback_candidatename').val(a)
-   });
+
   //  $('#submit').click(function(){
   //    $('#interviewerfeedback_interviewername option:selected').val()=$('#interviewerfeedback_interviewername option:selected').text();
   //  });

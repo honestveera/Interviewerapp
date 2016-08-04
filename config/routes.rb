@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #resources :candidatedetails
   resources :interviewerfeedbacks
-  resources :candidateprofiles
+  #resources :candidateprofiles
   #resources :interviewers
   resources :companies
   resources :skillsets
@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get 'signup' => 'companies#new'
 
   resources :candidatedetails do
+    collection do
+      get :search
+    end
+  end
+  resources :candidateprofiles do
     collection do
       get :search
     end

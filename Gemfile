@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer'
 gem 'execjs'
 gem 'coffee-script-source'
- gem 'responders', '~> 2.0'
+gem 'responders', '~> 2.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -35,6 +35,8 @@ gem "paperclip", "~> 5.0.0"
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
  gem "heroku"
+ gem 'pry'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -13,7 +13,7 @@
       <th class="text-info">Intervieweremail</th>
       <th class="text-info">Scheduledate</th>
       <th class="text-info">Scheduletime</th>
-      <th class="text-info">Jobdescription</th>
+      <th class="text-info">JobTitle</th>
       <th class="text-info" >Show</th>
       <th class="text-info">Edit</th>
       <th class="text-info">Destroy</th>
@@ -32,7 +32,7 @@
         <td><%= candidateprofile.intervieweremail %></td>
         <td><%= candidateprofile.scheduledate %></td>
         <td><%= candidateprofile.scheduletime %></td>
-        <td><%= candidateprofile.jobdescription %></td>
+        <td><%= candidateprofile.jobtitle %></td>
         <td><%= link_to 'Show', candidateprofile,:class=>"btn btn-primary btn-sm"%></td>
         <td><%= link_to 'Edit', edit_candidateprofile_path(candidateprofile),:class=>"btn btn-info btn-sm"%></td>
         <td><%= link_to 'Destroy', candidateprofile, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm"%></td>
