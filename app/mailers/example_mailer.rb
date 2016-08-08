@@ -9,7 +9,7 @@ class ExampleMailer < ActionMailer::Base
            subject: "Interview Call Letter \t "+@candidatesche.candidatename,
            body:"Dear Candidate,
 
-                    Refer your application on for the post of" + @candidatesche.candidatename + "Please attend for interview as per details given bellow.
+                    Refer your application on for the post of   " + @candidatesche.candidatename + "   Please attend for interview as per details given bellow.
 
                     Date:"+@candidatesche.scheduledate+"
 
@@ -29,7 +29,7 @@ class ExampleMailer < ActionMailer::Base
                     Name : Jayandhi Priyadharsini
                     Email:jayanthip@markuci.com | www.markuci.com
                     Contact No:+91 9962118160")
-   end
+    end
 
    def sample_email_update(user)
       @candidatesche = user

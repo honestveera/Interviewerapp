@@ -25,7 +25,7 @@
          <div class="input-group">
            <div class="field">
              <%= f.label "candidatename","Scheduled Candidate"%><br>
-             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.all,"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control" %>
+             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.candidateschedulestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control" %>
            </div>
            <div class="form-group">
              <%= f.hidden_field :candidatename%>
@@ -141,7 +141,7 @@
            </div>
            <div class="field">
              <%= f.label :overallassesment,"Overallassesment"%><br>
-             <%= f.text_field :overallassesment,:placeholder=>"Overallassesment",:readonly=>true,:class=>"form-control"%>
+             <%= f.text_field :overallassesment,:placeholder=>"Overallassesment",:class=>"form-control",:readonly=>true%>
            </div>
           <div class="field">
             <%= f.label :status,"Status"%><br>
@@ -150,6 +150,9 @@
           <div class="field">
             <%= f.label :attachedfile,"Attached File"%><br>
             <%= f.file_field :attachedfile%>
+          </div>
+          <div class="form-group">
+            <%=hidden_field_tag :identity%>
           </div>
           <div class="form-group">
             <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
@@ -179,7 +182,7 @@
      textmethod = $('#candidatename option:selected').text();
      valuemethod = $('#candidatename option:selected').val();
      $('#interviewerfeedback_candidatename').val(textmethod);
-     //$('#identity').val(valuemethod);
+     $('#identity').val(valuemethod);
      $.ajax({
        type: 'GET',
        url: '/candidateprofiles/search',

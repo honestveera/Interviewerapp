@@ -55,7 +55,7 @@
 
       <div class="field">
         <%= f.label 'interviewername',"Interviewer Name"%><br>
-        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Candidatename--",:class => "required",:required => true%>
+        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewername--",:class => "required",:required => true%>
       </div>
 
       <div class="form-group">
@@ -96,6 +96,12 @@
   <div class="form-group">
     <%=hidden_field_tag :identity%>
   </div>
+  <div class="form-group">
+    <%= f.hidden_field :status,:value =>"schedule"%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :candidatedetail_id%>
+  </div>
 </div>
 </div>
 <div class="row">
@@ -122,6 +128,8 @@
    valuemethod = $('#candidatename option:selected').val();
    $('#candidateprofile_candidatename').val(textmethod);
    $('#identity').val(valuemethod);
+   $('#candidateprofile_candidatedetail_id').val(valuemethod);
+
    $.ajax({
      type: 'GET',
      url: '/candidatedetails/search',
