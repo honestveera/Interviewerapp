@@ -48,6 +48,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem "sqlite3"
+  gem "rails-erd" #Generates Entity Relationship Diagram
 end
 group :production, :staging do
   gem "pg"

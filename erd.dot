@@ -1,0 +1,121 @@
+digraph Interviewerapp {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial Bold";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "Arial" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "Arial" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+rankdir = "TB";
+label = "Interviewerapp domain model\n\n";
+m_Candidatedetail [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Candidatedetail</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="attachedfile_content_type">attachedfile_content_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="attachedfile_file_name">attachedfile_file_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="attachedfile_file_size">attachedfile_file_size <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="attachedfile_updated_at">attachedfile_updated_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="candidatecontact">candidatecontact <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="candidateemail">candidateemail <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="candidatename">candidatename <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="jobdescription">jobdescription <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="jobtitle">jobtitle <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="skills">skills <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="status">status <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="yoe">yoe <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Candidateprofile [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Candidateschedule</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="YOE">YOE <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="candidatecontact">candidatecontact <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="candidateemail">candidateemail <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="candidatename">candidatename <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="intervieweremail">intervieweremail <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="interviewername">interviewername <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="jobdescription">jobdescription <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="jobtitle">jobtitle <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="scheduledate">scheduledate <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="scheduletime">scheduletime <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="skills">skills <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="status">status <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Company [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">CompanyLogin</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="companyaddress">companyaddress <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="companyemail">companyemail <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="companyname">companyname <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="contactnumber">contactnumber <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="contactperson">contactperson <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="password">password <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="password_confirmation">password_confirmation <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="username">username <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Interviewer [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Interviewer</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="companyemail">companyemail <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="interviewercompany">interviewercompany <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="interviewername">interviewername <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="skills">skills <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Interviewerfeedback [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Interviewerfeedback</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="analyticalskills">analyticalskills <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="assertiveness">assertiveness <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="attachedfile_content_type">attachedfile_content_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="attachedfile_file_name">attachedfile_file_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="attachedfile_file_size">attachedfile_file_size <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="attachedfile_updated_at">attachedfile_updated_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="candidatename">candidatename <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="commitementtask">commitementtask <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="communication">communication <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="creativity">creativity <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="flexibility">flexibility <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="goalsettings">goalsettings <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="interviewername">interviewername <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="jobknowledge">jobknowledge <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="leadership">leadership <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="overallassesment">overallassesment <font face="Arial Italic" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="personality">personality <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="relevanceexperience">relevanceexperience <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="scheduledate">scheduledate <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="scheduletime">scheduletime <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="skills">skills <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="status">status <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="teamwork">teamwork <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="technicalskills">technicalskills <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="timemanagement">timemanagement <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+m_Skillset [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Skillset</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="skills">skills <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+  m_Candidatedetail -> m_Candidateprofile [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Candidateprofile -> m_Interviewerfeedback [arrowhead = "none", arrowtail = "none", weight = "2"];
+}
