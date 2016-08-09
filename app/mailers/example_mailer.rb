@@ -4,7 +4,7 @@ class ExampleMailer < ActionMailer::Base
    def sample_email(user)
       @candidatesche = user
       receipent=[@candidatesche.candidateemail,@candidatesche.intervieweremail]
-      headers['Return-Receipt-To'] = 'honestraj.it@gmail.com'
+        headers['Return-Receipt-To'] = 'honestraj.it@gmail.com.readnotify.com'
       mail(to: receipent,
            subject: "Interview Call Letter \t "+@candidatesche.candidatename,
            body:"Dear Candidate,
@@ -34,7 +34,7 @@ class ExampleMailer < ActionMailer::Base
    def sample_email_update(user)
       @candidatesche = user
       receipent=[@candidatesche.candidateemail,@candidatesche.intervieweremail]
-      headers['Return-Receipt-To'] = 'honestraj.it@gmail.com'
+      headers['Return-Receipt-To'] = 'honestraj.it@gmail.com.readnotify.com'
       mail(to: receipent,
            subject: "Interview Scheduletime To Be Changed \t "+@candidatesche.candidatename,
            body:"Dear Candidate,
