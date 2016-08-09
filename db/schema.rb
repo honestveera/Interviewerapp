@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808095100) do
+ActiveRecord::Schema.define(version: 20160809044618) do
 
   create_table "calenders", force: :cascade do |t|
     t.date     "dates"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160808095100) do
     t.string   "scheduletime"
     t.string   "scheduledate"
     t.float    "overallassesment"
+    t.string   "candidatemail"
   end
 
   create_table "interviewers", force: :cascade do |t|

@@ -1,5 +1,5 @@
 class InterviewerfeedbacksController < ApplicationController
-  before_action :set_interviewerfeedback, only: [:show, :edit, :update, :destroy]
+  before_action :set_interviewerfeedback, only: [:show, :edit, :update, :destroy,:sendmailcandidate]
   before_action :authenticate
 
   def authenticate
@@ -68,6 +68,11 @@ class InterviewerfeedbacksController < ApplicationController
     end
   end
 
+  def sendmailcandidate
+    ExampleMailer.offerletter(@interviewerfeedback).deliver_now
+    redirect_to interviewerfeedback_url,notice:"Offer Letter Send successfully for:"+@interviewerfeedback.candidatemail+""
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_interviewerfeedback
@@ -76,6 +81,6 @@ class InterviewerfeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interviewerfeedback_params
-      params.require(:interviewerfeedback).permit(:interviewername, :candidatename,:skills,:attachedfile, :status,:relevanceexperience,:personality,:communication,:technicalskills,:analyticalskills,:jobknowledge,:timemanagement,:commitementtask,:leadership,:teamwork,:goalsettings,:creativity,:flexibility,:assertiveness,:overallassesment,:scheduletime,:scheduledate)
+      params.require(:interviewerfeedback).permit(:interviewername, :candidatename,:skills,:attachedfile, :status,:relevanceexperience,:personality,:communication,:technicalskills,:analyticalskills,:jobknowledge,:timemanagement,:commitementtask,:leadership,:teamwork,:goalsettings,:creativity,:flexibility,:assertiveness,:overallassesment,:scheduletime,:scheduledate,:candidatemail)
     end
 end

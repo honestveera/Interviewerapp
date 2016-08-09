@@ -61,4 +61,32 @@ class ExampleMailer < ActionMailer::Base
                     Contact No:+91 9962118160")
    end
 
+   def offerletter candidate
+     @candidate = candidate
+     receipent=[@candidate.candidatemail]
+     mail(to: receipent,
+          subject: "Interview Offer Letter  \t "+@candidate.candidatename,
+          body:"Dear Candidate,
+
+                   Refer your application on for the post of" + @candidate.candidatename + "
+
+
+
+                   Venue:  Markuci Inc,
+                           No:30,Srinivasa Nagar,First Street,
+                           Kandhachavadi,
+                           OMR Chennai.
+                   LandMark:Near Hotel SaravanaBhavan
+
+
+                   Please bring with you the relevant testimonials and certificates for
+                   panel verification, if required.
+
+                   Contact:
+                   Name : Jayandhi Priyadharsini
+                   Email:jayanthip@markuci.com | www.markuci.com
+                   Contact No:+91 9962118160")
+
+   end
+
 end

@@ -1,7 +1,18 @@
+<% if flash[:notice] %>
+<div class="alert alert-success fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <%= flash[:notice] %>
+ </div>
+<% end %>
+
 <div class="jumbotron">
 <p>
   <strong>Interviewername:</strong>
   <%= @interviewerfeedback.interviewername %>
+</p>
+<p>
+  <strong>CandidateEmail:</strong>
+  <%= @interviewerfeedback.candidatemail %>
 </p>
 
 <p>
@@ -17,11 +28,10 @@
   <%= @interviewerfeedback.overallassesment %>
 </p>
 
-
 <p>
   <strong>Status:</strong>
   <%= @interviewerfeedback.status %>
 </p>
-
+<%= link_to 'Send Offer Letter',sendemail_path,:style=>"color:blue"%>
 <%= link_to 'Back', interviewerfeedbacks_path %>
 </div>

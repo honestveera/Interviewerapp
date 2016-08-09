@@ -48,6 +48,9 @@
             <%= f.label :skills,"Skills"%><br>
             <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true%>
           </div>
+          <div class="field">
+            <%=f.hidden_field :candidatemail,:class=>"form-control"%>
+          </div>
 
           <div class="field">
             <%= f.label :relevanceexperience,"Relevance Experience"%><br>
@@ -199,6 +202,7 @@
          $('#interviewerfeedback_skills').val(parse[0]['skills']);
          $('#interviewerfeedback_scheduledate').val(parse[0]['scheduledate']);
          $('#interviewerfeedback_scheduletime').val(parse[0]['scheduletime']);
+         $('#interviewerfeedback_candidatemail').val(parse[0]['candidateemail']);
 
          },
         error: function() {

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'candidatereports' => 'interviewerfeedbacks#index'
   get 'candidateschedulereports' => 'candidateprofiles#index'
   get 'signup' => 'companies#new'
-
+  get 'sendemailcandidate/:id' =>'interviewerfeedbacks#sendmailcandidate',as:'sendemail'
   resources :candidatedetails do
     collection do
       get :search
