@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160809044618) do
 
-  create_table "calenders", force: :cascade do |t|
-    t.date     "dates"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "times"
-  end
-
   create_table "candidatedetails", force: :cascade do |t|
     t.string   "candidatename"
     t.string   "candidateemail"
@@ -110,30 +103,10 @@ ActiveRecord::Schema.define(version: 20160809044618) do
     t.string   "skills"
   end
 
-  create_table "interviewrs", force: :cascade do |t|
-    t.string   "interviwername"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "scheduletimes", force: :cascade do |t|
-    t.time     "scheduletime"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "skillsets", force: :cascade do |t|
     t.string   "skills"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
 end

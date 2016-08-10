@@ -32,26 +32,26 @@
          <% end -%>
         <div class="row">
                <div class="input-group">
-              <div class="form-group">
-                <%= f.text_field :companyname,:placeholder=>"Company Name",:class => "required",:required=>true%>
+              <div class="field">
+                <%= f.text_field :companyname,:placeholder=>"company name",:class => "form-control required",:required=>true%>
+              </div>
+              <div class="field">
+              <%= f.text_area :companyaddress,:placeholder=>"company address",:class => "form-control required",:required=>true,:id=>"textarea"%>
               </div>
               <div class="form-group">
-              <%= f.text_area :companyaddress,:placeholder=>"Company Address",:class => "required",:required=>true,:id=>"textarea"%>
+                  <%= f.text_field :contactperson,:placeholder=>"contact person",:class => "form-control required",:required=>true%>
               </div>
               <div class="form-group">
-                  <%= f.text_field :contactperson,:placeholder=>"Contact Person",:class => "required",:required=>true%>
+                <%= f.text_field :contactnumber,:placeholder=>"contact number",:class => "form-control required",:required => true,:onkeypress=>"return isNumberKey(event)" %>
               </div>
               <div class="form-group">
-                <%= f.number_field :contactnumber,:placeholder=>"Contact Number",:class => "required",:required => true %>
+                <%= f.text_field :companyemail,:placeholder=>"Email",:class => "form-control required",:required => true%>
               </div>
               <div class="form-group">
-                <%= f.text_field :companyemail,:placeholder=>"Email",:class => "required",:required => true%>
+                <%= f.password_field :password,:placeholder=>" Password",:class => "form-control required",:required => true%>
               </div>
               <div class="form-group">
-                <%= f.password_field :password,:placeholder=>" Password",:class => "required",:required => true%>
-              </div>
-              <div class="form-group">
-                <%= f.password_field :password_confirmation,:placeholder=>"Confirm Password",:class => "required",:required => true %>
+                <%= f.password_field :password_confirmation,:placeholder=>"Confirm Password",:class => "form-control required",:required => true %>
               </div>
               <div class="form-group">
               <input name="cecky" id="checky" value="1" type="checkbox" /><label style="color:white" class="terms">I accept the terms of use</label>
@@ -66,6 +66,61 @@
 <% end %>
 </div>
 </div>
+<script type="text/javascript">
+function isNumberKey(evt)
+    {
+       var charCode = (evt.which) ? evt.which : event.keyCode
+       if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+
+       return true;
+    }
+    $('input[type="password"]').focusout(function(){
+       if($(this).val()=="")
+       {
+         $(this).css({"border-color":"red","border-width":"2px"});
+       }
+       else if($(this).val().length<6)
+       {
+         $(this).css({"border-color":"orange","border-width":"2px"});
+       }
+       else
+       {
+         $(this).css({"border-color":"lightgreen"});
+       }
+    });
+    $('input[type="text"]').focusout(function(){
+       if($(this).val()=="")
+       {
+         $(this).css({"border-color":"red","border-width":"2px"});
+       }
+       else
+       {
+         $(this).css({"border-color":"lightgreen"});
+       }
+    });
+    $('input[type="number"]').focusout(function(){
+       if($(this).val()=="")
+       {
+         $(this).css({"border-color":"red","border-width":"2px"});
+       }
+       else
+       {
+         $(this).css({"border-color":"lightgreen"});
+       }
+    });
+    $('select').focusout(function(){
+       if($(this).val()=="")
+       {
+         $(this).css({"border-color":"red","border-width":"2px"});
+       }
+       else
+       {
+         $(this).css({"border-color":"lightgreen"});
+       }
+    });
+
+</script>
 
 </body>
 </html>

@@ -20,3 +20,35 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require_tree .
+$(document).ready(function(){
+  $('input[type="text"]').focusout(function(){
+     if($(this).val()=="")
+     {
+       $(this).css({"border-color":"red","border-width":"2px"});
+     }
+     else
+     {
+       $(this).css({"border-color":"skyblue"});
+     }
+  });
+  $('input[type="number"]').focusout(function(){
+     if($(this).val()=="")
+     {
+       $(this).css({"border-color":"red","border-width":"2px"});
+     }
+     else
+     {
+       $(this).css({"border-color":"skyblue"});
+     }
+  });
+  $('select').focusout(function(){
+     if($(this).val()=="")
+     {
+       $(this).css({"border-color":"red","border-width":"2px"});
+     }
+     else
+     {
+       $(this).css({"border-color":"skyblue"});
+     }
+  });
+});

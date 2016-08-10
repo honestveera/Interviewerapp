@@ -4,7 +4,7 @@
   <div class="alert alert-danger fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <div >
-      <h2><%= pluralize(@interviewerfeedback.errors.count, "error") %> prohibited this interviewerfeedback from being saved:</h2>
+      <h4><%= pluralize(@interviewerfeedback.errors.count, "error") %> prohibited this interviewerfeedback from being saved:</h4>
 
       <ul>
       <% @interviewerfeedback.errors.full_messages.each do |message| %>
@@ -240,5 +240,35 @@
         avg=parseFloat((re+perso+commu+ts+as+jn+tm+ct+ls+tw+gs+cr+fl+assert)/14);
         $('#interviewerfeedback_overallassesment').val(avg);
           }
+    });
+    $('input[type="text"]').focusout(function(){
+       if($(this).val()=="")
+       {
+         $(this).css({"border-color":"red","border-width":"2px"});
+       }
+       else
+       {
+         $(this).css({"border-color":"skyblue"});
+       }
+    });
+    $('input[type="number"]').focusout(function(){
+       if($(this).val()=="")
+       {
+         $(this).css({"border-color":"red","border-width":"2px"});
+       }
+       else
+       {
+         $(this).css({"border-color":"skyblue"});
+       }
+    });
+    $('select').focusout(function(){
+       if($(this).val()=="")
+       {
+         $(this).css({"border-color":"red","border-width":"2px"});
+       }
+       else
+       {
+         $(this).css({"border-color":"skyblue"});
+       }
     });
 </script>

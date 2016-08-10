@@ -5,7 +5,7 @@
   <div class="alert alert-danger fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <div >
-      <h2><%= pluralize(@candidateprofile.errors.count, "error") %> prohibited this candidateprofile from being saved:</h2>
+      <h4><%= pluralize(@candidateprofile.errors.count, "error") %> prohibited this candidateprofile from being saved:</h4>
 
       <ul>
       <% @candidateprofile.errors.full_messages.each do |message| %>
@@ -178,6 +178,37 @@
        alert('Error!');
      }
    });
+ });
+
+ $('input[type="text"]').focusout(function(){
+    if($(this).val()=="")
+    {
+      $(this).css({"border-color":"red","border-width":"2px"});
+    }
+    else
+    {
+      $(this).css({"border-color":"skyblue"});
+    }
+ });
+ $('input[type="number"]').focusout(function(){
+    if($(this).val()=="")
+    {
+      $(this).css({"border-color":"red","border-width":"2px"});
+    }
+    else
+    {
+      $(this).css({"border-color":"skyblue"});
+    }
+ });
+ $('select').focusout(function(){
+    if($(this).val()=="")
+    {
+      $(this).css({"border-color":"red","border-width":"2px"});
+    }
+    else
+    {
+      $(this).css({"border-color":"skyblue"});
+    }
  });
 
  </script>

@@ -4,7 +4,7 @@ class ExampleMailer < ActionMailer::Base
    def sample_email(user)
       @candidatesche = user
       receipent=[@candidatesche.candidateemail,@candidatesche.intervieweremail]
-        headers['Return-Receipt-To'] = 'honestraj.it@gmail.com.readnotify.com'
+      headers['Return-Receipt-To'] = 'honestraj.it@gmail.com.readnotify.com'
       mail(to: receipent,
            subject: "Interview Call Letter \t "+@candidatesche.candidatename,
            body:"Dear Candidate,
@@ -69,7 +69,6 @@ class ExampleMailer < ActionMailer::Base
           body:"Dear Candidate,
 
                    Refer your application on for the post of" + @candidate.candidatename + "
-
 
 
                    Venue:  Markuci Inc,

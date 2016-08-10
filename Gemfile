@@ -35,7 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
  gem "heroku"
- gem 'pry'
+
  gem 'backup'
 
 # Use Unicorn as the app server
@@ -48,6 +48,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem "sqlite3"
+  gem 'rspec-rails'
+  gem "factory_girl_rails"
+  gem "pry-rails"
   gem "rails-erd"
  #Generates Entity Relationship Diagram
 end

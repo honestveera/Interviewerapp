@@ -4,7 +4,7 @@ class CandidateprofilesController < ApplicationController
   respond_to :json, :html
 
 
-  def authenticate
+   def authenticate
      if ((session[:companyemail]||session[:password]=="")||((session[:companyemail]||session[:password])==nil))
         redirect_to root_url
      end

@@ -3,7 +3,7 @@
   <div class="alert alert-danger fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <div >
-      <h2><%= pluralize(@candidatedetail.errors.count, "error") %> prohibited this candidatedetail from being saved:</h2>
+      <h4><%= pluralize(@candidatedetail.errors.count, "error") %> prohibited this candidatedetail from being saved:</h4>
 
       <ul>
       <% @candidatedetail.errors.full_messages.each do |message| %>
@@ -23,19 +23,19 @@
   <div class="row">
      <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
-        <div class="field">
+        <div class="form-group">
           <%= f.label :candidatename,"Candidate Name" %><br>
           <%= f.text_field :candidatename,:placeholder=>"Candidate Name",:class => "form-control required",:required => true  %>
         </div>
-        <div class="field">
+        <div class="form-group">
           <%= f.label :candidateemail,"Candidate Email" %><br>
           <%= f.text_field :candidateemail,:placeholder=>"Candidate Email",:class => "form-control required",:required => true  %>
         </div>
-        <div class="field">
+        <div class="form-group">
           <%= f.label :candidatecontact,"Candidates Contact " %><br>
-          <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:class => "form-control required",:required => true  %>
+          <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:class => "form-control required",:required => true,:onkeypress=>"return isNumberKey(event)"%>
         </div>
-        <div class="field">
+        <div class="form-group">
           <%= f.label :yoe,"Year Of Experience" %><br>
           <%= f.select :yoe, options_for_select([["1", "1"], ["2", "2"],["3", "3"],["4","4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"]]),:prompt => "--Select Experience--" %>
         </div>
@@ -43,19 +43,19 @@
       </div>
       <div class="col-lg-3 col-lg-offset-1">
           <div class="input-group">
-        <div class="field">
+        <div class="form-group">
           <%= f.label :skills,"Skills"%><br>
           <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--",:class => "form-control required"%>
         </div>
-        <div class="field">
+        <div class="form-group">
           <%= f.label :jobtitle,"Job Title"%><br>
           <%= f.text_field :jobtitle,:placeholder=>"Job Title",:class=>"form-control required",:required=>true%>
         </div>
-        <div class="field">
+        <div class="form-group">
           <%= f.label :jobdescription,"Job Description"%><br>
           <%= f.text_area :jobdescription,:placeholder=>"Job Description",:class=>"form-control",:id=>"textarea"%>
         </div>
-        <div class="field">
+        <div class="form-group">
           <%= f.label :attachedfile,"Attached File"%><br>
           <%= f.file_field :attachedfile%>
         </div>
@@ -81,3 +81,44 @@
  </div>
 </div>
 <% end %>
+<script type="text/javascript">
+function isNumberKey(evt)
+    {
+       var charCode = (evt.which) ? evt.which : event.keyCode
+       if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+       return true;
+    }
+$('input[type="text"]').focusout(function(){
+   if($(this).val()=="")
+   {
+     $(this).css({"border-color":"red","border-width":"2px"});
+   }
+   else
+   {
+     $(this).css({"border-color":"skyblue"});
+
+   }
+});
+$('input[type="number"]').focusout(function(){
+   if($(this).val()=="")
+   {
+     $(this).css({"border-color":"red","border-width":"2px"});
+   }
+   else
+   {
+     $(this).css({"border-color":"skyblue"});
+   }
+});
+$('select').focusout(function(){
+   if($(this).val()=="")
+   {
+     $(this).css({"border-color":"red","border-width":"2px"});
+   }
+   else
+   {
+     $(this).css({"border-color":"skyblue"});
+   }
+});
+</script>
