@@ -34,6 +34,7 @@ RSpec.describe CandidatedetailsController, type: :routing do
     it "routes to #destroy" do
       expect(:delete => "/candidatedetails/1").to route_to("candidatedetails#destroy", :id => "1")
     end
+    #Routing Changes
     it "routes to #search" do
       expect(:get => "/candidatedetails/search").to route_to("candidatedetails#search")
     end
