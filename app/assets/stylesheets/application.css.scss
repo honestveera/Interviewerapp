@@ -19,12 +19,12 @@
  @import 'bootstrap-datetimepicker';
  body
   {
-      background-image: url("bbb.jpg");
+
       background-position: center center;
       background-repeat: no-repeat;
       background-attachment:fixed;
       background-size: cover;
-      background-color: #464646;
+      background-color: #EEE;
   }
 
   h1, h2, h3, h4, h5, h6
@@ -89,6 +89,95 @@
   input[type="submit"] {
     width:250px;
   }
+  #header {
+    background-color: #3396D1;
+}
+.navbar-default .navbar-nav > li > a
+{
+  color:white;
+  font-weight: bold;
+  font-size: 16px;
+}
+.dropdown-menu li a
+{
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+}
+.navbar-bran {
+    padding: 15px;
+    font-size: 25px;
+    line-height: 20px;
+    height: 50px;
+    position:relative;
+    top:18px
+}
+.jumbotron
+{
+  background-color:white !important;
+  margin-top: 30px;
+}
+.navbar-header a:focus {
+    background-color: skyblue;
+}
+@media screen and (max-width:500px)
+{
+  .navbar-bran {
+      padding: 5px;
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 20px;
+      position:relative;
+      top:18px;
+  }
+  #logo
+  {
+    width:40px;
+    height:40px;
+  }
+  .navbar-toggle {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    padding: 9px 10px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    background-color: white;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.dropdown-menu li a
+{
+  color:white;font-weight: bold;font-size: 16px;
+}
+}
+#logo
+{
+  width:80px;
+  height:80px;
+}
+// .dropdown-menu > li > a {
+//     display: block;
+//     padding: 3px 20px;
+//     clear: both;
+//     font-weight: b;
+//     line-height: 1.42857;
+//     color: #333;
+//     white-space: nowrap;
+//   }
   .content-box-container {
    max-width: 480px;
    margin: 0px auto;
