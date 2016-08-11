@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Interview App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -29,12 +29,12 @@
                 <%= f.password_field :password,:placeholder=>"Company Password" %>
               </div>
               <div class="checkboxy">
-              <input name="cecky" id="checky" value="1" type="checkbox" /><label style="margin-left:20px;color:white" ">  Remember me</label>
+              <input name="cecky" id="checky" value="1" type="checkbox" /><label style="margin-left:20px;color:white">  Remember me</label>
               </div>
               <div class="actions">
                 <%= f.submit "Login",:class=>"btn btn-primary btn-md" %>
               </div>
-              <%= link_to 'Sign Up', signup_path,:class=>"btn btn-primary btn-md",:style=>"width:270px;margin-left: -13px;height: 40px;"%>
+              <%= link_to 'Sign Up', signup_path,:class=>"btn btn-primary btn-md",:id=>"link"%>
             </div>
 
         </div>

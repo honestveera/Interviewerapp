@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Interviewer App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -59,7 +59,7 @@
               <div class="actions">
                 <%= f.submit :class=>"btn btn-primary btn-md" %>
               </div>
-              <%= link_to 'Login', root_path,:class=>"btn btn-primary btn-md",:style=>"width:270px"%>
+              <%= link_to 'Login', root_path,:class=>"btn btn-primary btn-md",:id=>"link"%>
 
            </div>
         </div>

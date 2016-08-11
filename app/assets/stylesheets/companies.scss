@@ -11,66 +11,70 @@
   .login-form1
   {
 
-    width: 350px;
-    margin: 9% auto 1% auto;
-    position: relative;
-    -webkit-border-radius: 0.4em;
-    -o-border-radius: 0.4em;
-    -moz-border-radius: 0.4em;
-    .form-group {
-      margin-bottom: 6px;
-      }
-    .thumbnail {
-       background: #fffff;
-       width: 150px;
-       height: 150px;
-       margin: 0 auto 0px;
-       padding: 50px 30px;
-       border-top-left-radius: 100%;
-       border-top-right-radius: 100%;
-       border-bottom-left-radius: 100%;
-       border-bottom-right-radius: 100%;
-       box-sizing: border-box;
-   }
-    form
-    {
-       width: 60%;
-       margin: 0 auto;
-       padding: 6% 0 9% 0;
-    }
-    input[type="submit"]
-    {
-        width: 270px;
-        height: 45px;
-        background-color:#21A957;
-        margin-left: -13px;
-    }
-    input[type="text"] {
-       width: 270px;
-       outline: 0;
-        margin: 0 0 1px;
-        padding: 15px;
-        margin-left: -13px;
-        box-sizing: border-box;
-        font-size: 14px;
+        width: 350px;
+        margin: 9% auto 1% auto;
+        position: relative;
+        -webkit-border-radius: 0.4em;
+        -o-border-radius: 0.4em;
+        -moz-border-radius: 0.4em;
+        .form-group
+          {
+          margin-bottom: 6px;
+          }
+        .thumbnail {
+           background: #fffff;
+           width: 150px;
+           height: 150px;
+           margin: 0 auto 0px;
+           padding: 50px 30px;
+           border-top-left-radius: 100%;
+           border-top-right-radius: 100%;
+           border-bottom-left-radius: 100%;
+           border-bottom-right-radius: 100%;
+           box-sizing: border-box;
+       }
+        form
+        {
+           width: 60%;
+           margin: 0 auto;
+           padding: 6% 0 9% 0;
+        }
+        input[type="submit"]
+        {
+            width: 270px;
+            height: 45px;
+            background-color:#21A957;
+            margin-left: -13px;
+        }
+        input[type="text"] {
+           width: 270px;
+           outline: 0;
+            margin: 0 0 1px;
+            padding: 15px;
+            margin-left: -13px;
+            box-sizing: border-box;
+            font-size: 14px;
 
-   }
-   #link
-   {
-   text-align: center;
-   font-size: 14px;
-   }
-
-   input[type="password"] {
-      width: 270px;
-      outline: 0;
-       margin: 0 0 1px;
-       margin-left: -13px;
-       padding: 15px;
-       box-sizing: border-box;
+       }
+       #link
+       {
+       text-align: center;
        font-size: 14px;
+       width:270px;
+       margin-left: -13px;
+       height: 40px;
+       }
 
-  }
+       input[type="password"] {
+          width: 270px;
+          outline: 0;
+           margin: 0 0 1px;
+           margin-left: -13px;
+           padding: 15px;
+           box-sizing: border-box;
+           font-size: 14px;
+
+      }
   }
 
   .login-form
@@ -81,10 +85,12 @@
      -webkit-border-radius: 0.4em;
      -o-border-radius: 0.4em;
      -moz-border-radius: 0.4em;
-     .form-group {
+     .form-group
+       {
        margin-bottom: 4px;
        }
-     .thumbnail {
+     .thumbnail
+      {
         background: #fffff;
         width: 150px;
         height: 150px;
@@ -95,7 +101,7 @@
         border-bottom-left-radius: 100%;
         border-bottom-right-radius: 100%;
         box-sizing: border-box;
-    }
+      }
      form
      {
         width: 60%;
@@ -111,30 +117,195 @@
      {
          width: 270px;
      }
-     input[type="text"] {
+     input[type="text"]
+     {
         width: 270px;
         height: 35px;
-
-    }
-    #link
+     }
+     #link
+     {
+     text-align: center;
+     width: 270px;
+     height: 35px;
+     font-size: 14px;
+     }
+    #textarea
     {
-    text-align: center;
-    font-size: 14px;
-    }
-    #textarea {
        width: 270px;
        height: 70px;
-   }
-   input[type="number"] {
+    }
+   input[type="number"]
+   {
       width: 270px;
       height: 35px;
-
-  }
-    input[type="password"] {
+    }
+    input[type="password"]
+    {
        width: 270px;
        height: 35px;
+    }
+   }
+   @media screen and (max-width:500px)
+   {
+     .body
+      {
+          background-image: url("hq.jpeg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment:fixed;
+          background-size: 100% 100%;
+          background-color: #464646;
+      }
+     .login-form1
+     {
+
+           width: 350px;
+           margin: 9% auto 1% auto;
+           position: relative;
+           -webkit-border-radius: 0.4em;
+           -o-border-radius: 0.4em;
+           -moz-border-radius: 0.4em;
+           .form-group
+             {
+             margin-bottom: 6px;
+             }
+           .thumbnail {
+              background: #fffff;
+              width: 130px;
+              height: 130px;
+              margin: 0 80px 0px;
+              padding: 50px 30px;
+              border-top-left-radius: 100%;
+              border-top-right-radius: 100%;
+              border-bottom-left-radius: 100%;
+              border-bottom-right-radius: 100%;
+              box-sizing: border-box;
+          }
+           form
+           {
+              width: 60%;
+              margin: 0 auto;
+              padding: 6% 0 9% 0;
+           }
+           input[type="submit"]
+           {
+               width: 230px;
+               height: 35px;
+               background-color:#21A957;
+               margin-left: -13px;
+           }
+           input[type="text"] {
+              width: 230px;
+              outline: 0;
+               margin: 0 0 1px;
+               padding: 15px;
+               margin-left: -13px;
+               box-sizing: border-box;
+               font-size: 14px;
+
+          }
+          #link
+          {
+          text-align: center;
+          font-size: 14px;
+          width:230px;
+          margin-left: -13px;
+          height: 40px;
+          }
+
+          input[type="password"] {
+             width: 230px;
+             outline: 0;
+              margin: 0 0 1px;
+              margin-left: -13px;
+              padding: 15px;
+              box-sizing: border-box;
+              font-size: 14px;
+
+         }
+     }
 
    }
-   }// Place all the styles related to the Companies controller here.
+   @media screen and (max-width:500px)
+   {
+     .body
+      {
+          background-image: url("hq.jpeg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment:fixed;
+          background-size: 100% 100%;
+          background-color: #464646;
+      }
+     .login-form
+      {
+        width: 300px;
+        margin: -1% auto 1% auto;
+        position: relative;
+        -webkit-border-radius: 0.4em;
+        -o-border-radius: 0.4em;
+        -moz-border-radius: 0.4em;
+        .form-group
+          {
+          margin-bottom: 4px;
+          }
+        .thumbnail
+         {
+           background: #fffff;
+           width: 130px;
+           height: 130px;
+           margin: 0 80px 0px;
+           padding: 40px 20px;
+           border-top-left-radius: 100%;
+           border-top-right-radius: 100%;
+           border-bottom-left-radius: 100%;
+           border-bottom-right-radius: 100%;
+           box-sizing: border-box;
+         }
+        form
+        {
+           width: 65%;
+           margin: 0 auto;
+           padding: 6% 0 9% 0;
+        }
+        input[type="submit"]
+        {
+            width: 230px;
+            background-color:#21A957;
+        }
+        select
+        {
+            width: 230px;
+        }
+        input[type="text"]
+        {
+           width: 230px;
+           height: 30px;
+        }
+       #link
+       {
+       text-align: center;
+       width: 230px;
+       height: 30px;
+       font-size: 14px;
+       }
+       #textarea
+       {
+          width: 230px;
+          height: 60px;
+       }
+      input[type="number"]
+      {
+         width: 230px;
+         height: 30px;
+       }
+       input[type="password"]
+       {
+          width: 230px;
+          height: 30px;
+       }
+      }
+   }
+   // Place all the styles related to the Companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
