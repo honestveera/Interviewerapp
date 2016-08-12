@@ -26,7 +26,7 @@
          <div class="input-group">
   <div class="form-group">
     <%= f.label 'candidatename',"Candidate Name"%><br>
-    <%= select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("new"),"id","candidatename"),:prompt=>"--Select Candidatename--",:class => "required",:required => true%>
+    <%= select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("new"),"id","candidatename"),:prompt=>"--Select Candidate Name--",:class => "required",:required => true%>
   </div>
 
   <div class="form-group">
@@ -60,7 +60,7 @@
 
       <div class="form-group">
         <%= f.label 'interviewername',"Interviewer Name"%><br>
-        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewername--",:class => "required",:required => true%>
+        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewer Name--",:class => "required",:required => true%>
       </div>
 
       <div class="form-group">

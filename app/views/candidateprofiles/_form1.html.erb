@@ -25,8 +25,8 @@
      <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
            <div class="field">
-             <%= f.label :candidatename,"Candidate name" %><br>
-             <%= f.text_field :candidatename,:placeholder=>"Candidate name" ,:readonly => true,:class => "form-control required",:required => true%>
+             <%= f.label :candidatename,"Candidate Name" %><br>
+             <%= f.text_field :candidatename,:placeholder=>"Candidate Name" ,:readonly => true,:class => "form-control required",:required => true%>
            </div>
   <div class="field">
     <%= f.label :candidateemail,"Candidate Email" %><br>
@@ -55,7 +55,7 @@
 
       <div class="field">
         <%= f.label 'interviewername',"Interviewer Name"%><br>
-        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewername--",:class => "required",:required => true%>
+        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewer Name--",:class => "required",:required => true%>
       </div>
 
       <div class="form-group">

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'candidateschedulereports' => 'candidateprofiles#index'
   get 'signup' => 'companies#new'
   get 'sendemailcandidate/:id' =>'interviewerfeedbacks#sendmailcandidate',as:'sendemail'
-
+  get 'schedulereport'=>'candidateprofiles#schedulereport'
   resources :candidatedetails do
     collection do
       get :search

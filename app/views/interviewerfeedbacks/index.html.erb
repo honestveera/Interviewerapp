@@ -1,15 +1,15 @@
 <div class="jumbotron">
-<h3>Interviewerfeedbacks</h3>
+<h3>Interviewer Feedbacks</h3>
 <div class="table-responsive">
 <table class="datatable table table-bordered table-hover sortable" id="example">
   <thead class="bg-success">
     <tr>
-      <th class="text-info">Interviewe rName</th>
+      <th class="text-info">Interviewer Name</th>
       <th class="text-info">Candidate Name</th>
       <th class="text-info">Skills</th>
       <th class="text-info">Schedule Date</th>
       <th class="text-info">Schedule Time</th>
-      <th class="text-info">OverallRating</th>
+      <th class="text-info">Over all Rating</th>
       <th class="text-info">Status</th>
       <th class="text-info" >Show</th>
       <!-- <th class="text-info">Edit</th> -->
@@ -21,7 +21,7 @@
   <tbody>
     <% @interviewerfeedbacks.each do |interviewerfeedback| %>
       <% if interviewerfeedback.status=="Pass"%>
-      <tr bgcolor="#80ff80">
+      <tr bgcolor="#c4f7b8">
         <td><%= interviewerfeedback.interviewername %></td>
         <td><%= interviewerfeedback.candidatename %></td>
         <td><%= interviewerfeedback.skills %></td>
@@ -34,7 +34,7 @@
         <td><%= link_to 'Destroy', interviewerfeedback, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm" %></td>
       </tr>
       <% else %>
-      <tr bgcolor="#ff6666">
+      <tr bgcolor="#f7b8b8">
         <td><%= interviewerfeedback.interviewername %></td>
         <td><%= interviewerfeedback.candidatename %></td>
         <td><%= interviewerfeedback.skills %></td>
@@ -57,6 +57,7 @@
     "paging": true,
     "ordering": true,
     "info": true,
+    "scrollX":"100%",
     "scrollY": "300px"
   });
 

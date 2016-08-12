@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809044618) do
+ActiveRecord::Schema.define(version: 20160812091015) do
 
   create_table "candidatedetails", force: :cascade do |t|
     t.string   "candidatename"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160809044618) do
     t.string   "scheduledate"
     t.float    "overallassesment"
     t.string   "candidatemail"
+    t.text     "addcomment"
   end
 
   create_table "interviewers", force: :cascade do |t|

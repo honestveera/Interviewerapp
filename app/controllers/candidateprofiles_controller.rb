@@ -13,7 +13,10 @@ class CandidateprofilesController < ApplicationController
   # GET /candidateprofiles.json
   def index
     @candidateprofiles = Candidateprofile.all
+  end
 
+  def schedulereport
+    @candidateprofiles = Candidateprofile.all
   end
 
   def  search

@@ -1,3 +1,5 @@
+<div class="jumbotron">
+<h3 style="margin-top:-10px">Interviewer Feedback</h3>
 <%= form_for(@interviewerfeedback) do |f| %>
 
   <% if @interviewerfeedback.errors.any? %>
@@ -21,7 +23,7 @@
    </div>
   <% end %>
   <div class="row">
-     <div class="col-lg-4 col-lg-offset-2">
+     <div class="col-lg-4 col-md-offset-2">
          <div class="input-group">
            <div class="field">
              <%= f.label "candidatename","Scheduled Candidate"%><br>
@@ -35,6 +37,14 @@
             <%=f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control",:readonly=>true%>
            </div>
            <div class="field">
+             <%= f.label :skills,"Skills"%><br>
+             <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true%>
+           </div>
+         </div>
+       </div>
+       <div class="col-lg-4 col-md-offset-1">
+         <div class="input-group">
+           <div class="field">
             <%=f.label :scheduledate,"Schedule Date"%><br>
             <%=f.text_field :scheduledate,:class=>"form-control",:placeholder=>"Schedule Date",:readonly=>true%>
            </div>
@@ -45,13 +55,21 @@
            </div>
 
           <div class="field">
-            <%= f.label :skills,"Skills"%><br>
-            <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true%>
-          </div>
-          <div class="field">
             <%=f.hidden_field :candidatemail,:class=>"form-control"%>
           </div>
-
+          <div class="field">
+            <%= f.label :addcomment,"Add Comment" %><br>
+            <%= f.text_area :addcomment,:placeholder=>"Add Comment",:class => "form-control required",:required => true%>
+          </div>
+        </div>
+     </div>
+   </div>
+</div>
+<div class="jumbotron">
+  <h3 style="margin-top:-10px">Feedback(1-LOW,5-HIGH)</h3>
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-2">
+        <div class="input-group">
           <div class="field">
             <%= f.label :relevanceexperience,"Relevance Experience"%><br>
             <% (1..5).each do |a|%>
@@ -84,28 +102,27 @@
             <% end %>
           </div>
           <div class="field">
-            <%= f.label :jobknowledge,"Jobknowledge"%><br>
+            <%= f.label :jobknowledge,"Job Knowledge"%><br>
             <% (1..5).each do |a|%>
             <%= f.radio_button :jobknowledge, a%>  <%=a%>
             <% end %>
-            </div>
-
-        </div>
-     </div>
-     <div class="col-lg-4 col-lg-offset-1">
-         <div class="input-group">
+          </div>
            <div class="field">
-             <%= f.label :timemanagement,"Timemanagement"%><br>
+             <%= f.label :timemanagement,"Time Management"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :timemanagement, a%>  <%=a%>
              <% end %>
            </div>
-           <div class="field">
+            <div class="field">
              <%= f.label :commitementtask,"Commitement Task"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :commitementtask, a%>  <%=a%>
              <% end %>
              </div>
+           </div>
+         </div>
+     <div class="col-lg-4 col-lg-offset-1">
+        <div class="input-group">
            <div class="field">
              <%= f.label :leadership,"Leadership"%><br>
              <% (1..5).each do |a|%>
@@ -119,7 +136,7 @@
              <% end %>
              </div>
            <div class="field">
-             <%= f.label :goalsettings,"Goalsettings"%><br>
+             <%= f.label :goalsettings,"Goal Settings"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :goalsettings, a%>  <%=a%>
              <% end %>
@@ -143,16 +160,12 @@
              <% end %>
            </div>
            <div class="field">
-             <%= f.label :overallassesment,"Overallassesment"%><br>
+             <%= f.label :overallassesment,"Over All Assesment"%><br>
              <%= f.text_field :overallassesment,:placeholder=>"Overallassesment",:class=>"form-control",:readonly=>true%>
            </div>
           <div class="field">
             <%= f.label :status,"Status"%><br>
             <%= f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--",:class=>"form-control"%>
-          </div>
-          <div class="field">
-            <%= f.label :attachedfile,"Attached File"%><br>
-            <%= f.file_field :attachedfile%>
           </div>
           <div class="form-group">
             <%=hidden_field_tag :identity%>
@@ -237,7 +250,7 @@
         var fl=parseFloat($('input[name="interviewerfeedback[flexibility]"]:checked').val());
         var assert=parseFloat($('input[name="interviewerfeedback[assertiveness]"]:checked').val());
         var avg;
-        avg=parseFloat((re+perso+commu+ts+as+jn+tm+ct+ls+tw+gs+cr+fl+assert)/14);
+        avg=parseInt((re+perso+commu+ts+as+jn+tm+ct+ls+tw+gs+cr+fl+assert)/14);
         $('#interviewerfeedback_overallassesment').val(avg);
           }
     });
