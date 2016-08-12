@@ -12,13 +12,14 @@
   <div class="container">
   <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #3396D1;">
       <!-- Brand and toggle get grouped for better mobile display -->
-   <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" >
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle sidebar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" >
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+
         <img src="assets/Markuci.png" id="logo"/>
         <a class="navbar-bran" href="#" style="color:white;text-decoration: none;">InterviewApp</a>
       </div>
@@ -70,7 +71,11 @@
 <div class="container">
 <%= yield %>
 </div>
-
+<script type="text/javascript">
+   $('.navbar-toggle .collapsed').click(function(){
+        alert("Sidebar");
+   });
+</script>
 
 </body>
 </html>

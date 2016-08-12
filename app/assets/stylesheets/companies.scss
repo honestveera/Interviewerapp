@@ -10,7 +10,6 @@
  }
   .login-form1
   {
-
         width: 350px;
         margin: 9% auto 1% auto;
         position: relative;
@@ -153,7 +152,7 @@
           background-position: center;
           background-repeat: no-repeat;
           background-attachment:fixed;
-          background-size: 100% 100%;
+          background-size: cover;
           background-color: #464646;
       }
      .login-form1
@@ -189,32 +188,31 @@
            }
            input[type="submit"]
            {
-               width: 230px;
+               width: 240px;
                height: 35px;
                background-color:#21A957;
                margin-left: -13px;
            }
            input[type="text"] {
-              width: 230px;
+              width: 240px;
               outline: 0;
                margin: 0 0 1px;
                padding: 15px;
                margin-left: -13px;
                box-sizing: border-box;
                font-size: 14px;
-
-          }
+           }
           #link
           {
           text-align: center;
           font-size: 14px;
-          width:230px;
+          width:240px;
           margin-left: -13px;
           height: 40px;
           }
 
           input[type="password"] {
-             width: 230px;
+             width: 240px;
              outline: 0;
               margin: 0 0 1px;
               margin-left: -13px;
@@ -234,7 +232,7 @@
           background-position: center;
           background-repeat: no-repeat;
           background-attachment:fixed;
-          background-size: 100% 100%;
+          background-size: cover;
           background-color: #464646;
       }
      .login-form
