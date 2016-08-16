@@ -13,7 +13,7 @@ class CompaniesController < ApplicationController
         if @check>=1
           session[:comapanyemail]=params[:company][:companyemail]
           session[:password]=params[:company][:password]
-          format.html { redirect_to candidatereports_url }
+          format.html { redirect_to schedulereport_url }
         else
           format.html { redirect_to login_url}
           flash[:error] = "Invalid Email and Password"
