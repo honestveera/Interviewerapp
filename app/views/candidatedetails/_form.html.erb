@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
           <%= f.label :candidateemail,"Candidate Email" %><br>
-          <%= f.text_field :candidateemail,:placeholder=>"Candidate Email",:class => "form-control required",:required => true  %>
+          <%= f.text_field :candidateemail,:placeholder=>"Candidate Email",:class => "form-control required",:required => true,:onblur=>"validateEmail(this);"%>
         </div>
         <div class="form-group">
           <%= f.label :candidatecontact,"Candidates Contact " %><br>
@@ -90,6 +90,17 @@ function isNumberKey(evt)
 
        return true;
     }
+    function validateEmail(emailField){
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(emailField.value) == false)
+        {
+            alert('Invalid Email Address');
+            return false;
+        }
+
+        return true;
+     }
     $('input[type="submit"]').click(function(){
        if($('input[type="text"]').val()=="")
        {
