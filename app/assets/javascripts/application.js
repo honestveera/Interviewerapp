@@ -51,6 +51,9 @@ $(document).ready(function(){
   $('select').change(function(){
        $(this).css({"border-color":"skyblue"});
   });
+
+
+  
   // $('input[type="number"]').focusout(function(){
   //    if($(this).val()=="")
   //    {
