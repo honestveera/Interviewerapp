@@ -1,3 +1,4 @@
+<div ng-app="interviewerform">
 <%= form_for(@interviewer) do |f| %>
   <% if @interviewer.errors.any? %>
     <div id="error_explanation">
@@ -10,20 +11,20 @@
       </ul>
     </div>
   <% end %>
-  <div class="row">
+  <div class="row" ng-controller="interviewcontroller">
      <div class="col-lg-4 col-lg-offset-4">
          <div class="input-group">
             <div class="field">
-              <%= f.label :interviewername,"Interviewer Name" %><br>
-              <%= f.text_field :interviewername %>
+              <%= f.label :interviewername,"Interviewer Name"%><br>
+              <%= f.text_field :interviewername,"ng-style"=>"color",:placeholder=>"Interviewer Name"%>
             </div>
             <div class="field">
-              <%= f.label :interviewercompany,"Interviewer Company" %><br>
-              <%= f.text_field :interviewercompany %>
+              <%= f.label :interviewercompany,"Interviewer Company"%><br>
+              <%= f.text_field :interviewercompany,"ng-style"=>"color",:placeholder=>"Interviewer Company"%>
             </div>
             <div class="field">
               <%= f.label :companyemail,"Company Email"%><br>
-              <%= f.text_field :companyemail %>
+              <%= f.text_field :companyemail,"ng-style"=>"color",:placeholder=>"Comapany Email"%>
             </div>
             <div class="field">
               <%= f.label :skills,"Skills"%><br>
@@ -36,7 +37,9 @@
    </div>
 </div>
 <% end %>
+</div>
 <script type="text/javascript">
+
 $('input[type="text"]').focusout(function(){
    if($(this).val()=="")
    {

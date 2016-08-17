@@ -19,6 +19,9 @@
 //= require turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
+//= require angular
+//= require angular-animate
+//= require angular-resource
 //= require_tree .
 $(document).ready(function(){
   $('input[type="submit"]').click(function(){
@@ -53,7 +56,7 @@ $(document).ready(function(){
   });
 
 
-  
+
   // $('input[type="number"]').focusout(function(){
   //    if($(this).val()=="")
   //    {

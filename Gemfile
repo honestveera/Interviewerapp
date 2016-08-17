@@ -25,19 +25,19 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
-  gem 'bootstrap-sass', '~> 3.2.0'
-  gem 'jquery-datatables-rails', '~> 3.3.0'
-  gem 'jquery-turbolinks'
-  gem 'momentjs-rails', '>= 2.9.0'
-  gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
-  gem "paperclip", "~> 5.0.0"
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'jquery-turbolinks'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem "paperclip", "~> 5.0.0"
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
  gem "heroku"
-
  gem 'backup'
 
+
+ gem 'angularjs-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
