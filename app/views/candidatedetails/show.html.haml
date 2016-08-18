@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Candidatename:
+  = @candidatedetail.candidatename
+%p
+  %strong Candidateemail:
+  = @candidatedetail.candidateemail
+%p
+  %strong Candidatecontact:
+  = @candidatedetail.candidatecontact
+%p
+  %strong Yoe:
+  = @candidatedetail.yoe
+%p
+  %strong Skills:
+  = @candidatedetail.skills
+%p
+  %strong Jobdescription:
+  = @candidatedetail.jobdescription
+= link_to 'Edit', edit_candidatedetail_path(@candidatedetail)
+|
+= link_to 'Back', candidatedetails_path

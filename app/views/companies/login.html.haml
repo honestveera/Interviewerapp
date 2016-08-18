@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Interview App
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body.body
+    .login-form1
+      .thumbnail
+        %img{:src => "assets/Markuci.png", :style => "margin-top: -19px;"}/
+      = form_for(Company.new,:url => { :action => "credential"}) do |f|
+        - if flash[:error]
+          %p.alert.alert-danger.fade.in
+            %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+            = flash[:error]
+        - if flash[:danger]
+          %p.alert.alert-danger.fade.in
+            %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+            = flash[:error]
+        .row
+          .input-group
+            .form-group
+              = f.text_field :companyemail,:placeholder=>"Company Email"
+            .form-group
+              = f.password_field :password,:placeholder=>"Company Password"
+            .checkboxy
+              %input#checky{:name => "cecky", :type => "checkbox", :value => "1"}/
+              %label{:style => "margin-left:20px;color:white"} Remember me
+            .actions
+              = f.submit "Login",:class=>"btn btn-primary btn-md"
+            = link_to 'Sign Up', signup_path,:class=>"btn btn-primary btn-md",:id=>"link"

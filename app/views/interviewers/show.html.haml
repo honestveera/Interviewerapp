@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Interviewername:
+  = @interviewer.interviewername
+%p
+  %strong Interviewercompany:
+  = @interviewer.interviewercompany
+%p
+  %strong Skills:
+  = @interviewer.skills
+= link_to 'Edit', edit_interviewer_path(@interviewer)
+|
+= link_to 'Back', interviewers_path

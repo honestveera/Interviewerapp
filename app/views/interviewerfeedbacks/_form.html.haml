@@ -1,0 +1,264 @@
+.jumbotron
+  %h3{:style => "margin-top:-10px"} Interviewer Feedback
+  = form_for(@interviewerfeedback) do |f|
+    - if @interviewerfeedback.errors.any?
+      .alert.alert-danger.fade.in
+        %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+        %div
+          %h4
+            = pluralize(@interviewerfeedback.errors.count, "error")
+            prohibited this interviewerfeedback from being saved:
+          %ul
+            - @interviewerfeedback.errors.full_messages.each do |message|
+              %li= message
+    - if flash[:notice]
+      .alert.alert-success.fade.in
+        %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+        = flash[:notice]
+    .row
+      .col-lg-4.col-md-offset-2
+        .input-group
+          .field
+            = f.label "candidatename","Scheduled Candidate"
+            %br/
+            = select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.candidateschedulestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control"
+          .form-group
+            = f.hidden_field :candidatename
+          .field
+            = f.label :interviewername,"Interviewer Name"
+            %br/
+            = f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control",:readonly=>true
+          .field
+            = f.label :skills,"Skills"
+            %br/
+            = f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true
+      .col-lg-4.col-md-offset-1
+        .input-group
+          .field
+            = f.label :scheduledate,"Schedule Date"
+            %br/
+            = f.text_field :scheduledate,:class=>"form-control",:placeholder=>"Schedule Date",:readonly=>true
+          .field
+            = f.label :scheduletime,"Schedule Time"
+            %br/
+            = f.text_field :scheduletime,:placeholder=>"Schedule Time",:class=>"form-control",:readonly=>true
+          .field
+            = f.hidden_field :candidatemail,:class=>"form-control"
+          .field
+            = f.label :addcomment,"Add Comment"
+            %br/
+            = f.text_area :addcomment,:placeholder=>"Add Comment",:class => "form-control required",:required => true
+.jumbotron
+  %h3{:style => "margin-top:-10px"} Feedback(1-LOW,5-HIGH)
+  .row
+    .col-lg-4.col-lg-offset-2
+      .input-group
+        .field
+          = f.label :relevanceexperience,"Relevance Experience"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :relevanceexperience,a
+            = a
+        .field
+          = f.label :personality,"Personality"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :personality,a
+            = a
+        .field
+          = f.label :communication,"Communication"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :communication, a
+            = a
+        .field
+          = f.label :technicalskills,"Technical Skills"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :technicalskills,a
+            = a
+        .field
+          = f.label :analyticalskills,"Analytical Skills"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :analyticalskills, a
+            = a
+        .field
+          = f.label :jobknowledge,"Job Knowledge"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :jobknowledge, a
+            = a
+        .field
+          = f.label :timemanagement,"Time Management"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :timemanagement, a
+            = a
+        .field
+          = f.label :commitementtask,"Commitement Task"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :commitementtask, a
+            = a
+    .col-lg-4.col-lg-offset-1
+      .input-group
+        .field
+          = f.label :leadership,"Leadership"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :leadership, a
+            = a
+        .field
+          = f.label :teamwork,"Teamwork"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :teamwork, a
+            = a
+        .field
+          = f.label :goalsettings,"Goal Settings"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :goalsettings, a
+            = a
+        .field
+          = f.label :creativity,"Creativity"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :creativity, a
+            = a
+        .field
+          = f.label :flexibility,"Flexibility"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :flexibility, a
+            = a
+        .field
+          = f.label :assertiveness,"Assertiveness"
+          %br/
+          - (1..5).each do |a|
+            = f.radio_button :assertiveness, a,:class=>"assertiveness"
+            = a
+        .field
+          = f.label :overallassesment,"Over All Assesment"
+          %br/
+          = f.text_field :overallassesment,:placeholder=>"Overallassesment",:class=>"form-control",:readonly=>true
+        .field
+          = f.label :status,"Status"
+          %br/
+          = f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--",:class=>"form-control"
+        .form-group
+          = hidden_field_tag :identity
+        .form-group
+          = f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]
+        .form-group
+          = f.hidden_field "password",:class=>"required",:value => session[:password]
+    .row
+      .col-lg-4.col-lg-offset-5
+        .actions
+          = f.submit :class=>"btn btn-primary btn-lg",:id=>"submit"
+  :javascript
+    $('#candidatename').change(function() {
+         var q, textmethod, valuemethod;
+         q = $(this).val();
+         alert(q);
+         textmethod = $('#candidatename option:selected').text();
+         valuemethod = $('#candidatename option:selected').val();
+         $('#interviewerfeedback_candidatename').val(textmethod);
+         $('#identity').val(valuemethod);
+         $.ajax({
+           type: 'GET',
+           url: '/candidateprofiles/search',
+           dataType: 'json',
+           data: {
+             'id': q
+           },
+           success: function(result) {
+             var contact, json, parse;
+             json = JSON.stringify(result);
+             parse = $.parseJSON(json);
+             alert(json);
+             $('#interviewerfeedback_interviewername').val(parse[0]['interviewername']);
+             $('#interviewerfeedback_skills').val(parse[0]['skills']);
+             $('#interviewerfeedback_scheduledate').val(parse[0]['scheduledate']);
+             $('#interviewerfeedback_scheduletime').val(parse[0]['scheduletime']);
+             $('#interviewerfeedback_candidatemail').val(parse[0]['candidateemail']);
+    
+             },
+            error: function() {
+             alert('Error!');
+           }
+         });
+       });
+    
+      //  $('#submit').click(function(){
+      //    $('#interviewerfeedback_interviewername option:selected').val()=$('#interviewerfeedback_interviewername option:selected').text();
+      //  });
+    
+      $('input[name="interviewerfeedback[assertiveness]"]').change(function(){
+            if(!$('input[name="interviewerfeedback[relevanceexperience]"]:checked').val())
+            {
+                alert("click relevanceexperience")
+            }
+            else
+            {
+            var re=parseFloat($('input[name="interviewerfeedback[relevanceexperience]"]:checked').val());
+            var perso=parseFloat($('input[name="interviewerfeedback[personality]"]:checked').val());
+            var commu=parseFloat($('input[name="interviewerfeedback[communication]"]:checked').val());
+            var ts=parseFloat($('input[name="interviewerfeedback[technicalskills]"]:checked').val());
+            var as=parseFloat($('input[name="interviewerfeedback[analyticalskills]"]:checked').val());
+            var jn=parseFloat($('input[name="interviewerfeedback[jobknowledge]"]:checked').val());
+            var tm=parseFloat($('input[name="interviewerfeedback[timemanagement]"]:checked').val());
+            var ct=parseFloat($('input[name="interviewerfeedback[commitementtask]"]:checked').val());
+            var ls=parseFloat($('input[name="interviewerfeedback[leadership]"]:checked').val());
+            var tw=parseFloat($('input[name="interviewerfeedback[teamwork]"]:checked').val());
+            var gs=parseFloat($('input[name="interviewerfeedback[goalsettings]"]:checked').val());
+            var cr=parseFloat($('input[name="interviewerfeedback[creativity]"]:checked').val());
+            var fl=parseFloat($('input[name="interviewerfeedback[flexibility]"]:checked').val());
+            var assert=parseFloat($('input[name="interviewerfeedback[assertiveness]"]:checked').val());
+            var avg;
+            avg=parseInt((re+perso+commu+ts+as+jn+tm+ct+ls+tw+gs+cr+fl+assert)/14);
+            $('#interviewerfeedback_overallassesment').val(avg);
+              }
+        });
+        $('input[type="submit"]').click(function(){
+           if($('input[type="text"]').val()=="")
+           {
+             $('input[type="text"]').css({"border-color":"red","border-width":"2px"});
+           }
+          if($('input[type="number"]').val()=="")
+           {
+             $('input[type="number"]').css({"border-color":"red","border-width":"2px"});
+           }
+           if($('select').val()=="")
+           {
+             $('select').css({"border-color":"red","border-width":"2px"});
+           }
+           else
+           {
+             $('input[type="text"]').css({"border-color":"skyblue"});
+             $('input[type="number"]').css({"border-color":"skyblue"});
+             $('select').css({"border-color":"skyblue"});
+             $('.jumbotron').spin({
+             lines: 12, // The number of lines to draw
+             length: 7, // The length of each line
+             width: 9, // The line thickness
+             radius: 30, // The radius of the inner circle
+             color: '#000',
+             speed: 1, // Rounds per second
+             trail: 60, // Afterglow percentage
+             shadow: false // Whether to render a shadow
+           });
+           setTimeout(function(){ $(".jumbotron").spin(false); }, 2000);
+           }
+        });
+    
+        $('input[type="text"]').change(function(){
+             $(this).css({"border-color":"skyblue"});
+        });
+        $('input[type="number"]').change(function(){
+             $(this).css({"border-color":"skyblue"});
+        });
+        $('select').change(function(){
+             $(this).css({"border-color":"skyblue"});
+        });

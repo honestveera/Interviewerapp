@@ -1,0 +1,25 @@
+- if flash[:notice]
+  .alert.alert-success.fade.in
+    %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+    = flash[:notice]
+.jumbotron
+  %p
+    %strong Interviewer Name:
+    = @interviewerfeedback.interviewername
+  %p
+    %strong Candidate Email:
+    = @interviewerfeedback.candidatemail
+  %p
+    %strong Candidate Name:
+    = @interviewerfeedback.candidatename
+  %p
+    %strong Skills:
+    = @interviewerfeedback.skills
+  %p
+    %strong Over All Assesment:
+    = @interviewerfeedback.overallassesment
+  %p
+    %strong Status:
+    = @interviewerfeedback.status
+  = link_to 'Send Offer Letter',sendemail_path,:style=>"color:blue"
+  = link_to 'Back', interviewerfeedbacks_path

@@ -38,6 +38,10 @@ gem "paperclip", "~> 5.0.0"
 
  gem 'spinjs-rails'
  gem 'angularjs-rails'
+ gem 'slim-rails'
+ gem 'haml-rails'
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

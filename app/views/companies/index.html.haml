@@ -1,0 +1,25 @@
+%p#notice= notice
+%h1 Listing Companies
+.table-responsive
+  %table.table.table-bordered.table-hover.sortable
+    %thead.bg-success
+      %tr
+        %th.text-info Companyname
+        %th.text-info Companyaddress
+        %th.text-info Contactperson
+        %th.text-info Contactnumber
+        %th.text-info Companyemail
+        %th{:colspan => "3"}
+    %tbody
+      - @companies.each do |company|
+        %tr
+          %td= company.companyname
+          %td= company.companyaddress
+          %td= company.contactperson
+          %td= company.contactnumber
+          %td= company.companyemail
+          %td= link_to 'Show', company,:class=>"btn btn-primary btn-sm"
+          %td= link_to 'Edit', edit_company_path(company),:class=>"btn btn-info btn-sm"
+          %td= link_to 'Destroy', company, method: :delete,:class=>"btn btn-danger btn-sm", data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Company', new_company_path

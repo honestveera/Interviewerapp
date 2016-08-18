@@ -1,0 +1,107 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Interviewer App
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body.body
+    .login-form
+      .thumbnail
+        %img{:src => "assets/Markuci.png", :style => "margin-top: -20px;"}/
+      = form_for(@company) do |f|
+        - if @company.errors.any?
+          .alert.alert-danger.fade.in
+            %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+            %p
+              = pluralize(@company.errors.count, "error")
+              prohibited this company from being saved:
+            %ul
+              - @company.errors.full_messages.each do |message|
+                %li= message
+        - if flash[:notice]
+          .alert.alert-success.fade.in
+            %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+            = flash[:notice]
+        .row
+          .input-group{"ng-app" => "myapp"}
+            .field{"ng-controller" => "mycontroll"}
+              = f.text_field :companyname,:placeholder=>"Company name",:class => "form-control required",:required=>true
+            .field
+              = f.text_area :companyaddress,:placeholder=>"Company address",:class => "form-control required",:required=>true,:id=>"textarea"
+            .form-group
+              = f.text_field :contactperson,:placeholder=>"Contact person",:class => "form-control required",:required=>true
+            .form-group
+              = f.text_field :contactnumber,:placeholder=>"Contact number",:class => "form-control required",:required => true,:onkeypress=>"return isNumberKey(event)"
+            .form-group
+              = f.text_field :companyemail,:placeholder=>"Email",:class => "form-control required",:required => true
+            .form-group
+              = f.password_field :password,:placeholder=>" Password",:class => "form-control required",:required => true
+            .form-group
+              = f.password_field :password_confirmation,:placeholder=>"Confirm Password",:class => "form-control required",:required => true
+            .form-group
+              %input#checky{:name => "cecky", :type => "checkbox", :value => "1"}/
+              %label.terms{:style => "color:white"} I accept the terms of use
+            .actions
+              = f.submit :class=>"btn btn-primary btn-md"
+            = link_to 'Login', root_path,:class=>"btn btn-primary btn-md",:id=>"link"
+    :javascript
+      var app=angular.module("myapp",[]);
+      app.controller("mycontroll",function($scope){
+          
+      });
+
+
+      function isNumberKey(evt)
+        {
+           var charCode = (evt.which) ? evt.which : event.keyCode
+           if (charCode > 31 && (charCode < 48 || charCode > 57))
+              return false;
+           return true;
+        }
+        $('input[type="password"]').focusout(function(){
+           if($(this).val()=="")
+           {
+             $(this).css({"border-color":"red","border-width":"2px"});
+           }
+           else if($(this).val().length<6)
+           {
+             $(this).css({"border-color":"orange","border-width":"2px"});
+           }
+           else
+           {
+             $(this).css({"border-color":"lightgreen"});
+           }
+        });
+        $('input[type="text"]').focusout(function(){
+           if($(this).val()=="")
+           {
+             $(this).css({"border-color":"red","border-width":"2px"});
+           }
+           else
+           {
+             $(this).css({"border-color":"lightgreen"});
+           }
+        });
+        $('input[type="number"]').focusout(function(){
+           if($(this).val()=="")
+           {
+             $(this).css({"border-color":"red","border-width":"2px"});
+           }
+           else
+           {
+             $(this).css({"border-color":"lightgreen"});
+           }
+        });
+        $('select').focusout(function(){
+           if($(this).val()=="")
+           {
+             $(this).css({"border-color":"red","border-width":"2px"});
+           }
+           else
+           {
+             $(this).css({"border-color":"lightgreen"});
+           }
+        });

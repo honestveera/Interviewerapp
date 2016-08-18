@@ -1,0 +1,52 @@
+.jumbotron
+  %h3 Interviewer Feedbacks
+  .table-responsive
+    %table#example.datatable.table.table-bordered.table-hover.sortable
+      %thead.bg-success
+        %tr
+          %th.text-info Interviewer Name
+          %th.text-info Candidate Name
+          %th.text-info Skills
+          %th.text-info Schedule Date
+          %th.text-info Schedule Time
+          %th.text-info Over all Rating
+          %th.text-info Status
+          %th.text-info Show
+          / <th class="text-info">Edit</th>
+          %th.text-info Destroy
+      %tbody
+        - @interviewerfeedbacks.each do |interviewerfeedback|
+          - if interviewerfeedback.status=="Pass"
+            %tr{:bgcolor => "#c4f7b8"}
+              %td= interviewerfeedback.interviewername
+              %td= interviewerfeedback.candidatename
+              %td= interviewerfeedback.skills
+              %td= interviewerfeedback.scheduledate
+              %td= interviewerfeedback.scheduletime
+              %td= interviewerfeedback.overallassesment
+              %td= interviewerfeedback.status
+              %td= link_to 'Show', interviewerfeedback,:class=>"btn btn-primary btn-sm"
+              / <td><haml_loud> link_to &#39;Edit&#39;, edit_interviewerfeedback_path(interviewerfeedback),:class=&gt;&quot;btn btn-info btn-sm&quot; </haml_loud></td>
+              %td= link_to 'Destroy', interviewerfeedback, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm"
+          - else
+            %tr{:bgcolor => "#f7b8b8"}
+              %td= interviewerfeedback.interviewername
+              %td= interviewerfeedback.candidatename
+              %td= interviewerfeedback.skills
+              %td= interviewerfeedback.scheduledate
+              %td= interviewerfeedback.scheduletime
+              %td= interviewerfeedback.overallassesment
+              %td= interviewerfeedback.status
+              %td= link_to 'Show', interviewerfeedback,:class=>"btn btn-primary btn-sm"
+              / <td><haml_loud> link_to &#39;Edit&#39;, edit_interviewerfeedback_path(interviewerfeedback),:class=&gt;&quot;btn btn-info btn-sm&quot; </haml_loud></td>
+              %td= link_to 'Destroy', interviewerfeedback, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm"
+  %script{:type => "text/javaScript"}
+    :cdata
+      $('.datatable').DataTable({
+      "paging": true,
+      "ordering": true,
+      "info": true,
+      "scrollX":"100%",
+      "scrollY": "300px"
+      });
+%br/

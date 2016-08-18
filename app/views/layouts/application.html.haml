@@ -1,0 +1,109 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Interviewerapp
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    #header
+      .container
+        %nav.navbar.navbar-default.navbar-fixed-top{:style => "background-color: #3396D1;"}
+          / Brand and toggle get grouped for better mobile display
+          .navbar-header
+            %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %img#logo{:src => "/assets/Markuci.png"}/
+            %a.navbar-bran{:href => "/schedulereport", :style => "color:white;text-decoration: none;"} InterviewApp
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse{:style => "margin-top:30px"}
+            %ul.nav.navbar-nav
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  Candidates
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "/candidateentry", :style => ""} Candidates Profile
+                  %li.divider
+                  %li
+                    %a{:href => "/candidateschedule"} Candidates Schedule
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  Interview Feedback
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "/interviewerfeed"} Interviewer Feedback
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  Reports
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "/candidatereports"} Candidate Reports
+                  %li.divider
+                  %li
+                    %a{:href => "/candidateschedulereports"} Candidate Schedule Reports
+            %ul.nav.navbar-nav.navbar-right
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  %span.glyphicon.glyphicon-user
+                  Profile
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"}
+                      %span.glyphicon.glyphicon-th.text-success
+                      Home
+                  %li
+                    %a{:href => "#"}
+                      %span.glyphicon.glyphicon-pencil.text-success
+                      DashBoard
+                  %li
+                    = link_to :action => "signout",:controller=>"application" do
+                      %span.glyphicon.glyphicon-log-out.text-success
+                      Signout
+    /
+      <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+      </div>
+      <!-- Use any element to open the sidenav
+    /
+      <span onclick="openNav()">open</span>
+      
+      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page
+    /
+      <div id="main">
+      \...
+      </div>
+    .container
+      = yield
+    :javascript
+      $('.navbar-toggle .collapsed').click(function(){
+              alert("Sidebar");
+         });
+      
+         $('.navbar-bran').mouseover(function(){
+           $('.navbar-bran').css({"background-color":"skyblue","color":"black"});
+         });
+         $('.navbar-bran').mouseout(function(){
+           $('.navbar-bran').css({"background-color":"#3396D1","color":"white"});
+         });
+         /* Set the width of the side navigation to 250px */
+       function openNav() {
+           document.getElementById("mySidenav").style.width = "250px";
+       }
+      
+       /* Set the width of the side navigation to 0 */
+       function closeNav() {
+           document.getElementById("mySidenav").style.width = "0";
+       }

@@ -1,0 +1,23 @@
+%p#notice= notice
+%h1 Listing Interviewers
+.table-responsive
+  %table.table.table-bordered.table-hover.sortable
+    %thead.bg-success
+      %tr
+        %th.text-info Interviewername
+        %th.text-info Interviewercompany
+        %th.text-info CompanyEmail
+        %th.text-info Skills
+        %th{:colspan => "3"}
+    %tbody
+      - @interviewers.each do |interviewer|
+        %tr
+          %td= interviewer.interviewername
+          %td= interviewer.interviewercompany
+          %td= interviewer.companyemail
+          %td= interviewer.skills
+          %td= link_to 'Show', interviewer,:class=>"btn btn-primary btn-sm"
+          %td= link_to 'Edit', edit_interviewer_path(interviewer),:class=>"btn btn-info btn-sm"
+          %td= link_to 'Destroy', interviewer, method: :delete,:class=>"btn btn-danger btn-sm", data: { confirm: 'Are you sure?' }
+  %br/
+= link_to 'New Interviewer', new_interviewer_path

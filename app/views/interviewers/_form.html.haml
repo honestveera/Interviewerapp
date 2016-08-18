@@ -1,0 +1,62 @@
+%div{"ng-app" => "interviewerform"}
+  = form_for(@interviewer) do |f|
+    - if @interviewer.errors.any?
+      #error_explanation
+        %h4
+          = pluralize(@interviewer.errors.count, "error")
+          prohibited this interviewer from being saved:
+        %ul
+          - @interviewer.errors.full_messages.each do |message|
+            %li= message
+    .row{"ng-controller" => "interviewcontroller"}
+      .col-lg-4.col-lg-offset-4
+        .input-group
+          .field
+            = f.label :interviewername,"Interviewer Name"
+            %br/
+            = f.text_field :interviewername,"ng-style"=>"color",:placeholder=>"Interviewer Name"
+          .field
+            = f.label :interviewercompany,"Interviewer Company"
+            %br/
+            = f.text_field :interviewercompany,"ng-style"=>"color",:placeholder=>"Interviewer Company"
+          .field
+            = f.label :companyemail,"Company Email"
+            %br/
+            = f.text_field :companyemail,"ng-style"=>"color",:placeholder=>"Comapany Email"
+          .field
+            = f.label :skills,"Skills"
+            %br/
+            = f.select :skills,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skills--"
+          .actions
+            = f.submit
+:javascript
+  $('input[type="text"]').focusout(function(){
+     if($(this).val()=="")
+     {
+       $(this).css({"border-color":"red","border-width":"2px"});
+     }
+     else
+     {
+       $(this).css({"border-color":"skyblue"});
+     }
+  });
+  $('input[type="number"]').focusout(function(){
+     if($(this).val()=="")
+     {
+       $(this).css({"border-color":"red","border-width":"2px"});
+     }
+     else
+     {
+       $(this).css({"border-color":"skyblue"});
+     }
+  });
+  $('select').focusout(function(){
+     if($(this).val()=="")
+     {
+       $(this).css({"border-color":"red","border-width":"2px"});
+     }
+     else
+     {
+       $(this).css({"border-color":"skyblue"});
+     }
+  });

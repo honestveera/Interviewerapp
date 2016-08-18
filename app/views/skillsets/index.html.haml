@@ -1,0 +1,17 @@
+%p#notice= notice
+%h1 Listing Skillsets
+.table-responsive
+  %table.table.table-bordered.table-hover.sortable
+    %thead.bg-success
+      %tr
+        %th.text-info Skills
+        %th{:colspan => "3"}
+    %tbody
+      - @skillsets.each do |skillset|
+        %tr
+          %td= skillset.skills
+          %td= link_to 'Show', skillset,:class=>"btn btn-primary btn-sm"
+          %td= link_to 'Edit', edit_skillset_path(skillset),:class=>"btn btn-info btn-sm"
+          %td= link_to 'Destroy', skillset, method: :delete,:class=>"btn btn-danger btn-sm", data: { confirm: 'Are you sure?' }
+  %br/
+= link_to 'New Skillset', new_skillset_path,:class=>"btn btn-primary btn-sm"

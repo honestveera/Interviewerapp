@@ -1,0 +1,194 @@
+= form_for(@candidateprofile) do |f|
+  - if @candidateprofile.errors.any?
+    .alert.alert-danger.fade.in
+      %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+      %div
+        %h4
+          = pluralize(@candidateprofile.errors.count, "error")
+          prohibited this candidateprofile from being saved:
+        %ul
+          - @candidateprofile.errors.full_messages.each do |message|
+            %li= message
+  - if flash[:notice]
+    .alert.alert-success.fade.in
+      %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+      = flash[:notice]
+  .row
+    .col-lg-4.col-lg-offset-2
+      .input-group
+        .field
+          = f.label :candidatename,"Candidate Name"
+          %br/
+          = f.text_field :candidatename,:placeholder=>"Candidate Name" ,:readonly => true,:class => "form-control required",:required => true
+        .field
+          = f.label :candidateemail,"Candidate Email"
+          %br/
+          = f.text_field :candidateemail,:placeholder=>"Candidate Email" ,:readonly => true,:class => "form-control required",:required => true
+        .field
+          = f.label :candidatecontact,"Candidate Contact"
+          %br/
+          = f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:readonly => true,:class => "form-control required",:required => true
+        .field
+          = f.label :skills,"Skills"
+          %br/
+          = f.text_field :skills,:placeholder=>"Candidate Skills",:readonly => true,:class => "form-control required",:required => true
+        .field
+          = f.label :YOE,"Year Of Experience "
+          %br/
+          = f.text_field :YOE,:placeholder=>"Year Of Experience",:id=>"textarea",:readonly => true,:class => "form-control required",:required => true
+        .field
+          = f.label :jobtitle,"Job Title"
+          %br/
+          = f.text_field :jobtitle,:placeholder=>"Job Title",:class => "form-control required",:required => true
+    .col-lg-3.col-lg-offset-1
+      .input-group
+        .field
+          = f.label 'interviewername',"Interviewer Name"
+          %br/
+          = select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewer Name--",:class => "required",:required => true
+        .form-group
+          = f.hidden_field :interviewername
+        .field
+          = f.label :intervieweremail ,"Interviewer Mail"
+          %br/
+          = f.text_field :intervieweremail,:placeholder=>"Interviewer Mail",:readonly => true,:class => "form-control required",:required => true
+        .field
+          = f.label :scheduledate,"Schedule Date"
+          %br/
+          #datetimepicker4.input-group.date
+            = f.text_field :scheduledate,:class=>"form-control"
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+        .field
+          = f.label :scheduletime,"Schedule Time"
+          %br/
+          #datetimepicker3.input-group.date
+            = f.text_field :scheduletime,:class=>"form-control"
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-time
+        .field
+          = f.label :jobdescription,"Job Description"
+          %br/
+          = f.text_area :jobdescription,:placeholder=>"Job Description",:id=>"textarea" ,:class => "form-control required",:required => true
+        .form-group
+          = f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]
+        .form-group
+          = f.hidden_field "password",:class=>"required",:value => session[:password]
+        .form-group
+          = hidden_field_tag :identity
+        .form-group
+          = f.hidden_field :status,:value =>"schedule"
+        .form-group
+          = f.hidden_field :candidatedetail_id
+    .row
+      .col-lg-4.col-lg-offset-5
+        .actions
+          = f.submit :class=>"btn btn-primary btn-lg",:id=>"submit"
+:javascript
+  $('#datetimepicker3').datetimepicker({
+                      format: 'LT'
+                  });
+    $('#datetimepicker4').datetimepicker({
+                                   format: 'DD-MM-YYYY'
+                               });
+  
+   $('#candidatename').change(function() {
+     var q, textmethod, valuemethod;
+     q = $(this).val();
+     textmethod = $('#candidatename option:selected').text();
+     valuemethod = $('#candidatename option:selected').val();
+     $('#candidateprofile_candidatename').val(textmethod);
+     $('#identity').val(valuemethod);
+     $('#candidateprofile_candidatedetail_id').val(valuemethod);
+  
+     $.ajax({
+       type: 'GET',
+       url: '/candidatedetails/search',
+       dataType: 'json',
+       data: {
+         'id': q
+       },
+       success: function(result) {
+         var contact, json, parse;
+         json = JSON.stringify(result);
+         parse = $.parseJSON(json);
+         alert(json);
+         $('#candidateprofile_candidateemail').val(parse[0]['candidateemail']);
+         contact = parseFloat(parse[0]['candidatecontact']);
+         $('#candidateprofile_candidatecontact').val(contact);
+         $('#candidateprofile_skills').val(parse[0]['skills']);
+         $('#textarea').val(parse[0]['yoe']);
+       },
+       error: function() {
+         alert('Error!');
+       }
+     });
+   });
+  
+   $('#interviewername').change(function() {
+     var name;
+     name = $(this).val();
+     textmethod = $('#interviewername option:selected').text();
+     valuemethod = $('#interviewername option:selected').val();
+     $('#candidateprofile_interviewername').val(textmethod);
+     $.ajax({
+       type: 'GET',
+       url: '/interviewers/search',
+       dataType: 'json',
+       data: {
+         'id': name
+       },
+       success: function(result) {
+         var json, parse;
+         json = JSON.stringify(result);
+         parse = $.parseJSON(json);
+         alert(json);
+         $("#candidateprofile_intervieweremail").val(parse[0]['companyemail']);
+       },
+       error: function() {
+         alert('Error!');
+       }
+     });
+   });
+   $('input[type="submit"]').click(function(){
+      if($('input[type="text"]').val()=="")
+      {
+        $('input[type="text"]').css({"border-color":"red","border-width":"2px"});
+      }
+     if($('input[type="number"]').val()=="")
+      {
+        $('input[type="number"]').css({"border-color":"red","border-width":"2px"});
+      }
+      if($('select').val()=="")
+      {
+        $('select').css({"border-color":"red","border-width":"2px"});
+      }
+      else
+      {
+        $('input[type="text"]').css({"border-color":"skyblue"});
+        $('input[type="number"]').css({"border-color":"skyblue"});
+        $('select').css({"border-color":"skyblue"});
+        $('.jumbotron').spin({
+        lines: 12, // The number of lines to draw
+        length: 7, // The length of each line
+        width: 9, // The line thickness
+        radius: 30, // The radius of the inner circle
+        color: '#000',
+        z-index: 2,
+        speed: 1, // Rounds per second
+        trail: 60, // Afterglow percentage
+        shadow: false // Whether to render a shadow
+      });
+      setTimeout(function(){ $(".jumbotron").spin(false); }, 4000);
+      }
+   });
+  
+   $('input[type="text"]').change(function(){
+        $(this).css({"border-color":"skyblue"});
+   });
+   $('input[type="number"]').change(function(){
+        $(this).css({"border-color":"skyblue"});
+   });
+   $('select').change(function(){
+        $(this).css({"border-color":"skyblue"});
+   });

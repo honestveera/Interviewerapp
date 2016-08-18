@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Skills:
+  = @skillset.skills
+= link_to 'Edit', edit_skillset_path(@skillset)
+|
+= link_to 'Back', skillsets_path
