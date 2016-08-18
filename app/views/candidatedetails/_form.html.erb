@@ -55,7 +55,7 @@
           <%= f.label :jobdescription,"Job Description"%><br>
           <%= f.text_area :jobdescription,:placeholder=>"Job Description",:class=>"form-control",:id=>"textarea"%>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-app="">
           <%= f.label :attachedfile,"Attached File"%><br>
           <%= f.file_field :attachedfile%>
         </div>
@@ -119,6 +119,17 @@ function isNumberKey(evt)
          $('input[type="text"]').css({"border-color":"skyblue"});
          $('input[type="number"]').css({"border-color":"skyblue"});
          $('select').css({"border-color":"skyblue"});
+         $('.jumbotron').spin({
+         lines: 12, // The number of lines to draw
+         length: 7, // The length of each line
+         width: 9, // The line thickness
+         radius: 30, // The radius of the inner circle
+         color: '#000',
+         speed: 1, // Rounds per second
+         trail: 60, // Afterglow percentage
+         shadow: false // Whether to render a shadow
+       });
+       setTimeout(function(){ $(".jumbotron").spin(false); }, 2000);
        }
     });
 

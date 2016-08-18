@@ -31,7 +31,7 @@ class InterviewersController < ApplicationController
   # POST /interviewers.json
   def create
     @interviewer = Interviewer.new(interviewer_params)
-
+    
     respond_to do |format|
       if @interviewer.save
         format.html { redirect_to @interviewer, notice: 'Interviewer was successfully created.' }

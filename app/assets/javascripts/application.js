@@ -18,13 +18,17 @@
 //= require dataTables/extras/dataTables.tableTools
 //= require turbolinks
 //= require moment
+
 //= require bootstrap-datetimepicker
 //= require angular
 //= require angular-animate
 //= require angular-resource
+//= require spin
+//= require jquery.spin
 //= require_tree .
 $(document).ready(function(){
   $('input[type="submit"]').click(function(){
+
      if($('input[type="text"]').val()=="")
      {
        $('input[type="text"]').css({"border-color":"red","border-width":"2px"});
@@ -42,6 +46,7 @@ $(document).ready(function(){
        $('input[type="text"]').css({"border-color":"skyblue"});
        $('input[type="number"]').css({"border-color":"skyblue"});
        $('select').css({"border-color":"skyblue"});
+       
      }
   });
 

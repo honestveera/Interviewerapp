@@ -197,6 +197,18 @@
       $('input[type="text"]').css({"border-color":"skyblue"});
       $('input[type="number"]').css({"border-color":"skyblue"});
       $('select').css({"border-color":"skyblue"});
+      $('.jumbotron').spin({
+      lines: 12, // The number of lines to draw
+      length: 7, // The length of each line
+      width: 9, // The line thickness
+      radius: 30, // The radius of the inner circle
+      color: '#000',
+      z-index: 2,
+      speed: 1, // Rounds per second
+      trail: 60, // Afterglow percentage
+      shadow: false // Whether to render a shadow
+    });
+    setTimeout(function(){ $(".jumbotron").spin(false); }, 4000);
     }
  });
 
