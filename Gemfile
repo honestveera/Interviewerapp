@@ -35,7 +35,7 @@ gem "paperclip", "~> 5.0.0"
  gem 'bcrypt', '~> 3.1.7'
  gem "heroku"
  gem 'backup'
-
+ gem 'slim-rails'
  gem 'spinjs-rails'
  gem 'angularjs-rails'
 # Use Unicorn as the app server
