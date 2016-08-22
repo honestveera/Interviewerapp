@@ -1,0 +1,220 @@
+<%= form_for(@candidateprofile) do |f| %>
+
+
+  <% if @candidateprofile.errors.any? %>
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <div >
+      <h4><%= pluralize(@candidateprofile.errors.count, "error") %> prohibited this candidateprofile from being saved:</h4>
+
+      <ul>
+      <% @candidateprofile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    </div>
+  <% end %>
+  <% if flash[:notice] %>
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <%= flash[:notice] %>
+   </div>
+  <% end %>
+  <div class="row">
+     <div class="col-lg-4 col-lg-offset-2">
+         <div class="input-group">
+  <div class="form-group">
+    <%= f.label 'candidatename',"Candidate Name"%><br>
+    <%= select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("new"),"id","candidatename"),:prompt=>"--Select Candidate Name--",:class => "required",:required => true%>
+  </div>
+
+  <div class="form-group">
+    <%= f.hidden_field :candidatename%>
+  </div>
+  <div class="form-group">
+    <%= f.label :candidateemail,"Candidate Email" %><br>
+    <%= f.text_field :candidateemail,:placeholder=>"Candidate Email" ,:readonly => true,:class => "form-control required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :candidatecontact,"Candidate Contact"%><br>
+    <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:readonly => true,:class => "form-control required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :skills,"Skills" %><br>
+    <%=f.text_field :skills,:placeholder=>"Candidate Skills",:readonly => true,:class => "form-control required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :YOE,"Year Of Experience " %><br>
+    <%= f.text_field :YOE,:placeholder=>"Year Of Experience",:id=>"textarea",:readonly => true,:class => "form-control required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :jobtitle,"Job Title" %><br>
+    <%= f.text_field :jobtitle,:placeholder=>"Job Title",:readonly => true,:class => "form-control required",:required => true%>
+  </div>
+
+</div>
+</div>
+<div class="col-lg-3 col-lg-offset-1">
+    <div class="input-group">
+
+      <div class="form-group">
+        <%= f.label 'interviewername',"Interviewer Name"%><br>
+        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewer Name--",:class => "required",:required => true%>
+      </div>
+
+      <div class="form-group">
+        <%= f.hidden_field :interviewername%>
+      </div>
+  <div class="form-group">
+    <%= f.label :intervieweremail ,"Interviewer Mail"%><br>
+    <%=f.text_field :intervieweremail,:placeholder=>"Interviewer Mail",:readonly => true,:class => "form-control required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :scheduledate,"Schedule Date" %><br>
+    <div class='input-group date' id='datetimepicker4'>
+        <%= f.text_field :scheduledate,:class=>"form-control"%>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :scheduletime,"Schedule Time"%><br>
+    <div class='input-group date' id='datetimepicker3'>
+        <%= f.text_field :scheduletime,:class=>"form-control"%>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+          </span>
+    </div>
+    </div>
+  <div class="form-group">
+    <%= f.label :jobdescription,"Job Description" %><br>
+    <%= f.text_area :jobdescription,:placeholder=>"Job Description",:readonly=>true,:class => "form-control required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field "password",:class=>"required",:value => session[:password]%>
+  </div>
+  <div class="form-group">
+    <%=hidden_field_tag :identity%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :status,:value =>"schedule"%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :candidatedetail_id%>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div  class="col-lg-4 col-lg-offset-5">
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-primary btn-lg",:id=>"submit",:style=>"margin-top:13px"%>
+  </div>
+</div>
+</div>
+</div>
+<% end %>
+ <script type="text/javascript">
+  $('#datetimepicker3').datetimepicker({
+      format: 'LT'
+      });
+  $('#datetimepicker4').datetimepicker({
+       format: 'DD-MM-YYYY'
+      });
+
+ $('#candidatename').change(function() {
+   var q, textmethod, valuemethod;
+   q = $(this).val();
+   textmethod = $('#candidatename option:selected').text();
+   valuemethod = $('#candidatename option:selected').val();
+   $('#candidateprofile_candidatename').val(textmethod);
+   $('#identity').val(valuemethod);
+   $('#candidateprofile_candidatedetail_id').val(valuemethod);
+   $.ajax({
+     type: 'GET',
+     url: '/candidatedetails/search',
+     dataType: 'json',
+     data: {
+       'id': q
+     },
+     success: function(result) {
+       var contact, json, parse;
+       json = JSON.stringify(result);
+       parse = $.parseJSON(json);
+       alert(json);
+       $('#candidateprofile_candidateemail').val(parse[0]['candidateemail']);
+       contact = parseFloat(parse[0]['candidatecontact']);
+       $('#candidateprofile_candidatecontact').val(contact);
+       $('#candidateprofile_skills').val(parse[0]['skills']);
+       $('#textarea').val(parse[0]['yoe']);
+       $('#candidateprofile_jobtitle').val(parse[0]['jobtitle']);
+       $('#candidateprofile_jobdescription').val(parse[0]['jobdescription']);
+     },
+     error: function() {
+       alert('Error!');
+     }
+   });
+ });
+
+ $('#interviewername').change(function() {
+   var name;
+   name = $(this).val();
+   textmethod = $('#interviewername option:selected').text();
+   valuemethod = $('#interviewername option:selected').val();
+   $('#candidateprofile_interviewername').val(textmethod);
+   $.ajax({
+     type: 'GET',
+     url: '/interviewers/search',
+     dataType: 'json',
+     data: {
+       'id': name
+     },
+     success: function(result) {
+       var json, parse;
+       json = JSON.stringify(result);
+       parse = $.parseJSON(json);
+       alert(json);
+       $("#candidateprofile_intervieweremail").val(parse[0]['companyemail']);
+     },
+     error: function() {
+       alert('Error!');
+     }
+   });
+ });
+ $('input[type="submit"]').click(function(){
+    if($('input[type="text"]').val()=="")
+    {
+      $('input[type="text"]').css({"border-color":"red","border-width":"2px"});
+    }
+   if($('input[type="number"]').val()=="")
+    {
+      $('input[type="number"]').css({"border-color":"red","border-width":"2px"});
+    }
+    if($('select').val()=="")
+    {
+      $('select').css({"border-color":"red","border-width":"2px"});
+    }
+    else
+    {
+      $('input[type="text"]').css({"border-color":"skyblue"});
+      $('input[type="number"]').css({"border-color":"skyblue"});
+      $('select').css({"border-color":"skyblue"});
+    }
+ });
+
+   $('input[type="text"]').change(function(){
+        $(this).css({"border-color":"skyblue"});
+   });
+   $('input[type="number"]').change(function(){
+        $(this).css({"border-color":"skyblue"});
+   });
+   $('select').change(function(){
+        $(this).css({"border-color":"skyblue"});
+   });
+
+ </script>

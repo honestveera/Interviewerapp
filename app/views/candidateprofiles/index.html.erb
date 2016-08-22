@@ -1,0 +1,61 @@
+<div class="jumbotron">
+<h3>Candidate Schedule Reports</h3>
+<div class="table-responsive">
+<table class="datatable table table-bordered table-hover sortable">
+  <thead class="bg-success">
+    <tr>
+      <th class="text-info">Candidate Name</th>
+      <th class="text-info">Candidate Email</th>
+      <th class="text-info">Candidate Contact</th>
+      <th class="text-info">Skills</th>
+      <th class="text-info">YOE</th>
+      <th class="text-info">Interviewer Name</th>
+      <th class="text-info">Interviewer Email</th>
+      <th class="text-info">Schedule Date</th>
+      <th class="text-info">Schedule Time</th>
+      <th class="text-info">Job Title</th>
+      <!-- <th class="text-info" >Show</th>
+      <th class="text-info">Edit</th>
+      <th class="text-info">Destroy</th> -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidateprofiles.each do |candidateprofile| %>
+      <tr data-link="<%=edit_candidateprofile_path(candidateprofile)%>">
+        <td><%= candidateprofile.candidatename %></td>
+        <td><%= candidateprofile.candidateemail %></td>
+        <td><%= candidateprofile.candidatecontact %></td>
+        <td><%= candidateprofile.skills %></td>
+        <td><%= candidateprofile.YOE %></td>
+        <td><%= candidateprofile.interviewername %></td>
+        <td><%= candidateprofile.intervieweremail %></td>
+        <td><%= candidateprofile.scheduledate %></td>
+        <td><%= candidateprofile.scheduletime %></td>
+        <td><%= candidateprofile.jobtitle %></td>
+        <!-- <td><%= link_to 'Show', candidateprofile,:class=>"btn btn-primary btn-sm"%></td>
+        <td><%= link_to 'Edit', edit_candidateprofile_path(candidateprofile),:class=>"btn btn-info btn-sm"%></td>
+        <td><%= link_to 'Destroy', candidateprofile, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm"%></td>
+    -->  </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<script type="text/javaScript">
+ $('.datatable').DataTable({
+    "paging": true,
+    "ordering": true,
+    "info": true,
+    "scrollX": "100%",
+    "scrollY": "300px"
+  });
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link");
+  });
+
+
+
+</script>
+</div>
+</div>
