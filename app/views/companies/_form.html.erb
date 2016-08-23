@@ -14,7 +14,7 @@
     </div>
    <%= form_for(@company) do |f| %>
         <% if @company.errors.any? %>
-          <div class="alert alert-danger fade in">
+          <div class="alert alert-danger fade in" style="">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <p><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</p>
             <ul>
@@ -25,7 +25,7 @@
           </div>
         <% end %>
         <% if flash[:notice] -%>
-        <div class="alert alert-success fade in">
+         <div class="alert alert-success fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <%= flash[:notice] %>
          </div>

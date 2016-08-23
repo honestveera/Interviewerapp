@@ -48,12 +48,22 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem "sqlite3"
-  gem 'rspec-rails'
-  gem "factory_girl_rails"
-  gem "pry-rails"
+  gem 'rspec-rails'#unit test
+  gem 'capybara'#integration  test
+  gem 'selenium-webdriver'#Automation tool
+  gem "factory_girl_rails"  #Alternative for fixtures
+  gem "pry-rails" #console
   gem "rails-erd"
+
  #Generates Entity Relationship Diagram
 end
+ group :test do
+   gem 'faker'
+   gem 'shoulda'
+   gem 'shoulda-matchers'
+   gem 'simplecov', :require => false
+ end
+
 group :production, :staging do
   gem "pg"
   gem 'rails_12factor'

@@ -15,7 +15,7 @@ class CompaniesController < ApplicationController
           session[:password]=params[:company][:password]
           format.html { redirect_to schedulereport_url }
         else
-          format.html { redirect_to login_url}
+          format.html { redirect_to root_url}
           flash[:error] = "Invalid Email and Password"
         end
     end
@@ -50,7 +50,7 @@ class CompaniesController < ApplicationController
         format.html { redirect_to signup_url, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
-        format.html { redirect_to signup_url}
+        format.html { render :new,notice: 'Invalid Fields'}
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end

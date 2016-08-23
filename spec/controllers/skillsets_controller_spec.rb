@@ -23,9 +23,9 @@ RSpec.describe SkillsetsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Skillset. As you add validations to Skillset, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {FactoryGirl.create(:skillset)}
+  let(:valid_attributes) { FactoryGirl.attributes_for(:skillset) }
 
-  let(:invalid_attributes) {{"skills"=>""}}
+  let(:invalid_attributes) {{"id"=>"","skills"=>""}}
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -45,6 +45,7 @@ RSpec.describe SkillsetsController, type: :controller do
       skillset = Skillset.create! valid_attributes
       get :show, params: {id: skillset.to_param}, session: valid_session
       expect(assigns(:skillset)).to eq(skillset)
+      # expect(:get => "/skillsets/1").to route_to("skillsets#show", :id => "1")
     end
   end
 
@@ -99,7 +100,7 @@ RSpec.describe SkillsetsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        skip({"id"=>"1","skills"=>"phython"})
       }
 
       it "updates the requested skillset" do

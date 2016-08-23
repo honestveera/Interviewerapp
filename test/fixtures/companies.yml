@@ -5,9 +5,10 @@ one:
   companyaddress: MyText
   contactperson: MyString
   contactnumber: 1
-
+  Companyemail: MyString
 two:
   companyname: MyString
   companyaddress: MyText
   contactperson: MyString
   contactnumber: 1
+  Companyemail: MyString

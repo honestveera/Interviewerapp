@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   #resources :candidatedetails
   resources :interviewerfeedbacks
   resources :companies
-  #resources :candidateprofiles
-  #resources :interviewers
   resources :skillsets
 
 
@@ -15,6 +13,7 @@ Rails.application.routes.draw do
   get 'signup' => 'companies#new'
   get 'sendemailcandidate/:id' =>'interviewerfeedbacks#sendmailcandidate',as:'sendemail'
   get 'schedulereport'=>'candidateprofiles#schedulereport'
+
   resources :candidatedetails do
     collection do
       get :search
