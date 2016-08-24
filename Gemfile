@@ -53,9 +53,9 @@ group :development, :test do
   gem 'selenium-webdriver'#Automation tool
   gem "factory_girl_rails"  #Alternative for fixtures
   gem "pry-rails" #console
-  gem "rails-erd"
-
- #Generates Entity Relationship Diagram
+  gem "rails-erd"#Generates Entity Relationship Diagram
+  # Ruby on Rails code optimization and cleanup
+  
 end
  group :test do
    gem 'faker'

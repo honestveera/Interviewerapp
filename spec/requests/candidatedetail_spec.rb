@@ -96,6 +96,9 @@ RSpec.describe "Automation script",type: :request do
         choose('interviewerfeedback_assertiveness_3')
         select "Pass",:from=>"interviewerfeedback[status]"
         click_button('Create Interviewerfeedback')
+        click_link('Profile')
+        click_link('Signout')
+        visit '/'
      end
   end
 
