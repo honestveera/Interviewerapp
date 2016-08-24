@@ -5,15 +5,24 @@ RSpec.describe "Automation script",type: :request do
    describe  "Candidate Creation Scenario",:js=>true do
     let(:login) { FactoryGirl.build(:company) }
     let(:skillset) { FactoryGirl.build(:skillset) }
+    let(:interviewer){FactoryGirl.build(:interviewer)}
     let(:candidatedetail) { FactoryGirl.build(:candidatedetail)}
     let(:candidateprofile) { FactoryGirl.build(:candidateprofile)}
+    let(:interviewerfeedback) { FactoryGirl.build(:interviewerfeedback)}
      it "Candidate Creation Positive" do
          #skillsets add
+         visit '/skillsets/new'
+         fill_in "skillset[skills]",:with=>skillset.skills
+         click_button('Create Skillset')
+         visit '/skillsets'
 
-        #  visit '/skillsets/new'
-        #  fill_in "skillset[skills]",:with=>skillset.skills
-        #  click_button('Create Skillset')
-        #  visit '/skillsets'
+        #interviewer details
+         visit '/interviewers/new'
+         fill_in "interviewer[interviewername]",:with=>interviewer.interviewername
+         fill_in "interviewer[interviewercompany]",:with=>interviewer.interviewercompany
+         fill_in "interviewer[companyemail]",:with=>interviewer.companyemail
+         select skillset.skills,:from=>"interviewer[skills]"
+         click_button('Create Interviewer')
 
         #Signup and login
         visit '/signup'
@@ -46,10 +55,47 @@ RSpec.describe "Automation script",type: :request do
         fill_in  "candidatedetail[jobdescription]",:with=>candidatedetail.jobdescription
         #fill_in  "candidatedetail[status]",:with=>candidatedetail.status
         click_button('Create Candidatedetail')
+
         #Candidate Schedule
         visit '/candidateschedule'
-        select "2", :from => "candidateprofile[candidatename]"
-        
+        select candidatedetail.candidatename, :from => "candidatename"
+        wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoAlertPresentError
+        alert = wait.until { page.driver.browser.switch_to.alert }
+        alert.accept
+        select interviewer.interviewername, :from=>"interviewername"
+        wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoAlertPresentError
+        alert = wait.until { page.driver.browser.switch_to.alert }
+        alert.accept
+        fill_in "candidateprofile[scheduledate]",:with=>candidateprofile.scheduledate
+        fill_in "candidateprofile[scheduletime]",:with=>candidateprofile.scheduletime
+        click_button('Create Candidateprofile')
+
+        #interviewer feedback
+        visit '/interviewerfeed'
+        select candidateprofile.candidatename, :from=>"candidatename"
+        wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoAlertPresentError
+        alert = wait.until { page.driver.browser.switch_to.alert }
+        alert.accept
+        wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoAlertPresentError
+        alert = wait.until { page.driver.browser.switch_to.alert }
+        alert.accept
+        fill_in "interviewerfeedback[addcomment]",:with=>interviewerfeedback.addcomment
+        choose('interviewerfeedback_relevanceexperience_3')
+        choose('interviewerfeedback_personality_3')
+        choose('interviewerfeedback_communication_3')
+        choose('interviewerfeedback_technicalskills_3')
+        choose('interviewerfeedback_analyticalskills_3')
+        choose('interviewerfeedback_jobknowledge_3')
+        choose('interviewerfeedback_timemanagement_5')
+        choose('interviewerfeedback_commitementtask_5')
+        choose('interviewerfeedback_leadership_4')
+        choose('interviewerfeedback_teamwork_3')
+        choose('interviewerfeedback_goalsettings_3')
+        choose('interviewerfeedback_creativity_4')
+        choose('interviewerfeedback_flexibility_3')
+        choose('interviewerfeedback_assertiveness_3')
+        select "Pass",:from=>"interviewerfeedback[status]"
+        click_button('Create Interviewerfeedback')
      end
   end
 
