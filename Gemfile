@@ -55,7 +55,7 @@ group :development, :test do
   gem "pry-rails" #console
   gem "rails-erd"#Generates Entity Relationship Diagram
   # Ruby on Rails code optimization and cleanup
-  
+  gem 'traceroute' #unwanted routes
 end
  group :test do
    gem 'faker'

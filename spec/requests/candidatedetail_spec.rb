@@ -23,6 +23,15 @@ RSpec.describe "Automation script",type: :request do
          fill_in "interviewer[companyemail]",:with=>interviewer.companyemail
          select skillset.skills,:from=>"interviewer[skills]"
          click_button('Create Interviewer')
+         visit '/interviewers'
+
+         #Session Testing
+        visit '/candidateentry'
+        visit '/candidateschedule'
+        visit '/interviewerfeed'
+        visit '/candidatereports'
+        visit '/candidateschedulereports'
+        visit '/schedulereport'
 
         #Signup and login
         visit '/signup'
@@ -96,6 +105,11 @@ RSpec.describe "Automation script",type: :request do
         choose('interviewerfeedback_assertiveness_3')
         select "Pass",:from=>"interviewerfeedback[status]"
         click_button('Create Interviewerfeedback')
+
+        visit '/candidatereports'
+        visit '/candidateschedulereports'
+        visit '/schedulereport'
+
         click_link('Profile')
         click_link('Signout')
         visit '/'
