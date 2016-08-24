@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :skillset do
-     skills "Ruby"
+     skills "JavaEEE"
   end
 end
