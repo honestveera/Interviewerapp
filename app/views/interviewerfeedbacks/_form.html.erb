@@ -27,18 +27,22 @@
          <div class="input-group">
            <div class="field">
              <%= f.label "candidatename","Scheduled Candidate"%><br>
-             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.candidateschedulestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control" %>
+             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.candidateschedulestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control",:style=>"width:300px" %>
            </div>
            <div class="form-group">
              <%= f.hidden_field :candidatename%>
            </div>
            <div class="field">
             <%=f.label :interviewername,"Interviewer Name"%><br>
-            <%=f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control",:readonly=>true%>
+            <%=f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control",:readonly=>true,:style=>"width:300px"%>
            </div>
            <div class="field">
              <%= f.label :skills,"Skills"%><br>
-             <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true%>
+             <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true,:style=>"width:300px"%>
+           </div>
+           <div class="field">
+             <%= f.label :previouscompany,"Previous Company" %><br>
+             <%= f.text_field :previouscompany,:placeholder=>"Previous Company",:class => "form-control required",:required => true,:readonly=>true,:style=>"width:300px"%>
            </div>
          </div>
        </div>
@@ -58,8 +62,8 @@
             <%=f.hidden_field :candidatemail,:class=>"form-control"%>
           </div>
           <div class="field">
-            <%= f.label :previouscompany,"Previous Company" %><br>
-            <%= f.text_area :previouscompany,:placeholder=>"Previous Company",:class => "form-control required",:required => true,:style=>"width:300px;height:90px"%>
+            <%= f.label :addcomment,"Previous Company" %><br>
+            <%= f.text_area :addcomment,:placeholder=>"Add Comment",:class => "form-control required",:required => true,:style=>"width:300px;height:90px"%>
           </div>
         </div>
      </div>
