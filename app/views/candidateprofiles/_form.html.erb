@@ -107,6 +107,9 @@
   <div class="form-group">
     <%= f.hidden_field :candidatedetail_id%>
   </div>
+  <div class="form-group">
+    <%= f.hidden_field :previouscompany%>
+  </div>
 </div>
 </div>
 
@@ -154,6 +157,7 @@
        $('#textarea').val(parse[0]['yoe']);
        $('#candidateprofile_jobtitle').val(parse[0]['jobtitle']);
        $('#candidateprofile_jobdescription').val(parse[0]['jobdescription']);
+       $('#candidateprofile_previouscompany').val(parse[0]['previouscompany']);
      },
      error: function() {
        alert('Error!');

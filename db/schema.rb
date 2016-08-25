@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.datetime "attachedfile_updated_at"
     t.string   "status"
     t.string   "jobtitle"
+    t.string   "previouscompany"
   end
 
   create_table "candidateprofiles", force: :cascade do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.string   "jobtitle"
     t.integer  "candidatedetail_id"
     t.string   "status"
+    t.string   "previouscompany"
   end
 
   add_index "candidateprofiles", ["candidatedetail_id"], name: "index_candidateprofiles_on_candidatedetail_id"
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.float    "overallassesment"
     t.string   "candidatemail"
     t.text     "addcomment"
+    t.string   "previouscompany"
   end
 
   create_table "interviewers", force: :cascade do |t|
