@@ -23,7 +23,7 @@
    </div>
   <% end %>
   <div class="row">
-     <div class="col-lg-4 col-md-offset-2">
+     <div class="col-lg-4 col-lg-offset-2">
          <div class="input-group">
            <div class="field">
              <%= f.label "candidatename","Scheduled Candidate"%><br>
@@ -42,7 +42,7 @@
            </div>
          </div>
        </div>
-       <div class="col-lg-4 col-md-offset-1">
+       <div class="col-lg-4 col-lg-offset-1">
          <div class="input-group">
            <div class="field">
             <%=f.label :scheduledate,"Schedule Date"%><br>
@@ -75,6 +75,7 @@
             <% (1..5).each do |a|%>
             <%= f.radio_button :relevanceexperience,a%>  <%=a%>
             <% end %>
+            <%= f.text_area :relevanceexperiencecomment,:placeholder=>"Relevance Experience Comment",:class => "form-control required",:required => true%>
           </div>
 
           <div class="field">
@@ -82,91 +83,105 @@
             <% (1..5).each do |a|%>
             <%= f.radio_button :personality,a%>  <%=a%>
             <% end %>
+            <%= f.text_area :personalitycomment,:placeholder=>"Personality Comment",:class => "form-control required",:required => true%>
           </div>
           <div class="field">
             <%= f.label :communication,"Communication"%><br>
             <% (1..5).each do |a|%>
             <%= f.radio_button :communication, a%>  <%=a%>
             <% end %>
+            <%= f.text_area :communicationcomment,:placeholder=>"Communication Comment",:class => "form-control required",:required => true%>
           </div>
           <div class="field">
             <%= f.label :technicalskills,"Technical Skills"%><br>
             <% (1..5).each do |a|%>
             <%= f.radio_button :technicalskills,a%>  <%=a%>
             <% end %>
+            <%= f.text_area :technicalskillscomment,:placeholder=>"Technical skills Comment",:class => "form-control required",:required => true%>
           </div>
           <div class="field">
             <%= f.label :analyticalskills,"Analytical Skills"%><br>
             <% (1..5).each do |a|%>
             <%= f.radio_button :analyticalskills, a%>  <%=a%>
             <% end %>
+            <%= f.text_area :analyticalskillscomment,:placeholder=>"Analytical Skills Comment",:class => "form-control required",:required => true%>
           </div>
           <div class="field">
             <%= f.label :jobknowledge,"Job Knowledge"%><br>
             <% (1..5).each do |a|%>
             <%= f.radio_button :jobknowledge, a%>  <%=a%>
             <% end %>
+            <%= f.text_area :jobknowledgecomment,:placeholder=>"Jobknowledge Comment",:class => "form-control required",:required => true%>
           </div>
            <div class="field">
              <%= f.label :timemanagement,"Time Management"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :timemanagement, a%>  <%=a%>
              <% end %>
+             <%= f.text_area :timemanagementcomment,:placeholder=>"Time Management Comment",:class => "form-control required",:required => true%>
            </div>
-            <div class="field">
-             <%= f.label :commitementtask,"Commitement Task"%><br>
-             <% (1..5).each do |a|%>
-             <%= f.radio_button :commitementtask, a%>  <%=a%>
-             <% end %>
-             </div>
+           <div class="field">
+             <%= f.label :status,"Status"%><br>
+             <%= f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--",:class=>"form-control"%>
+           </div>
+
            </div>
          </div>
      <div class="col-lg-4 col-lg-offset-1">
         <div class="input-group">
+          <div class="field">
+           <%= f.label :commitementtask,"Commitement Task"%><br>
+           <% (1..5).each do |a|%>
+           <%= f.radio_button :commitementtask, a%>  <%=a%>
+           <% end %>
+           <%= f.text_area :commitementtaskcomment,:placeholder=>"Commitement Task Comment",:class => "form-control required",:required => true%>
+           </div>
            <div class="field">
              <%= f.label :leadership,"Leadership"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :leadership, a%>  <%=a%>
              <% end %>
+             <%= f.text_area :leadershipcomment,:placeholder=>"Leadership Comment",:class => "form-control required",:required => true%>
            </div>
            <div class="field">
              <%= f.label :teamwork,"Teamwork"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :teamwork, a%>  <%=a%>
              <% end %>
+             <%= f.text_area :teamworkcomment,:placeholder=>"Teamwork Comment",:class => "form-control required",:required => true%>
              </div>
            <div class="field">
              <%= f.label :goalsettings,"Goal Settings"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :goalsettings, a%>  <%=a%>
              <% end %>
+             <%= f.text_area :goalsettingscomment,:placeholder=>"Goal Settings Comment",:class => "form-control required",:required => true%>
              </div>
            <div class="field">
              <%= f.label :creativity,"Creativity"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :creativity, a%>  <%=a%>
              <% end %>
+             <%= f.text_area :creativitycomment,:placeholder=>"Creativity Comment",:class => "form-control required",:required => true%>
             </div>
            <div class="field">
              <%= f.label :flexibility,"Flexibility"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :flexibility, a%>  <%=a%>
              <% end %>
+             <%= f.text_area :flexibilitycomment,:placeholder=>"Flexibility Comment",:class => "form-control required",:required => true%>
            </div>
            <div class="field">
              <%= f.label :assertiveness,"Assertiveness"%><br>
              <% (1..5).each do |a|%>
              <%= f.radio_button :assertiveness, a,:class=>"assertiveness"%>  <%=a%>
              <% end %>
+             <%= f.text_area :assertivenesscomment,:placeholder=>"Assertiveness Comment",:class => "form-control required",:required => true%>
            </div>
            <div class="field">
              <%= f.label :overallassesment,"Over All Assesment"%><br>
              <%= f.text_field :overallassesment,:placeholder=>"Over All Assesment",:class=>"form-control",:readonly=>true%>
            </div>
-          <div class="field">
-            <%= f.label :status,"Status"%><br>
-            <%= f.select :status, options_for_select([["Pass", "Pass"], ["Fail", "Fail"]]),:prompt => "--Select Status--",:class=>"form-control"%>
-          </div>
           <div class="form-group">
             <%=hidden_field_tag :identity%>
           </div>
@@ -185,7 +200,6 @@
           </div>
         </div>
         </div>
-
 </div>
 <% end %>
 
@@ -252,7 +266,16 @@
         var avg;
         avg=parseInt((re+perso+commu+ts+as+jn+tm+ct+ls+tw+gs+cr+fl+assert)/14);
         $('#interviewerfeedback_overallassesment').val(avg);
-          }
+         if($('#interviewerfeedback_overallassesment').val()>=3)
+         {
+           alert($('#interviewerfeedback_overallassesment').val());
+           $('#interviewerfeedback_status').val('Pass');
+         }
+         else
+         {
+           $('#interviewerfeedback_status').val('Fail');
+         }
+        }
     });
     $('input[type="submit"]').click(function(){
        if($('input[type="text"]').val()=="")
@@ -263,6 +286,10 @@
        {
          $('input[type="number"]').css({"border-color":"red","border-width":"2px"});
        }
+       if($('textarea').val()=="")
+       {
+          $('textarea').css({"border-color":"red","border-width":"2px"});
+       }
        if($('select').val()=="")
        {
          $('select').css({"border-color":"red","border-width":"2px"});
@@ -271,6 +298,7 @@
        {
          $('input[type="text"]').css({"border-color":"skyblue"});
          $('input[type="number"]').css({"border-color":"skyblue"});
+         $('textarea').css({"border-color":"skyblue"});
          $('select').css({"border-color":"skyblue"});
        }
     });
@@ -279,6 +307,9 @@
          $(this).css({"border-color":"skyblue"});
     });
     $('input[type="number"]').change(function(){
+         $(this).css({"border-color":"skyblue"});
+    });
+    $('textarea').change(function(){
          $(this).css({"border-color":"skyblue"});
     });
     $('select').change(function(){
