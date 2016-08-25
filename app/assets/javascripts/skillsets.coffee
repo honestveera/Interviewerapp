@@ -1,3 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+
+app = angular.module('Interviewerapp', [])
+app.controller 'skillsetcontroller', ($scope) ->
+  $scope.skills = ''
+  $scope.myfunction = ->
+    if $scope.skills == ''
+      alert 'Enter Skills Field'
+    else
+      alert 'Do you want to save:' + $scope.skills
+    return
+
+return

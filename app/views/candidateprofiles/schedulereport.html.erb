@@ -82,38 +82,17 @@ $('.datatable').DataTable({
        table.columns(5).search($('#datesearch').val()).draw();
     });
 
-   $('#myInput').on('keyup  change',function(){
+   $('#myInput').on('keyup  change',function()
+   {
      table.columns(0).search($(this).val()).draw();
    });
-   function isNumberKey(evt)
-     {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-           return false;
-        return true;
-     }
-
-
-  // $('.datatable tfoot th').each( function () {
-  //           var title = $(this).text();
-  //           $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-  //   });
-  //
-  //       // DataTable
-  //      var table = $('.datatable').DataTable();
-  //O
-  //       // Apply the search
-  //       table.columns().every( function () {
-  //           var that = this;
-  //           $( 'input', this.footer() ).on( 'keyup change', function () {
-  //               if ( that.search() !== this.value ) {
-  //                   that
-  //                       .search( this.value )
-  //                       .draw();
-  //               }
-  //           });
-  //        );
-
+  function isNumberKey(evt)
+   {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+      if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+      return true;
+    }
 </script>
 </div>
 </div>
