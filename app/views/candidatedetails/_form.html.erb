@@ -39,14 +39,15 @@
           <%= f.label :yoe,"Year Of Experience" %><br>
           <%= f.select :yoe, options_for_select([["1", "1"], ["2", "2"],["3", "3"],["4","4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"],["10", "10"], ["11", "11"],["12", "12"],["13","13"],["14","14"],["15","15"],["16","16"],["17","17"],["18","18"],["19","19"]]),:prompt => "--Select Experience--" %>
         </div>
-        <div class="form-group">
-          <%= f.label :previouscompany,"Previous Company" %><br>
-          <%= f.text_field :previouscompany,:placeholder=>"Previous Company",:class => "form-control required",:required => true%>
-        </div>
+
       </div>
       </div>
       <div class="col-lg-3 col-lg-offset-1">
           <div class="input-group">
+        <div class="form-group">
+          <%= f.label :previouscompany,"Previous Company" %><br>
+          <%= f.text_field :previouscompany,:placeholder=>"Previous Company",:class => "form-control required",:required => true%>
+        </div>
         <div class="form-group">
           <%= f.label :skills,"Skills"%><br>
           <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--",:class => "form-control required"%>
@@ -54,10 +55,6 @@
         <div class="form-group">
           <%= f.label :jobtitle,"Job Title"%><br>
           <%= f.text_field :jobtitle,:placeholder=>"Job Title",:class=>"form-control required",:required=>true%>
-        </div>
-        <div class="form-group">
-          <%= f.label :jobdescription,"Job Description"%><br>
-          <%= f.text_area :jobdescription,:placeholder=>"Job Description",:class=>"form-control",:id=>"textarea"%>
         </div>
         <div class="form-group">
           <%= f.label :attachedfile,"Attached File"%><br>

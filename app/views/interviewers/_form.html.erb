@@ -26,8 +26,20 @@
               <%= f.text_field :companyemail %>
             </div>
             <div class="field">
-              <%= f.label :skills,"Skills"%><br>
-              <%= f.select :skills,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skills--" %>
+              <%= f.label :skills1,"Skill 1"%><br>
+              <%= f.select :skills1,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skill--" %>
+            </div>
+            <div class="field">
+              <%= f.label :skills2,"Skill 2"%><br>
+              <%= f.select :skills2,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skill--" %>
+            </div>
+            <div class="field">
+              <%= f.label :skills3,"Skill 3"%><br>
+              <%= f.select :skills3,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skill--" %>
+            </div>
+            <div class="field">
+              <%= f.label :skills4,"Skill 4"%><br>
+              <%= f.select :skills4,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skill--" %>
             </div>
             <div class="actions">
               <%= f.submit %>

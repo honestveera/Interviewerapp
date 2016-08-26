@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.string   "candidatename"
     t.string   "candidateemail"
     t.decimal  "candidatecontact"
-    t.string   "yoe"
+    t.integer  "yoe"
     t.string   "skills"
-    t.text     "jobdescription"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "attachedfile_file_name"
@@ -35,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.string   "candidatename"
     t.string   "candidateemail"
     t.string   "skills"
-    t.text     "YOE"
+    t.integer  "YOE"
     t.string   "interviewername"
     t.string   "intervieweremail"
     t.string   "scheduledate"
@@ -88,25 +87,21 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.string   "interviewername"
     t.string   "candidatename"
     t.string   "status"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "skills"
     t.string   "attachedfile_file_name"
     t.string   "attachedfile_content_type"
     t.integer  "attachedfile_file_size"
     t.datetime "attachedfile_updated_at"
-    t.integer  "relevanceexperience"
-    t.text     "relevanceexperiencecomment"
-    t.integer  "personality"
-    t.text     "personalitycomment"
     t.integer  "communication"
     t.text     "communicationcomment"
     t.integer  "technicalskills"
     t.text     "technicalskillscomment"
     t.integer  "analyticalskills"
     t.text     "analyticalskillscomment"
-    t.integer  "jobknowledge"
-    t.text     "jobknowledgecomment"
+    t.integer  "attitude"
+    t.text     "attitudecomment"
     t.integer  "timemanagement"
     t.text     "timemanagementcomment"
     t.integer  "commitementtask"
@@ -115,20 +110,16 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.text     "leadershipcomment"
     t.integer  "teamwork"
     t.text     "teamworkcomment"
-    t.integer  "goalsettings"
-    t.text     "goalsettingscomment"
     t.integer  "creativity"
     t.text     "creativitycomment"
     t.integer  "flexibility"
     t.text     "flexibilitycomment"
-    t.integer  "assertiveness"
-    t.text     "assertivenesscomment"
     t.string   "scheduletime"
     t.string   "scheduledate"
     t.float    "overallassesment"
     t.string   "candidatemail"
-    t.text     "addcomment"
-    t.string   "previouscompany"
+    t.text     "othercomment"
+    t.string   "yoe"
   end
 
   create_table "interviewers", force: :cascade do |t|
@@ -137,7 +128,10 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "companyemail"
-    t.string   "skills"
+    t.string   "skills1"
+    t.string   "skills2"
+    t.string   "skills3"
+    t.string   "skills4"
   end
 
   create_table "skillsets", force: :cascade do |t|

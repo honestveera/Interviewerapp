@@ -75,6 +75,6 @@ class InterviewersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interviewer_params
-      params.require(:interviewer).permit(:interviewername, :interviewercompany,:companyemail,:skills)
+      params.require(:interviewer).permit(:interviewername, :interviewercompany,:companyemail,:skills1,:skills2,:skills3,:skills4)
     end
 end
