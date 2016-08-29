@@ -26,18 +26,18 @@
          <div class="input-group">
            <div class="field">
              <%= f.label "candidatename","Scheduled Candidate"%><br>
-             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.candidateschedulestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control",:id=>"select" %>
+             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.candidateschedulestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control",:style=>"width:300px" %>
            </div>
            <div class="form-group">
              <%= f.hidden_field :candidatename%>
            </div>
            <div class="field">
             <%=f.label :interviewername,"Interviewer Name"%><br>
-            <%=f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control",:readonly=>true,:id=>"select"%>
+            <%=f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control",:readonly=>true%>
            </div>
            <div class="field">
              <%= f.label :skills,"Skills"%><br>
-             <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true,:id=>"select"%>
+             <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true%>
            </div>
 
          </div>
@@ -46,7 +46,7 @@
          <div class="input-group">
            <div class="field">
              <%= f.label :yoe,"Years of Experience" %><br>
-             <%= f.text_field :yoe,:placeholder=>"Years of Experience",:class => "form-control required",:required => true,:readonly=>true,:id=>"select"%>
+             <%= f.text_field :yoe,:placeholder=>"Years of Experience",:class => "form-control required",:required => true,:readonly=>true,:style=>"width:300px"%>
            </div>
            <div class="field">
             <%=f.label :scheduledate,"Schedule Date"%><br>
