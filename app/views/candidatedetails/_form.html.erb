@@ -39,18 +39,27 @@
           <%= f.label :yoe,"Year Of Experience" %><br>
           <%= f.select :yoe, options_for_select([["1", "1"], ["2", "2"],["3", "3"],["4","4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"],["10", "10"], ["11", "11"],["12", "12"],["13","13"],["14","14"],["15","15"],["16","16"],["17","17"],["18","18"],["19","19"]]),:prompt => "--Select Experience--" %>
         </div>
+        <div class="form-group">
+          <%= f.label :previouscompany,"Previous Company" %><br>
+          <%= f.text_field :previouscompany,:placeholder=>"Previous Company",:class => "form-control required",:required => true%>
+        </div>
 
       </div>
       </div>
       <div class="col-lg-3 col-lg-offset-1">
           <div class="input-group">
+
         <div class="form-group">
-          <%= f.label :previouscompany,"Previous Company" %><br>
-          <%= f.text_field :previouscompany,:placeholder=>"Previous Company",:class => "form-control required",:required => true%>
+          <%= f.label :primaryskills_id,"Primary Skills"%><br>
+          <%=f.select :primaryskills_id,options_from_collection_for_select(Skillset.all,"id","skills"), :prompt => "--Select Primary Skills--",:class => "form-control required"%>
         </div>
         <div class="form-group">
-          <%= f.label :skills,"Skills"%><br>
-          <%=f.select :skills,options_from_collection_for_select(Skillset.all,"skills","skills"), :prompt => "--Select Skills--",:class => "form-control required"%>
+          <%= f.label :secondaryskills_id,"Secondary Skills"%><br>
+          <%=f.select :secondaryskills_id,options_from_collection_for_select(Skillset.all,"id","skills"), :prompt => "--Select Secondary Skills--",:class => "form-control required"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :otherskills,"Other Skills"%><br>
+          <%= f.text_field :otherskills,:placeholder=>"Other Skills",:class=>"form-control required",:required=>true%>
         </div>
         <div class="form-group">
           <%= f.label :jobtitle,"Job Title"%><br>
@@ -61,6 +70,12 @@
           <%= f.file_field :attachedfile%>
         </div>
       </div>
+      </div>
+      <div class="form-group">
+        <%= f.hidden_field :primaryskills%>
+      </div>
+      <div class="form-group">
+        <%= f.hidden_field :secondaryskills%>
       </div>
         <div class="form-group">
           <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
@@ -83,7 +98,17 @@
 </div>
 <% end %>
 <script type="text/javascript">
-function isNumberKey(evt)
+
+    $('#candidatedetail_primaryskills_id').change(function(){
+      var text=$('#candidatedetail_primaryskills_id option:selected').text();
+      $('#candidatedetail_primaryskills').val(text);
+    });
+    $('#candidatedetail_secondaryskills_id').change(function(){
+      var text=$('#candidatedetail_secondaryskills_id option:selected').text();
+      $('#candidatedetail_secondaryskills').val(text);
+    });
+
+  function isNumberKey(evt)
     {
        var charCode = (evt.which) ? evt.which : event.keyCode
        if (charCode > 31 && (charCode < 48 || charCode > 57))

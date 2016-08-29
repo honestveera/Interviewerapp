@@ -18,7 +18,12 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.string   "candidateemail"
     t.decimal  "candidatecontact"
     t.integer  "yoe"
-    t.string   "skills"
+    t.string   "primaryskills"
+    t.string   "secondaryskills"
+    t.string   "otherskills"
+    t.integer  "primaryskills_id"
+    t.integer  "secondaryskills_id"
+    t.integer  "otherskills_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "attachedfile_file_name"
@@ -33,7 +38,9 @@ ActiveRecord::Schema.define(version: 20160825073125) do
   create_table "candidateprofiles", force: :cascade do |t|
     t.string   "candidatename"
     t.string   "candidateemail"
-    t.string   "skills"
+    t.string   "primaryskills"
+    t.string   "secondaryskills"
+    t.string   "otherskills"
     t.integer  "YOE"
     t.string   "interviewername"
     t.string   "intervieweremail"
@@ -128,10 +135,9 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "companyemail"
-    t.string   "skills1"
-    t.string   "skills2"
-    t.string   "skills3"
-    t.string   "skills4"
+    t.string   "primaryskills"
+    t.string   "secondaryskills"
+    t.string   "otherskills"
   end
 
   create_table "skillsets", force: :cascade do |t|

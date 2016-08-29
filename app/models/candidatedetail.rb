@@ -9,7 +9,6 @@ class Candidatedetail < ActiveRecord::Base
 
   #User method
   scope :candidatedetail,->(id){where("id=?",id)}
-  scope :candidatestatus,->(status){where("status=?",status)}
-
+  scope :candidatestatus,->(status){where("status=?",status)} 
 
 end

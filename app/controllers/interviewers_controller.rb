@@ -13,6 +13,13 @@ class InterviewersController < ApplicationController
     @detail=Interviewer.interviewerdetail(interviewername)
     respond_with(@detail, :include => :status)
   end
+
+  def  searchinterviewer
+    candidateps=params[:primaryskills]
+    candidatess=params[:secondaryskills]
+    @interviewer=Interviewer.interviewer(candidateps,candidatess)
+    respond_with(@interviewer, :include => :status)
+  end
   # GET /interviewers/1
   # GET /interviewers/1.json
   def show
@@ -75,6 +82,6 @@ class InterviewersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interviewer_params
-      params.require(:interviewer).permit(:interviewername, :interviewercompany,:companyemail,:skills1,:skills2,:skills3,:skills4)
+      params.require(:interviewer).permit(:interviewername, :interviewercompany,:companyemail,:primaryskills,:secondaryskills,:otherskills)
     end
 end

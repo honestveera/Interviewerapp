@@ -10,21 +10,18 @@
   <%= @interviewer.interviewercompany %>
 </p>
 <p>
-  <strong>Skill1:</strong>
-  <%= @interviewer.skills1 %>
+  <strong>Primary Skills:</strong>
+  <%= @interviewer.primaryskills %>
 </p>
 <p>
-  <strong>Skill2:</strong>
-  <%= @interviewer.skills2 %>
+  <strong>Secondary Skills:</strong>
+  <%= @interviewer.secondaryskills %>
 </p>
 <p>
-  <strong>Skill3:</strong>
-  <%= @interviewer.skills3 %>
+  <strong>Other Skills:</strong>
+  <%= @interviewer.otherskills %>
 </p>
-<p>
-  <strong>Skill4:</strong>
-  <%= @interviewer.skills4 %>
-</p>
+
 
 <%= link_to 'Edit', edit_interviewer_path(@interviewer) %> |
 <%= link_to 'Back', interviewers_path %>

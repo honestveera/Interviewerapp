@@ -43,17 +43,17 @@ $(document).ready(function(){
   });
 
   $('input[type="text"]').change(function(){
-       $(this).css({"border-color":"skyblue"});
+    $(this).css({"border-color":"skyblue"});
   });
   $('input[type="number"]').change(function(){
-       $(this).css({"border-color":"skyblue"});
+   $(this).css({"border-color":"skyblue"});
   });
   $('select').change(function(){
-       $(this).css({"border-color":"skyblue"});
+   $(this).css({"border-color":"skyblue"});
   });
 
 
-  
+
   // $('input[type="number"]').focusout(function(){
   //    if($(this).val()=="")
   //    {

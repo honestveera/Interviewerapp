@@ -13,39 +13,40 @@
   <div class="row">
      <div class="col-lg-4 col-lg-offset-4">
          <div class="input-group">
-            <div class="field">
+            <div class="form-group">
               <%= f.label :interviewername,"Interviewer Name" %><br>
-              <%= f.text_field :interviewername %>
+              <%= f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control required",:required=>true%>
             </div>
             <div class="field">
               <%= f.label :interviewercompany,"Interviewer Company" %><br>
-              <%= f.text_field :interviewercompany %>
+              <%= f.text_field :interviewercompany,:placeholder=>"Interviewer Company",:class=>"form-control required",:required=>true %>
             </div>
             <div class="field">
               <%= f.label :companyemail,"Company Email"%><br>
-              <%= f.text_field :companyemail %>
+              <%= f.text_field :companyemail ,:placeholder=>"Company Email",:class=>"form-control required",:required=>true%>
             </div>
             <div class="field">
-              <%= f.label :skills1,"Skill 1"%><br>
-              <%= f.select :skills1,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skill--" %>
+              <%= f.label :primaryskills,"Primary Skills"%><br>
+              <%= f.select :primaryskills,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Primary Skills--" %>
             </div>
             <div class="field">
-              <%= f.label :skills2,"Skill 2"%><br>
-              <%= f.select :skills2,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skill--" %>
+              <%= f.label :secondaryskills,"Secondary Skills"%><br>
+              <%= f.select :secondaryskills,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Secondary Skills--" %>
             </div>
             <div class="field">
-              <%= f.label :skills3,"Skill 3"%><br>
-              <%= f.select :skills3,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skill--" %>
+              <%= f.label :otherskills,"Other Skills"%><br>
+              <%= f.text_field :otherskills,:placeholder=>"Other Skills",:class=>"form-control required",:required=>true%>
             </div>
-            <div class="field">
-              <%= f.label :skills4,"Skill 4"%><br>
-              <%= f.select :skills4,options_from_collection_for_select(Skillset.all,"id","skills"),:prompt=>"--Select Skill--" %>
+         </div>
+      </div>
+            <div class="row">
+              <div  class="col-lg-4 col-lg-offset-4">
+              <div class="actions">
+              <%= f.submit :class=>"btn btn-primary btn-lg",:id=>"interviewersubmit"%>
             </div>
-            <div class="actions">
-              <%= f.submit %>
-            </div>
-     </div>
-   </div>
+          </div>
+        </div>
+
 </div>
 <% end %>
 <script type="text/javascript">

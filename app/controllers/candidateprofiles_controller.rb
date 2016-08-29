@@ -24,6 +24,7 @@ class CandidateprofilesController < ApplicationController
     @schedule=Candidateprofile.candidateprofile(candidatescheduleid)
     respond_with(@schedule, :include => :status)
   end
+
   # GET /candidateprofiles/1
   # GET /candidateprofiles/1.json
   def show
@@ -88,9 +89,8 @@ class CandidateprofilesController < ApplicationController
     end
 
 
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidateprofile_params
-      params.require(:candidateprofile).permit(:candidatename, :candidateemail, :candidatecontact, :skills, :YOE, :interviewername, :intervieweremail, :scheduledate, :scheduletime,:jobtitle,:jobdescription,:candidatedetail_id,:status,:previouscompany)
+      params.require(:candidateprofile).permit(:candidatename, :candidateemail, :candidatecontact, :primaryskills,:secondaryskills,:otherskills,:YOE, :interviewername, :intervieweremail, :scheduledate, :scheduletime,:jobtitle,:jobdescription,:candidatedetail_id,:status,:previouscompany)
     end
 end

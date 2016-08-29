@@ -41,26 +41,44 @@
     <%= f.text_field :candidatecontact,:placeholder=>"Candidate Contact",:readonly => true,:class => "form-control required",:required => true%>
   </div>
   <div class="form-group">
-    <%= f.label :skills,"Skills" %><br>
-    <%=f.text_field :skills,:placeholder=>"Candidate Skills",:readonly => true,:class => "form-control required",:required => true%>
+    <%= f.label :primaryskills,"Primary Skills" %><br>
+    <%=f.text_field :primaryskills,:placeholder=>"Candidate Primary Skills",:readonly => true,:class => "form-control required",:required => true%>
   </div>
+  <div class="form-group">
+    <%= f.hidden_field "primaryskills_id",:value=>session[:primaryskills_id]%>
+  </div>
+  <div class="form-group">
+    <%= f.label :secondaryskills,"Secondary Skills" %><br>
+    <%=f.text_field :secondaryskills,:placeholder=>"Candidate Secondary Skills",:readonly => true,:class => "form-control required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field "secondaryskills_id",:value=>session[:secondaryskills_id]%>
+  </div>
+  <div class="form-group">
+    <%= f.label :otherskills,"Other Skills" %><br>
+    <%=f.text_field :otherskills,:placeholder=>"Candidate Other Skills",:readonly => true,:class => "form-control required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field "otherskills_id",:value=>session[:otherskills_id]%>
+  </div>
+
   <div class="form-group">
     <%= f.label :YOE,"Year Of Experience " %><br>
     <%= f.text_field :YOE,:placeholder=>"Year Of Experience",:readonly => true,:class => "form-control required",:required => true%>
   </div>
-  <div class="form-group">
-    <%= f.label :jobtitle,"Job Title" %><br>
-    <%= f.text_field :jobtitle,:placeholder=>"Job Title",:readonly => true,:class => "form-control required",:required => true%>
-  </div>
+
 
 </div>
 </div>
 <div class="col-lg-3 col-lg-offset-1">
     <div class="input-group">
-
+      <div class="form-group">
+        <%= f.label :jobtitle,"Job Title" %><br>
+        <%= f.text_field :jobtitle,:placeholder=>"Job Title",:readonly => true,:class => "form-control required",:required => true%>
+      </div>
       <div class="form-group">
         <%= f.label 'interviewername',"Interviewer Name"%><br>
-        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewer Name--",:class => "required",:required => true%>
+        <%= select_tag 'interviewername',"<option value="">--Select Interviewername--</option>".html_safe%>
       </div>
 
       <div class="form-group">
@@ -116,7 +134,7 @@
 <div class="row">
   <div  class="col-lg-4 col-lg-offset-5">
   <div class="actions">
-    <%= f.submit :class=>"btn btn-primary btn-lg",:id=>"submit",:style=>"margin-top:13px"%>
+    <%= f.submit :class=>"btn btn-primary btn-lg"%>
   </div>
 </div>
 </div>
@@ -153,11 +171,16 @@
        $('#candidateprofile_candidateemail').val(parse[0]['candidateemail']);
        contact = parseFloat(parse[0]['candidatecontact']);
        $('#candidateprofile_candidatecontact').val(contact);
-       $('#candidateprofile_skills').val(parse[0]['skills']);
+       $('#candidateprofile_primaryskills').val(parse[0]['primaryskills']);
+       $('#candidateprofile_primaryskills_id').val(parse[0]['primaryskills_id']);
+       $('#candidateprofile_secondaryskills').val(parse[0]['secondaryskills']);
+       $('#candidateprofile_secondaryskills_id').val(parse[0]['secondaryskills_id']);
+       $('#candidateprofile_otherskills').val(parse[0]['otherskills']);
+       $('#candidateprofile_otherskills_id').val(parse[0]['otherskills_id']);
        $('#candidateprofile_YOE').val(parse[0]['yoe']);
        $('#candidateprofile_jobtitle').val(parse[0]['jobtitle']);
-      //$('#candidateprofile_jobdescription').val(parse[0]['jobdescription']);
        $('#candidateprofile_previouscompany').val(parse[0]['previouscompany']);
+       dropdown();
      },
      error: function() {
        alert('Error!');
@@ -168,6 +191,7 @@
  $('#interviewername').change(function() {
    var name;
    name = $(this).val();
+   alert(name);
    textmethod = $('#interviewername option:selected').text();
    valuemethod = $('#interviewername option:selected').val();
    $('#candidateprofile_interviewername').val(textmethod);
@@ -190,6 +214,32 @@
      }
    });
  });
+
+  function dropdown()
+  {
+    var psid= $('#candidateprofile_primaryskills_id').val();
+    var ssid= $('#candidateprofile_secondaryskills_id').val();
+    //var osid= $('#candidateprofile_otherskills_id').val();
+    alert(psid+ssid);
+   $.ajax({
+     type: 'GET',
+     url: '/interviewers/searchinterviewer',
+     dataType: 'json',
+     data: {
+       'primaryskills': psid,
+       'secondaryskills':ssid
+     },
+     success: function(result) {
+       $.each(result, function (key, val) {
+         $('#interviewername').append('<option value="' + val.id + '">'+ val.interviewername + '</option>');
+       })
+     },
+     error: function() {
+       alert('Error!');
+     }
+   });
+  }
+
  $('input[type="submit"]').click(function(){
     if($('input[type="text"]').val()=="")
     {
