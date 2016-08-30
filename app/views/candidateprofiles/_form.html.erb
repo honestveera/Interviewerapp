@@ -141,12 +141,16 @@
 </div>
 <% end %>
  <script type="text/javascript">
+   var pd = new Date();
+   pd.setDate(pd.getDate());
   $('#datetimepicker3').datetimepicker({
       format: 'LT'
-      });
+    });
+
   $('#datetimepicker4').datetimepicker({
-       format: 'DD-MM-YYYY'
-      });
+      format: 'DD-MM-YYYY',
+      minDate:pd
+    });
 
  $('#candidatename').change(function() {
    var q, textmethod, valuemethod;
