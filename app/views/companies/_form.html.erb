@@ -33,19 +33,19 @@
         <div class="row">
                <div class="input-group">
               <div class="field">
-                <%= f.text_field :companyname,:placeholder=>"company name",:class => "form-control required",:required=>true%>
+                <%= f.text_field :companyname,:placeholder=>"company name",:class => "form-control"%>
               </div>
               <div class="field">
-              <%= f.text_area :companyaddress,:placeholder=>"company address",:class => "form-control required",:required=>true,:id=>"textarea"%>
+              <%= f.text_area :companyaddress,:placeholder=>"company address",:class => "form-control",:id=>"textarea"%>
               </div>
               <div class="form-group">
-                  <%= f.text_field :contactperson,:placeholder=>"contact person",:class => "form-control required",:required=>true%>
+                  <%= f.text_field :contactperson,:placeholder=>"contact person",:class => "form-control"%>
               </div>
               <div class="form-group">
-                <%= f.text_field :contactnumber,:placeholder=>"contact number",:class => "form-control required",:required => true,:onkeypress=>"return isNumberKey(event)" %>
+                <%= f.text_field :contactnumber,:placeholder=>"contact number",:class => "form-control",:onkeypress=>"return isNumberKey(event)" %>
               </div>
               <div class="form-group">
-                <%= f.text_field :companyemail,:placeholder=>"Email",:class => "form-control required",:required => true%>
+                <%= f.text_field :companyemail,:placeholder=>"Email",:class => "form-control required",:required => true,:onblur=>"validateEmail(this);"%>
               </div>
               <div class="form-group">
                 <%= f.password_field :password,:placeholder=>" Password",:class => "form-control required",:required => true%>
@@ -74,6 +74,50 @@
           return false;
        return true;
     }
+    function validateEmail(emailField)
+    {
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(emailField.value) == false)
+        {
+               $('#company_companyemail').css({"border-color":"red","border-width":"2px"});
+            return false;
+        }
+
+        return true;
+     }
+
+    $('input[type="submit"]').click(function(){
+       if($('#company_companyemail').val()=="")
+       {
+         $('#company_companyemail').css({"border-color":"red","border-width":"2px"});
+       }
+       if($('#company_password').val()=="")
+       {
+         $('#company_password').css({"border-color":"red","border-width":"2px"});
+       }
+       if($('#company_password_confirmation').val()=="")
+       {
+         $('#company_password_confirmation').css({"border-color":"red","border-width":"2px"});
+       }
+       else
+       {
+          $('#company_companyemail').css({"border-color":"skyblue"});
+          $('#company_password').css({"border-color":"skyblue"});
+          $('#company_password_confirmation').css({"border-color":"skyblue"});
+       }
+    });
+    $('#company_companyemail').focusout(function(){
+      if($(this).val().length==0)
+      {
+        $(this).css({"border-color":"red","border-width":"2px"});
+      }
+      else
+      {
+        $(this).css({"border-color":"skyblue"});
+      }
+    });
+
     $('input[type="password"]').focusout(function(){
        if($(this).val()=="")
        {
@@ -85,39 +129,10 @@
        }
        else
        {
-         $(this).css({"border-color":"lightgreen"});
+         $(this).css({"border-color":"skyblue"});
        }
     });
-    $('input[type="text"]').focusout(function(){
-       if($(this).val()=="")
-       {
-         $(this).css({"border-color":"red","border-width":"2px"});
-       }
-       else
-       {
-         $(this).css({"border-color":"lightgreen"});
-       }
-    });
-    $('input[type="number"]').focusout(function(){
-       if($(this).val()=="")
-       {
-         $(this).css({"border-color":"red","border-width":"2px"});
-       }
-       else
-       {
-         $(this).css({"border-color":"lightgreen"});
-       }
-    });
-    $('select').focusout(function(){
-       if($(this).val()=="")
-       {
-         $(this).css({"border-color":"red","border-width":"2px"});
-       }
-       else
-       {
-         $(this).css({"border-color":"lightgreen"});
-       }
-    });
+
 
 </script>
 

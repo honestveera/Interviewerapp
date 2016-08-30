@@ -3,7 +3,7 @@
 
 
 <div class="table-responsive">
-<table class="datatable table table-bordered table-hover sortable" id="example">
+<table class="datatable table table-bordered table-hover sortable">
   <div class="row">
     <div class="col-lg-3 col-lg-offset-2" >
     <div class="form-group">
@@ -68,17 +68,14 @@
 <script type="text/javaScript">
 $('.datatable').DataTable({
    "paging": true,
-   "bFilter": true,
-   "bInfo": true,
-   "scrollX": "100%",
-   "scrollY":"300px",
    "sDom": 'rtip'
  })
+
    $('#datetimepicker1').datetimepicker({
       format: 'DD-MM-YYYY'
      });
    var table = $('.datatable').DataTable();
-   $('#datetimepicker1').on("dp.change", function(e) {
+   $('#datetimepicker1').on("dp.keyup dp.change", function(e) {
        table.columns(5).search($('#datesearch').val()).draw();
     });
 

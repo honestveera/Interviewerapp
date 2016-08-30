@@ -21,36 +21,36 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 $(document).ready(function(){
-  $('input[type="submit"]').click(function(){
-     if($('input[type="text"]').val()=="")
-     {
-       $('input[type="text"]').css({"border-color":"red","border-width":"2px"});
-     }
-    if($('input[type="number"]').val()=="")
-     {
-       $('input[type="number"]').css({"border-color":"red","border-width":"2px"});
-     }
-     if($('select').val()=="")
-     {
-       $('select').css({"border-color":"red","border-width":"2px"});
-     }
-     else
-     {
-       $('input[type="text"]').css({"border-color":"skyblue"});
-       $('input[type="number"]').css({"border-color":"skyblue"});
-       $('select').css({"border-color":"skyblue"});
-     }
-  });
-
-  $('input[type="text"]').change(function(){
-    $(this).css({"border-color":"skyblue"});
-  });
-  $('input[type="number"]').change(function(){
-   $(this).css({"border-color":"skyblue"});
-  });
-  $('select').change(function(){
-   $(this).css({"border-color":"skyblue"});
-  });
+  // $('input[type="submit"]').click(function(){
+  //    if($('input[type="text"]').val()=="")
+  //    {
+  //      $('input[type="text"]').css({"border-color":"red","border-width":"2px"});
+  //    }
+  //   if($('input[type="number"]').val()=="")
+  //    {
+  //      $('input[type="number"]').css({"border-color":"red","border-width":"2px"});
+  //    }
+  //    if($('select').val()=="")
+  //    {
+  //      $('select').css({"border-color":"red","border-width":"2px"});
+  //    }
+  //    else
+  //    {
+  //      $('input[type="text"]').css({"border-color":"skyblue"});
+  //      $('input[type="number"]').css({"border-color":"skyblue"});
+  //      $('select').css({"border-color":"skyblue"});
+  //    }
+  // });
+  //
+  // $('input[type="text"]').change(function(){
+  //   $(this).css({"border-color":"skyblue"});
+  // });
+  // $('input[type="number"]').change(function(){
+  //  $(this).css({"border-color":"skyblue"});
+  // });
+  // $('select').change(function(){
+  //  $(this).css({"border-color":"skyblue"});
+  // });
 
 
 

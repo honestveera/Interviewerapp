@@ -5,7 +5,6 @@
   <thead class="bg-success">
     <tr>
       <th class="text-info">Candidate Name</th>
-      <th class="text-info">Candidate Email</th>
       <th class="text-info">Candidate Contact</th>
       <th class="text-info">Primary Skills</th>
       <th class="text-info">Secondary Skills</th>
@@ -25,7 +24,6 @@
     <% @candidateprofiles.each do |candidateprofile| %>
       <tr data-link="<%=edit_candidateprofile_path(candidateprofile)%>">
         <td><%= candidateprofile.candidatename %></td>
-        <td><%= candidateprofile.candidateemail %></td>
         <td><%= candidateprofile.candidatecontact %></td>
         <td><%= candidateprofile.primaryskills %></td>
         <td><%= candidateprofile.secondaryskills %></td>
@@ -49,8 +47,8 @@
     "paging": true,
     "ordering": true,
     "info": true,
-    "scrollX": "100%",
-    "scrollY": "300px"
+    // "scrollX": "100%",
+    // "scrollY": "300px"
   });
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link");
