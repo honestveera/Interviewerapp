@@ -136,7 +136,9 @@ ActiveRecord::Schema.define(version: 20160825073125) do
     t.datetime "updated_at",         null: false
     t.string   "companyemail"
     t.string   "primaryskills"
+    t.string   "primaryskills_id"
     t.string   "secondaryskills"
+    t.string   "secondaryskills_id"
     t.string   "otherskills"
   end
 
