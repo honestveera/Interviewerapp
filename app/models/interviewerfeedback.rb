@@ -5,7 +5,7 @@ class Interviewerfeedback < ActiveRecord::Base
 
    #Association Relationship
    belongs_to :candidateprofile
-
+   
 
    def self.updateschedulestatus id
      a=Candidateprofile.find_by(id:id)
