@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #resources :calenders
   #resources :candidatedetails
   resources :interviewerfeedbacks
   resources :companies
@@ -33,6 +34,12 @@ Rails.application.routes.draw do
     end
     collection do
       get :searchinterviewer
+    end
+  end
+
+  resources :calenders do
+    collection do
+      get :search
     end
   end
 

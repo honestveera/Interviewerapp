@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825073125) do
+ActiveRecord::Schema.define(version: 20160912125705) do
+
+  create_table "calenders", force: :cascade do |t|
+    t.string   "date"
+    t.string   "time"
+    t.string   "interviewername"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "interviewer_id"
+    t.string   "status"
+  end
 
   create_table "candidatedetails", force: :cascade do |t|
     t.string   "candidatename"

@@ -15,5 +15,9 @@ class Candidateprofile < ActiveRecord::Base
    a=Candidatedetail.find_by(id:id)
    a.update(status:"schedule")
  end
+ def self.updatecalender id
+   a=Calender.find_by(id:id)
+   a.update(status:"schedule")
+ end
 
 end

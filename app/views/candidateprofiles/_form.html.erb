@@ -99,13 +99,11 @@
   </div>
   <div class="form-group">
     <%= f.label :scheduletime,"Schedule Time"%><br>
-    <div class='input-group date' id='datetimepicker3'>
-        <%= f.text_field :scheduletime,:class=>"form-control"%>
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-time"></span>
-          </span>
-    </div>
-    </div>
+    <%= select_tag 'scheduletime',"<option value="">--Select Schedule Time--</option>".html_safe%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :scheduletime%>
+  </div>
   <div class="form-group">
     <%= f.label :jobdescription,"Job Description" %><br>
     <%= f.text_area :jobdescription,:placeholder=>"Job Description",:class => "form-control required",:required => true%>
@@ -118,6 +116,9 @@
   </div>
   <div class="form-group">
     <%=hidden_field_tag :identity%>
+  </div>
+  <div class="form-group">
+    <%=hidden_field_tag :updatecalender%>
   </div>
   <div class="form-group">
     <%= f.hidden_field :status,:value =>"schedule"%>
@@ -192,7 +193,7 @@
        $('#candidateprofile_YOE').val(parse[0]['yoe']);
        $('#candidateprofile_jobtitle').val(parse[0]['jobtitle']);
        $('#candidateprofile_previouscompany').val(parse[0]['previouscompany']);
-       dropdown();
+       dropdownInterviewer();
      },
      error: function() {
        alert('Error!');
@@ -219,8 +220,11 @@
  });
 
  $('#interviewername').change(function() {
+   if($("#interviewername option:selected").index() > 0)
+   {
    var name;
    name = $(this).val();
+   var date=$("#candidateprofile_scheduledate").val();
    alert(name);
    textmethod = $('#interviewername option:selected').text();
    valuemethod = $('#interviewername option:selected').val();
@@ -238,14 +242,22 @@
        parse = $.parseJSON(json);
        alert(json);
        $("#candidateprofile_intervieweremail").val(parse[0]['companyemail']);
+       dropdownScheduletime(name,date);
      },
      error: function() {
        alert('Error!');
      }
    });
+ }
+ else
+ {
+    $("#candidateprofile_intervieweremail").val("");
+    $('#scheduletime').empty();
+    $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+ }
  });
 
-  function dropdown()
+  function dropdownInterviewer()
   {
     var psid= $('#candidateprofile_primaryskills_id').val();
     var ssid= $('#candidateprofile_secondaryskills_id').val();
@@ -272,6 +284,40 @@
    });
   }
 
+  function dropdownScheduletime(name,date)
+  {
+   $.ajax({
+     type: 'GET',
+     url: '/calenders/search',
+     dataType: 'json',
+     data: {
+       'interviewername': name,
+       'date':date
+     },
+     success: function(result) {
+       alert(result);
+       $('#scheduletime').empty();
+       $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+       $.each(result, function (key, val) {
+         $('#scheduletime').append('<option value="' + val.id + '">'+ val.time + '</option>');
+       })
+     },
+     error: function() {
+       alert('Error!');
+     }
+   });
+  }
+
+  $('#datetimepicker4').on("dp.change dp.keyup", function(e) {
+    var id = $("#interviewername option:selected").val();
+    var date = $("#candidateprofile_scheduledate").val();
+    dropdownScheduletime(id,date)
+   });
+
+  $('#scheduletime').change(function() {
+     var st=$('#scheduletime').val();
+     $("#updatecalender").val(st);
+  });
  $('input[type="submit"]').click(function(){
     if($('input[type="text"]').val()=="")
     {

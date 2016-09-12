@@ -1,0 +1,79 @@
+<%= form_for(@calender) do |f| %>
+  <% if @calender.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@calender.errors.count, "error") %> prohibited this calender from being saved:</h2>
+
+      <ul>
+      <% @calender.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+     <div class="col-lg-4 col-lg-offset-4">
+         <div class="input-group">
+            <div class="form-group">
+              <%= f.label :date,"Date" %><br>
+              <div class='input-group date' id='datetimepicker4'>
+                  <%= f.text_field :date,:class=>"form-control"%>
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :time ,"Time"%><br>
+              <div class='input-group date' id='datetimepicker3'>
+                  <%= f.text_field :time,:class=>"form-control"%>
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-time"></span>
+                    </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :interviewername,"Interviewer Name"%><br>
+              <%= f.select :interviewername,options_for_select(Interviewer.all.collect{|ss| [ss.interviewername, ss.id]}),{:prompt => "-- Select Interviewer Name --"},{ class: "selectpicker", data: {live_search: 'true',width:"auto" }}%>
+            </div>
+            <div class="form-group">
+              <%= f.hidden_field :interviewer_id%>
+            </div>
+            <div class="form-group">
+              <%= f.hidden_field :status,:value =>"new"%>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div  class="col-lg-4 col-lg-offset-4">
+            <div class="actions">
+              <%= f.submit :class=>"btn btn-primary btn-lg",:id=>"interviewersubmit"%>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+  <% end %>
+<script type="text/javascript">
+$('#calender_interviewername').change(function(){
+  var text=$('#calender_interviewername option:selected').text();
+  $('#calender_interviewer_id').val(text);
+});
+$('.selectpicker').selectpicker({
+    size: "fit",
+    showTick:true,
+    tickIcon:"",
+    showTick:true
+});
+  var pd = new Date();
+  pd.setDate(pd.getDate());
+ $('#datetimepicker3').datetimepicker({
+     format: 'LT'
+   });
+
+ $('#datetimepicker4').datetimepicker({
+     format: 'DD-MM-YYYY',
+     minDate:pd
+   });
+
+</script>

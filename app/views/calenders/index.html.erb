@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Calenders</h1>
+<div class="table-responsive">
+<table class="table table-bordered table-hover sortable">
+  <thead class="bg-success">
+    <tr >
+      <th class="text-info">Date</th>
+      <th class="text-info">Time</th>
+      <th class="text-info">Interviewer Name</th>
+      <th class="text-info">Show</th>
+      <th class="text-info">Edit</th>
+      <th class="text-info">Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calenders.each do |calender| %>
+      <tr>
+        <td><%= calender.date %></td>
+        <td><%= calender.time %></td>
+        <td><%= calender.interviewer_id %></td>
+        <td><%= link_to 'Show', calender,:class=>"btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_calender_path(calender),:class=>"btn btn-info btn-sm" %></td>
+        <td><%= link_to 'Destroy', calender, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>
+<%= link_to 'New Calender', new_calender_path %>

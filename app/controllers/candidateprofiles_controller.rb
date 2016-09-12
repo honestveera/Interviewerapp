@@ -47,6 +47,7 @@ class CandidateprofilesController < ApplicationController
     respond_to do |format|
       if @candidateprofile.save
         Candidateprofile.updateprofilestatus(params[:identity])
+        Candidateprofile.updatecalender(params[:updatecalender])
         ExampleMailer.sample_email(@candidateprofile).deliver_now
         format.html { redirect_to candidateschedule_url, notice: 'Candidateprofile was successfully created.' }
         format.json { render :show, status: :created, location: @candidateprofile }

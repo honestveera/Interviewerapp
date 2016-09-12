@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @calender.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @calender.time %>
+</p>
+
+<p>
+  <strong>Interviewername:</strong>
+  <%= @calender.interviewername %>
+</p>
+
+<%= link_to 'Edit', edit_calender_path(@calender) %> |
+<%= link_to 'Back', calenders_path %>
