@@ -51,11 +51,11 @@
 
         <div class="form-group">
           <%= f.label :primaryskills_id,"Primary Skills"%><br>
-          <%=f.select :primaryskills_id,options_from_collection_for_select(Skillset.all,"id","skills"), :prompt => "--Select Primary Skills--",:class => "form-control required"%>
+          <%=f.select :primaryskills_id,options_for_select(Skillset.all.collect{|ss| [ss.skills, ss.id]}),{:prompt => "-- Select Primary Skills --"},{ class: "selectpicker", data: {live_search: 'true',width:"auto" }}%>
         </div>
         <div class="form-group">
           <%= f.label :secondaryskills_id,"Secondary Skills"%><br>
-          <%=f.select :secondaryskills_id,options_from_collection_for_select(Skillset.all,"id","skills"), :prompt => "--Select Secondary Skills--",:class => "form-control required"%>
+          <%=f.select :secondaryskills_id,options_for_select(Skillset.all.collect{|ss| [ss.skills, ss.id]}),{:prompt => "-- Select Secondary Skills --"},{ class: "selectpicker", data: {live_search: 'true',width:"auto" }}%>
         </div>
         <div class="form-group">
           <%= f.label :otherskills,"Other Skills"%><br>
@@ -67,7 +67,7 @@
         </div>
         <div class="form-group">
           <%= f.label :attachedfile,"Attached File"%><br>
-          <%= f.file_field :attachedfile%>
+          <%= f.file_field :attachedfile,:class=>"filestyle","data-buttonName"=>"btn-primary","data-buttonBefore"=>"true","data-size"=>"sm","data-placeholder"=>"Choose File"%>
         </div>
       </div>
       </div>
@@ -98,7 +98,13 @@
 </div>
 <% end %>
 <script type="text/javascript">
-
+    $(":file").filestyle({buttonName: "btn-primary",buttonBefore: true,size:"sm",placeholder:"Choose File"});
+    $('.selectpicker').selectpicker({
+        size: "fit",
+        showTick:true,
+        tickIcon:"",
+        showTick:true
+    });
     $('#candidatedetail_primaryskills_id').change(function(){
       var text=$('#candidatedetail_primaryskills_id option:selected').text();
       $('#candidatedetail_primaryskills').val(text);

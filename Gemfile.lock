@@ -45,8 +45,10 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-filestyle-rails (1.2.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    bootstrap-select-rails (1.6.3)
     bootstrap3-datetimepicker-rails (4.17.37)
       momentjs-rails (>= 2.8.1)
     builder (3.2.2)
@@ -265,7 +267,9 @@ DEPENDENCIES
   angularjs-rails
   backup
   bcrypt (~> 3.1.7)
+  bootstrap-filestyle-rails
   bootstrap-sass (~> 3.2.0)
+  bootstrap-select-rails
   bootstrap3-datetimepicker-rails (~> 4.17.37)
   byebug
   coffee-rails (~> 4.1.0)

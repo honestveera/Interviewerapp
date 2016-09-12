@@ -26,7 +26,7 @@
          <div class="input-group">
            <div class="field">
              <%= f.label "candidatename","Scheduled Candidate"%><br>
-             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.candidateschedulestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"form-control",:style=>"width:300px" %>
+             <%=select_tag 'candidatename',options_from_collection_for_select(Candidateprofile.candidateschedulestatus("schedule"),"id","candidatename"), :prompt => "--Select Candidate--",:class=>"selectpicker","data-live-search"=>"true","data-width"=>"auto",:style=>"width:300px" %>
            </div>
            <div class="form-group">
              <%= f.hidden_field :candidatename%>
@@ -164,7 +164,7 @@
            </div>
            <div class="form-group">
              <%= f.label :attachedfile,"Attached File"%><br>
-             <%= f.file_field :attachedfile%>
+             <%= f.file_field :attachedfile,:class=>"filestyle","date-buttonName"=>"btn-primary","data-buttonBefore"=>"true","data-size"=>"sm","data-placeholder"=>"Choose File"%>
            </div>
           <div class="form-group">
             <%=hidden_field_tag :identity%>
@@ -189,8 +189,16 @@
 <% end %>
 
 <script type="text/javascript">
-
+    $(":file").filestyle({buttonName:"btn-primary",buttonBefore:true,size:"sm",placeholder:"Choose File"});
+    $('.selectpicker').selectpicker({
+        size: "fit",
+        showTick:true,
+        tickIcon:"",
+        showTick:true
+    });
    $('#candidatename').change(function() {
+     if($("#candidatename option:selected").index() > 0)
+     {
      var q, textmethod, valuemethod;
      q = $(this).val();
      alert(q);
@@ -221,6 +229,16 @@
          alert('Error!');
        }
      });
+   }
+   else
+   {
+     $('#interviewerfeedback_interviewername').val("");
+     $('#interviewerfeedback_skills').val("");
+     $('#interviewerfeedback_scheduledate').val("");
+     $('#interviewerfeedback_scheduletime').val("");
+     $('#interviewerfeedback_candidatemail').val("");
+     $('#interviewerfeedback_yoe').val("");
+   }
    });
 
    $('input[name="interviewerfeedback[commitementtask]"]').change(function(){

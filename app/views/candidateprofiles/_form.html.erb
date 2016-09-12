@@ -26,7 +26,7 @@
          <div class="input-group">
   <div class="form-group">
     <%= f.label 'candidatename',"Candidate Name"%><br>
-    <%= select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("new"),"id","candidatename"),:prompt=>"--Select Candidate Name--",:class => "required",:required => true%>
+    <%= select_tag 'candidatename',options_from_collection_for_select(Candidatedetail.candidatestatus("new"),"id","candidatename"),:prompt => "-- Select Candidate Name --",:class=>"selectpicker","data-live-search"=>"true","data-width"=>"auto"%>
   </div>
 
   <div class="form-group">
@@ -141,6 +141,12 @@
 </div>
 <% end %>
  <script type="text/javascript">
+ $('.selectpicker').selectpicker({
+     size: "fit",
+     showTick:true,
+     tickIcon:"",
+     showTick:true
+ });
    var pd = new Date();
    pd.setDate(pd.getDate());
   $('#datetimepicker3').datetimepicker({
@@ -153,6 +159,8 @@
     });
 
  $('#candidatename').change(function() {
+   if($("#candidatename option:selected").index() > 0)
+   {
    var q, textmethod, valuemethod;
    q = $(this).val();
    textmethod = $('#candidatename option:selected').text();
@@ -190,6 +198,24 @@
        alert('Error!');
      }
    });
+  }
+  else
+  {
+    $('#candidateprofile_candidateemail').val("");
+    $('#candidateprofile_candidatecontact').val("");
+    $('#candidateprofile_primaryskills').val("");
+    $('#candidateprofile_primaryskills_id').val("");
+    $('#candidateprofile_secondaryskills').val("");
+    $('#candidateprofile_secondaryskills_id').val("");
+    $('#candidateprofile_otherskills').val("");
+    $('#candidateprofile_otherskills_id').val("");
+    $('#candidateprofile_YOE').val("");
+    $('#candidateprofile_jobtitle').val("");
+    $('#candidateprofile_previouscompany').val("");
+    $("#candidateprofile_intervieweremail").val("");
+    $('#interviewername').empty();
+    $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
+  }
  });
 
  $('#interviewername').change(function() {
@@ -234,6 +260,8 @@
        'secondaryskills':ssid
      },
      success: function(result) {
+       $('#interviewername').empty();
+       $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
        $.each(result, function (key, val) {
          $('#interviewername').append('<option value="' + val.id + '">'+ val.interviewername + '</option>');
        })

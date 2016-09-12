@@ -16,72 +16,20 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/extras/dataTables.tableTools
+//= require bootstrap-select
+//= require bootstrap/alert
+//= require bootstrap/dropdown
 //= require turbolinks
 //= require moment
+//= require bootstrap-filestyle
 //= require bootstrap-datetimepicker
 //= require_tree .
 $(document).ready(function(){
-  // $('input[type="submit"]').click(function(){
-  //    if($('input[type="text"]').val()=="")
-  //    {
-  //      $('input[type="text"]').css({"border-color":"red","border-width":"2px"});
-  //    }
-  //   if($('input[type="number"]').val()=="")
-  //    {
-  //      $('input[type="number"]').css({"border-color":"red","border-width":"2px"});
-  //    }
-  //    if($('select').val()=="")
-  //    {
-  //      $('select').css({"border-color":"red","border-width":"2px"});
-  //    }
-  //    else
-  //    {
-  //      $('input[type="text"]').css({"border-color":"skyblue"});
-  //      $('input[type="number"]').css({"border-color":"skyblue"});
-  //      $('select').css({"border-color":"skyblue"});
-  //    }
-  // });
-  //
-  // $('input[type="text"]').change(function(){
-  //   $(this).css({"border-color":"skyblue"});
-  // });
-  // $('input[type="number"]').change(function(){
-  //  $(this).css({"border-color":"skyblue"});
-  // });
-  // $('select').change(function(){
-  //  $(this).css({"border-color":"skyblue"});
-  // });
+  $('.selectpicker').selectpicker({
+      size: "fit",
+      showTick:true,
+      tickIcon:"",
+      showTick:true
+  });
 
-
-
-  // $('input[type="number"]').focusout(function(){
-  //    if($(this).val()=="")
-  //    {
-  //      $(this).css({"border-color":"red","border-width":"2px"});
-  //    }
-  //    else
-  //    {
-  //      $(this).css({"border-color":"skyblue"});
-  //    }
-  // });
-  // $('input[type="text"]').focusout(function(){
-  //    if($(this).val()=="")
-  //    {
-  //      $(this).css({"border-color":"red","border-width":"2px"});
-  //    }
-  //    else
-  //    {
-  //      $(this).css({"border-color":"skyblue"});
-  //    }
-  // });
-  // $('select').focusout(function(){
-  //    if($(this).val()=="")
-  //    {
-  //      $(this).css({"border-color":"red","border-width":"2px"});
-  //    }
-  //    else
-  //    {
-  //      $(this).css({"border-color":"skyblue"});
-  //    }
-  // });
 });
