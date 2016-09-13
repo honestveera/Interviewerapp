@@ -38,6 +38,24 @@
              0 0 40px #A5F1FF;
         position: relative;
    }
+  #forgotpassword
+  {
+    color:white;
+    font-size:16px;
+    text-decoration: underline;
+    position:relative;
+    top:10px;
+    left:-10px
+  }
+  #forgotpassword:hover
+  {
+    color:green;
+    font-size:16px;
+    text-decoration: underline;
+    position:relative;
+    top:10px;
+    left:-10px
+  }
    select
   {
     width:250px;

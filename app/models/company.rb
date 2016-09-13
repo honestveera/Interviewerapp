@@ -5,5 +5,5 @@ class Company < ActiveRecord::Base
   validates_confirmation_of  :password
  # has_secure_password
   scope :allwhere,->(companyemail,password){where("companyemail=? AND password=? ",companyemail,password)}
-
+  scope :password,->(companyemail){where("companyemail=?",companyemail)}
 end

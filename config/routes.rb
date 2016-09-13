@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   #resources :calenders
   #resources :candidatedetails
   resources :interviewerfeedbacks
@@ -47,6 +48,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   get 'signout' => 'application#signout'
   get 'login'  => 'companies#login'
+  get 'forgotpassword' => 'companies#forgotpassword'
+  post 'forgotpasswor' => 'companies#forgotpasswor'
   post 'credential'  => 'companies#credential'
   # You can have the root of your site routed with "root"
   root 'companies#login'

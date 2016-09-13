@@ -21,8 +21,23 @@ class CompaniesController < ApplicationController
     end
    end
 
+
+
  def  login
     render "login"
+ end
+
+ def forgotpasswor
+     @mailid=Company.password(params[:company][:companyemail]);
+    respond_to do |format|
+     if @mailid.count >= 1
+       UserNotifier.send_forgotpassword(@mailid).deliver_now
+       format.html { redirect_to forgotpassword_url, notice: 'Password Send to mail '}
+     else
+      format.html { redirect_to forgotpassword_url}
+      flash[:error] = "Enter Correct Email"
+     end
+   end
  end
 
   # GET /companies/1
