@@ -1,5 +1,6 @@
 class CalendersController < ApplicationController
   before_action :set_calender, only: [:show, :edit, :update, :destroy]
+
   respond_to :html,:json
   # GET /calenders
   # GET /calenders.json
