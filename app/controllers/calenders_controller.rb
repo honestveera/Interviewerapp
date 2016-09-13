@@ -21,7 +21,7 @@ class CalendersController < ApplicationController
   def show
   end
 
-  # GET /calenders/new
+  # GET /calenders/newi
   def new
     @calender = Calender.new
   end
