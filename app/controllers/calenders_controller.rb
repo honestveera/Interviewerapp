@@ -9,8 +9,8 @@ class CalendersController < ApplicationController
   end
 
   def  search
-    interviewernameid=params[:interviewername]
-    date=params[:date]
+    interviewernameid=params[:interviewer_id]
+    date=params[:dateformat]
     status="new"
     @detail=Calender.calender(interviewernameid,date,status)
     respond_with(@detail, :include => :status)
@@ -33,17 +33,15 @@ class CalendersController < ApplicationController
   # POST /calenders
   # POST /calenders.json
   def create
-    @calender = Calender.new(calender_params)
-
-    respond_to do |format|
-      if @calender.save
-        format.html { redirect_to @calender, notice: 'Calender was successfully created.' }
-        format.json { render :show, status: :created, location: @calender }
-      else
-        format.html { render :new }
-        format.json { render json: @calender.errors, status: :unprocessable_entity }
-      end
+    @interviewer=Interviewer.all
+    @interviewer.each do |interviewer|
+    params[:calender][:interviewername] = interviewer.interviewername
+    params[:calender][:interviewer_id] = interviewer.id
+    params[:calender][:timeslot]=params["interviewer_#{interviewer.id}"].to_s
+    @calender = Calender.new(params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status))
+    @calender.save
     end
+    redirect_to calenders_url
   end
 
   # PATCH/PUT /calenders/1
@@ -78,6 +76,6 @@ class CalendersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def calender_params
-      params.require(:calender).permit(:date, :time, :interviewername,:interviewer_id,:status)
+      params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status)
     end
 end

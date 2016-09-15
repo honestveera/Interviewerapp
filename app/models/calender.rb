@@ -1,4 +1,3 @@
 class Calender < ActiveRecord::Base
-
-  scope :calender,->(interviewerid,date,status){where("interviewername=? and date=? and status=?",interviewerid,date,status)}
+  scope :calender,->(interviewerid,date,status){where("interviewer_id=? and dateformat=? and status=?",interviewerid,date,status)}
 end

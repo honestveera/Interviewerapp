@@ -121,6 +121,9 @@
     <%=hidden_field_tag :updatecalender%>
   </div>
   <div class="form-group">
+    <%=f.hidden_field :interviewer_id%>
+  </div>
+  <div class="form-group">
     <%= f.hidden_field :status,:value =>"schedule"%>
   </div>
   <div class="form-group">
@@ -228,6 +231,7 @@
    alert(name);
    textmethod = $('#interviewername option:selected').text();
    valuemethod = $('#interviewername option:selected').val();
+   $("#candidateprofile_interviewer_id").val(valuemethod);
    $('#candidateprofile_interviewername').val(textmethod);
    $.ajax({
      type: 'GET',
@@ -291,16 +295,30 @@
      url: '/calenders/search',
      dataType: 'json',
      data: {
-       'interviewername': name,
-       'date':date
+       'interviewer_id': name,
+       'dateformat':date
      },
      success: function(result) {
-       alert(result);
-       $('#scheduletime').empty();
-       $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
-       $.each(result, function (key, val) {
-         $('#scheduletime').append('<option value="' + val.id + '">'+ val.time + '</option>');
-       })
+       var json, parse;
+       json = JSON.stringify(result);
+       parse = $.parseJSON(json);
+       if(parse[0]['timeslot'].length<=10)
+       {
+          var b=parse[0]['timeslot'];
+          $('#scheduletime').empty();
+          $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+          $('#scheduletime').append('<option value="' +b.replace(/[[""]/g,"").replace(/]/g,"")+ '">'+b.replace(/[[""]/g,"").replace(/]/g,"")+ '</option>');
+       }
+       else
+       {
+         var b=parse[0]['timeslot'].split(",");
+         $('#scheduletime').empty();
+         $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+         $.each(b, function (key, val) {
+           $('#scheduletime').append('<option value="' +val.replace(/[[""]/g,"").replace(/]/g,"")+ '">'+val.replace(/[[""]/g,"").replace(/]/g,"")+ '</option>');
+         })
+       }
+
      },
      error: function() {
        alert('Error!');
@@ -316,7 +334,7 @@
 
   $('#scheduletime').change(function() {
      var st=$('#scheduletime').val();
-     $("#updatecalender").val(st);
+     $("#candidateprofile_scheduletime").val(st);
   });
  $('input[type="submit"]').click(function(){
     if($('input[type="text"]').val()=="")
