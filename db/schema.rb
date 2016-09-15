@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160915082616) do
   end
 
   add_index "candidateprofiles", ["candidatedetail_id"], name: "index_candidateprofiles_on_candidatedetail_id"
+  add_index "candidateprofiles", ["interviewer_id"], name: "index_candidateprofiles_on_interviewer_id"
 
   create_table "companies", force: :cascade do |t|
     t.string   "companyname"

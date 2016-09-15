@@ -14,6 +14,8 @@ class Candidateprofile < ActiveRecord::Base
 
  def self.updateprofilestatus id
    a=Candidatedetail.find_by(id:id)
+   b=a.id
+   c=a.candidatename
    a.update(status:"schedule")
  end
  #  a=i.gsub(/[\[\"]/,'').gsub(/]/,'')
@@ -25,23 +27,22 @@ class Candidateprofile < ActiveRecord::Base
        timeslot1=interviewtime
        dates=interviewdate
      #2.pass above valuses Calender
-      c=Calender.find_by(interviewer_id:id,timeslot:timeslot1,dateformat:dates)
-       if  c.timeslot.length >= 10
+      c=Calender.find_by(interviewer_id:id)
+       if c.timeslot.length>= 10
         #3.time get from calender table
            ct= c.timeslot.gsub(/[\[\]"]/,'').split(",")
         #4.Delete timeslot
-           nt= ct.delete(timeslot1)
+           ct.delete(timeslot1)
         #5.update
-           c.update(timeslot:nt)
-
+           c.update(timeslot:ct)
       else
         #3.time get from calender table
            ct=c.timeslot.gsub(/[\[\]"]/,'')
         #4.Delete timeslot
            nt= ct.delete(timeslot1)
         #5.update
-           c.update(timeslot:nt)
-           if  c.timeslot==""
+           c.update(timeslot:ct)
+           if  c.timeslot.gsub(/[\[\]"]/,'')==""
             c.update(status:"schedule")
            end
       end
