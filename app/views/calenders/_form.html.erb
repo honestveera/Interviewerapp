@@ -24,7 +24,7 @@
             </div>
              <table class="table table-bordered table-hover">
                <tr>
-                 <th>Times</th>
+                 <th><%=check_box_tag "interviewertime[]",1,false,:id=>"interviewer_time"%>Times</th>
                  <% Interviewer.all.each do |interviewer| %>
                  <th>
                    <%=check_box_tag "interviewer_id#{interviewer.id}[]",interviewer.id,false,:id=>"interviewer_ids_#{interviewer.id}"%>
@@ -97,7 +97,17 @@ $('.selectpicker').selectpicker({
     }
     else
     {
-        $("input[id='"+a+"']").prop('checked',false)
+      $("input[id='"+a+"']").prop('checked',false)
+    }
+  });
+  $("#interviewer_time").click(function(){
+    if($(this).is(':checked'))
+    {
+      $("input[type='checkbox']").prop('checked',true)
+    }
+    else
+    {
+      $("input[type='checkbox']").prop('checked',false)
     }
   });
 </script>
