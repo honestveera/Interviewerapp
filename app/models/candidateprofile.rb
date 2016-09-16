@@ -26,26 +26,15 @@ class Candidateprofile < ActiveRecord::Base
        id=interviewerid
        timeslot1=interviewtime
        dates=interviewdate
-     #2.pass above valuses Calender
-      c=Calender.find_by(interviewer_id:id)
-       if c.timeslot.length>= 10
-        #3.time get from calender table
-           ct= c.timeslot.gsub(/[\[\]"]/,'').split(",")
-        #4.Delete timeslot
-           ct.delete(timeslot1)
-        #5.update
-           c.update(timeslot:ct)
-      else
-        #3.time get from calender table
-           ct=c.timeslot.gsub(/[\[\]"]/,'')
-        #4.Delete timeslot
-           nt= ct.delete(timeslot1)
-        #5.update
-           c.update(timeslot:ct)
-           if  c.timeslot.gsub(/[\[\]"]/,'')==""
-            c.update(status:"schedule")
-           end
-      end
+      #2.pass above valuses Calender
+       c=Calender.where("interviewer_id= ? AND dateformat = ?", id,dates).to_a
+      #3.time get from calender table
+       ct= c[0].timeslot.gsub(/[\[\]"]/,'').split(",")
+      #4.Delete timeslot
+       ct.delete(timeslot1)
+       c[0].update(timeslot:ct)
+       c[0].update(status:"new") if c[0].timeslot.length>=10
+       c[0].update(status:"schedule") if c[0].timeslot.length<=10
    end
 
 end

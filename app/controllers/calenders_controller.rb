@@ -35,11 +35,12 @@ class CalendersController < ApplicationController
   def create
     @interviewer=Interviewer.all
     @interviewer.each do |interviewer|
-    params[:calender][:interviewername] = interviewer.interviewername
-    params[:calender][:interviewer_id] = interviewer.id
-    params[:calender][:timeslot]=params["interviewer_#{interviewer.id}"].to_s
-    @calender = Calender.new(params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status))
-    @calender.save
+        params[:calender][:interviewername] = interviewer.interviewername
+        params[:calender][:interviewer_id] = interviewer.id
+        params[:calender][:timeslot]=params["interviewer_#{interviewer.id}"].to_s
+        count=Calender.where(interviewer_id:interviewer.id,dateformat:params[:calender][:dateformat]).count;
+        @calender = Calender.new(params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status))
+        @calender.save if (params[:calender][:timeslot]!="")&&(count!=1)
     end
     redirect_to calenders_url
   end

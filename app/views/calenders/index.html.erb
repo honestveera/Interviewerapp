@@ -9,6 +9,7 @@
       <th class="text-info">Time</th>
       <th class="text-info">Interviewer Name</th>
       <th class="text-info">Interviewer ID</th>
+      <th class="text-info">Status</th>
       <th class="text-info">Show</th>
       <th class="text-info">Edit</th>
       <th class="text-info">Destroy</th>
@@ -22,7 +23,7 @@
         <td><%= calender.timeslot %></td>
         <td><%= calender.interviewername%></td>
         <td><%= calender.interviewer_id%></td>
-
+        <td><%= calender.status%></td>  
         <td><%= link_to 'Show', calender,:class=>"btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Edit', edit_calender_path(calender),:class=>"btn btn-info btn-sm" %></td>
         <td><%= link_to 'Destroy', calender, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger btn-sm" %></td>

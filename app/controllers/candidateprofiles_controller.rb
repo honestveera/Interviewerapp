@@ -63,6 +63,7 @@ class CandidateprofilesController < ApplicationController
   def update
     respond_to do |format|
       if @candidateprofile.update(candidateprofile_params)
+        Candidateprofile.updatecalender(params[:candidateprofile][:interviewer_id],params[:candidateprofile][:scheduletime],params[:candidateprofile][:scheduledate])
         ExampleMailer.sample_email_update(@candidateprofile).deliver_now
         format.html { redirect_to candidateschedule_url, notice: 'Candidateprofile was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidateprofile }
