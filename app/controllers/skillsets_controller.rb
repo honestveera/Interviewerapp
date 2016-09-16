@@ -1,6 +1,11 @@
 class SkillsetsController < ApplicationController
   before_action :set_skillset, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate
+  def authenticate
+    if ((session[:companyemail]||session[:password]=="")||((session[:companyemail]||session[:password])==nil))
+       redirect_to root_url
+    end
+  end
   # GET /skillsets
   # GET /skillsets.json
   def index

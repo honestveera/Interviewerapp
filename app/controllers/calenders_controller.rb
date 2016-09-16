@@ -1,9 +1,16 @@
 class CalendersController < ApplicationController
   before_action :set_calender, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate
   respond_to :html,:json
   # GET /calenders
   # GET /calenders.json
+
+  def authenticate
+    if ((session[:companyemail]||session[:password]=="")||((session[:companyemail]||session[:password])==nil))
+       redirect_to root_url
+    end
+  end
+
   def index
     @calenders = Calender.all
   end
