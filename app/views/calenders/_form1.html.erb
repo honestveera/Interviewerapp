@@ -16,42 +16,43 @@
             <div class="form-group">
               <%= f.label :dateformat,"Date" %><br>
               <div class='input-group date' id='datetimepicker4'>
-                  <%= f.text_field :dateformat,:class=>"form-control"%>
+                  <%= f.text_field :dateformat,:class=>"form-control",:readonly => true%>
                       <span class="input-group-addon">
                           <span class="glyphicon glyphicon-calendar"></span>
                     </span>
               </div>
             </div>
-             <table id="example" class="table table-bordered table-hover">
+             <table class="table table-bordered table-hover" id="example">
               <thead>
                 <tr>
-                 <th><%=check_box_tag "interviewertime[]",1,false,:id=>"interviewer_time"%>Times</th>
-                 <% Interviewer.all.each do |interviewer| %>
-                 <th >
+                 <th><span class="text"><%=check_box_tag "interviewertime[]",1,false,:id=>"interviewer_time"%>Times</span></th>
+                 <% interviewer=Calender.find_by(:interviewer_id=>"#{@calender.interviewer_id}",:dateformat=>"#{@calender.dateformat}") %>
+                 <th><span class="text">
                    <%=check_box_tag "interviewer_id#{interviewer.id}[]",interviewer.id,false,:id=>"interviewer_ids_#{interviewer.id}"%>
                    <%=interviewer.interviewername%></br>
+                   </span>
                  </th>
                  <%=f.hidden_field :interviewername,:value=>"#{interviewer.interviewername}"%>
                  <%=f.hidden_field :interviewer_id,:value=>"#{interviewer.id}"%>
-
-                 <%end%>
                </tr>
                </thead>
+
                <tbody>
                <tr>
                 <% a=["6.00AM","6.30AM","7.00AM","7.30AM","8.00AM","8.30AM","9.00AM","9.30AM","10.00AM","10.30AM","11.00AM","11.30AM","12.00AM","12.30PM","1.00PM","1.30PM","2.00PM","2.30PM","3.00PM","3.30PM","4.00PM","4.30PM","5.00PM","5.30PM","6.00PM","6.30PM","7.00PM","7.30PM","8.00PM"]%>
                 <% a.each_with_index do |a,i|%>
-                 <tr  >
+                 <tr>
                    <td><%=a%></td>
-                   <% Interviewer.all.each do |interviewer| %>
-                   <td><%=check_box_tag "interviewer_#{interviewer.id}[]",a,false,:id=>"interviewer_ids_#{interviewer.id}"%></td>
-                   <%end%>
+                   <% interviewer=Calender.find_by(:interviewer_id=>"#{@calender.interviewer_id}",:dateformat=>"#{@calender.dateformat}") %>
+                   <td><%=check_box_tag "interviewer_#{interviewer.id}[]",a,interviewer.timeslot.gsub(/[\[\] "]/,'').split(",").include?(a) ? true:false,:id=>"interviewer_ids_#{interviewer.id}"%></td>
                  </tr>
+                 <%end%>
                  <%= f.hidden_field :timeslot,:value =>"#{a}"%>
-                <%end%>
               </tr>
             </tbody>
-            </table>
+
+          </table>
+
           </br>
             <!-- <div class="form-group">
               <%= f.hidden_field :interviewer_id%>
@@ -88,14 +89,13 @@ $('.selectpicker').selectpicker({
    });
    var pd = new Date();
    pd.setDate(pd.getDate()-1);
-   var input = $('#calender_dateformat').attr('value', moment().format("DD-MM-YYYY"));
+   //var input = $('#calender_dateformat').attr('value', moment().format("DD-MM-YYYY"));
   $('#datetimepicker4').datetimepicker({
-     format: 'DD-MM-YYYY',
-     minDate:pd
+     format: 'DD-MM-YYYY'
    });
    $('#example').DataTable( {
        "scrollX": "1200px",
-        "scrollY": "400px",
+       "scrollY": "400px",
        "paging" :false,
        "info":false,
        "ordering":false,
@@ -134,31 +134,5 @@ $('.selectpicker').selectpicker({
     vertical-align: top;
     border-top: 1px solid #DDD;
 }
-div.dataTables_wrapper {
-        width: 1150px;
-        margin: 0 auto;
-    }
-/*table ,tr td{
-    border:1px solid red
-}
-tbody {
-    display:block;
-    height:300px;
-    overflow:scroll;
-}
-thead, tbody tr {
-    display:table;
-    width:100%;
-    table-layout:fixed;/* even columns width , fix width of table too*/
-}
-/*thead {
-    width: calc( 100% - 1em )/* scrollbar is average 1em/16px width, remove it from thead width */
-}
-/*table {
-    width:400px;
-    font-size: 12px;
-}*/*/*/
-
-
 
 </style>

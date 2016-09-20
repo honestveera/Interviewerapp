@@ -26,19 +26,19 @@
               <%= f.text_field :companyemail ,:placeholder=>"Company Email",:class=>"form-control required",:required=>true%>
             </div>
             <div class="form-group">
-              <%= f.label :primaryskills,"Primary Skills"%><br>
-              <%= f.select :primaryskills,options_for_select(Skillset.all.collect{|ss| [ss.skills, ss.id]}),{:prompt => "-- Select Primary Skills --"},{ class: "selectpicker", data: {live_search: 'true',width:"auto" }}%>
+              <%= f.label :primaryskills_id,"Primary Skills"%><br>
+              <%= f.select :primaryskills_id,options_for_select(Skillset.all.collect{|ss| [ss.skills, ss.id]}),{:prompt => "-- Select Primary Skills --"},{ class: "selectpicker", data: {live_search: 'true',width:"auto" }}%>
             </div>
 
             <div class="field">
-              <%= f.label :secondaryskills,"Secondary Skills"%><br>
-              <%= f.select :secondaryskills,options_for_select(Skillset.all.collect{|ss| [ss.skills, ss.id]}),{:prompt => "-- Select Secondary Skills --"},{ class: "selectpicker", data: {live_search: 'true',width:"auto" }} %>
+              <%= f.label :secondaryskills_id,"Secondary Skills"%><br>
+              <%= f.select :secondaryskills_id,options_for_select(Skillset.all.collect{|ss| [ss.skills, ss.id]}),{:prompt => "-- Select Secondary Skills --"},{ class: "selectpicker", data: {live_search: 'true',width:"auto" }} %>
             </div>
             <div class="form-group">
-              <%= f.hidden_field :primaryskills_id%>
+              <%= f.hidden_field :primaryskills%>
             </div>
             <div class="form-group">
-              <%= f.hidden_field :secondaryskills_id%>
+              <%= f.hidden_field :secondaryskills%>
             </div>
             <div class="field">
               <%= f.label :otherskills,"Other Skills"%><br>
@@ -70,14 +70,14 @@ $('.selectpicker').selectpicker({
     tickIcon:"",
     showTick:true
 });
-$('#interviewer_primaryskills').change(function(){
-  var text=$('#interviewer_primaryskills option:selected').text();
-  $('#interviewer_primaryskills_id').val(text);
+$('#interviewer_primaryskills_id').change(function(){
+  var text=$('#interviewer_primaryskills_id option:selected').text();
+  $('#interviewer_primaryskills').val(text);
 
 });
-$('#interviewer_secondaryskills').change(function(){
-  var text=$('#interviewer_secondaryskills option:selected').text();
-  $('#interviewer_secondaryskills_id').val(text);
+$('#interviewer_secondaryskills_id').change(function(){
+  var text=$('#interviewer_secondaryskills_id option:selected').text();
+  $('#interviewer_secondaryskills').val(text);
 });
 $('input[type="text"]').focusout(function(){
    if($(this).val()=="")

@@ -152,7 +152,8 @@
      showTick:true
  });
    var pd = new Date();
-   pd.setDate(pd.getDate());
+   pd.setDate(pd.getDate()-1);
+    var input = $('#candidateprofile_scheduledate').attr('value', moment().format("DD-MM-YYYY"));
   $('#datetimepicker3').datetimepicker({
       format: 'LT'
     });
@@ -183,7 +184,6 @@
        var contact, json, parse;
        json = JSON.stringify(result);
        parse = $.parseJSON(json);
-       alert(json);
        $('#candidateprofile_candidateemail').val(parse[0]['candidateemail']);
        contact = parseFloat(parse[0]['candidatecontact']);
        $('#candidateprofile_candidatecontact').val(contact);
@@ -196,6 +196,8 @@
        $('#candidateprofile_YOE').val(parse[0]['yoe']);
        $('#candidateprofile_jobtitle').val(parse[0]['jobtitle']);
        $('#candidateprofile_previouscompany').val(parse[0]['previouscompany']);
+       $('#scheduletime').empty();
+       $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
        dropdownInterviewer();
      },
      error: function() {
@@ -219,6 +221,8 @@
     $("#candidateprofile_intervieweremail").val("");
     $('#interviewername').empty();
     $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
+    $('#scheduletime').empty();
+    $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
   }
  });
 
@@ -228,7 +232,6 @@
    var name;
    name = $(this).val();
    var date=$("#candidateprofile_scheduledate").val();
-   alert(name);
    textmethod = $('#interviewername option:selected').text();
    valuemethod = $('#interviewername option:selected').val();
    $("#candidateprofile_interviewer_id").val(valuemethod);
@@ -244,7 +247,6 @@
        var json, parse;
        json = JSON.stringify(result);
        parse = $.parseJSON(json);
-       alert(json);
        $("#candidateprofile_intervieweremail").val(parse[0]['companyemail']);
        dropdownScheduletime(name,date);
      },
@@ -264,23 +266,45 @@
   function dropdownInterviewer()
   {
     var psid= $('#candidateprofile_primaryskills_id').val();
+    var ps= $('#candidateprofile_primaryskills').val();
     var ssid= $('#candidateprofile_secondaryskills_id').val();
+    var ss= $('#candidateprofile_secondaryskills').val();
+    var date=$('#candidateprofile_scheduledate').val();
+    var status="new"
     //var osid= $('#candidateprofile_otherskills_id').val();
-    alert(psid+ssid);
    $.ajax({
      type: 'GET',
-     url: '/interviewers/searchinterviewer',
+     url: '/calenders/searchinterviewer',
      dataType: 'json',
      data: {
-       'primaryskills': psid,
-       'secondaryskills':ssid
+       'primaryskills_id': psid,
+       'secondaryskills_id':ssid,
+       'status' :status,
+       'dateformat' :date
      },
      success: function(result) {
-       $('#interviewername').empty();
-       $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
-       $.each(result, function (key, val) {
-         $('#interviewername').append('<option value="' + val.id + '">'+ val.interviewername + '</option>');
-       })
+       var json, parse;
+       json = JSON.stringify(result);
+       parse = $.parseJSON(json);
+       if(json=="[]")
+       {
+         $('#interviewername').empty();
+        // $('#interviewername').prop({"class":"selectpicker","data": {"live_search": 'true',"width":"auto" } });
+         $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
+
+         alert("No interviewer schedule in Primary Skills:"+ps+" and Secondary skills:"+ss+"");
+       }
+       else {
+         $('#interviewername').empty();
+        // $('#interviewername').prop({"class":"selectpicker","data": {"live_search": 'true',"width":"auto" } });
+         $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
+         $.each(result, function (key, val) {
+
+           $('#interviewername').append('<option value="' + val.interviewer_id + '">'+ val.interviewername + '</option>');
+         })
+       }
+
+
      },
      error: function() {
        alert('Error!');
@@ -302,7 +326,14 @@
        var json, parse;
        json = JSON.stringify(result);
        parse = $.parseJSON(json);
-       if(parse[0]['timeslot'].length<=10)
+       if(json=="[]")
+       {
+         $('#scheduletime').empty();
+         $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+         alert("The interviewer "+$("#interviewername option:selected").text()+" don't gave a schedule for:"+date+"");
+
+       }
+       else if(parse[0]['timeslot'].length<=10)
        {
           var b=parse[0]['timeslot'];
           $('#scheduletime').empty();
@@ -319,6 +350,7 @@
          })
        }
 
+
      },
      error: function() {
        alert('Error!');
@@ -329,7 +361,8 @@
   $('#datetimepicker4').on("dp.change dp.keyup", function(e) {
     var id = $("#interviewername option:selected").val();
     var date = $("#candidateprofile_scheduledate").val();
-    dropdownScheduletime(id,date)
+    dropdownScheduletime(id,date);
+    dropdownInterviewer();
    });
 
   $('#scheduletime').change(function() {

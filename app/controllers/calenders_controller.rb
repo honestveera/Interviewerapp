@@ -23,6 +23,15 @@ class CalendersController < ApplicationController
     respond_with(@detail, :include => :status)
   end
 
+  def  searchinterviewer
+    candidateps=params[:primaryskills_id]
+    candidatess=params[:secondaryskills_id]
+    status="new"
+    date=params[:dateformat]
+    @interviewer=Calender.interviewer(candidateps,candidatess,status,date)
+    respond_with(@interviewer, :include => :status)
+  end
+
   # GET /calenders/1
   # GET /calenders/1.json
   def show
@@ -35,6 +44,7 @@ class CalendersController < ApplicationController
 
   # GET /calenders/1/edit
   def edit
+
   end
 
   # POST /calenders
@@ -44,9 +54,11 @@ class CalendersController < ApplicationController
     @interviewer.each do |interviewer|
         params[:calender][:interviewername] = interviewer.interviewername
         params[:calender][:interviewer_id] = interviewer.id
+        params[:calender][:primaryskills_id]=interviewer.primaryskills_id
+        params[:calender][:secondaryskills_id]=interviewer.secondaryskills_id
         params[:calender][:timeslot]=params["interviewer_#{interviewer.id}"].to_s
         count=Calender.where(interviewer_id:interviewer.id,dateformat:params[:calender][:dateformat]).count;
-        @calender = Calender.new(params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status))
+        @calender = Calender.new(params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status,:primaryskills_id,:secondaryskills_id))
         @calender.save if (params[:calender][:timeslot]!="")&&(count!=1)
     end
     redirect_to calenders_url
@@ -56,7 +68,12 @@ class CalendersController < ApplicationController
   # PATCH/PUT /calenders/1.json
   def update
     respond_to do |format|
-      if @calender.update(calender_params)
+      interviewer=Calender.find_by(:interviewer_id=>"#{@calender.interviewer_id}",:dateformat=>"#{@calender.dateformat}")
+      params[:calender][:interviewer_id] = interviewer.interviewer_id
+      params[:calender][:primaryskills_id]=interviewer.primaryskills_id
+      params[:calender][:secondaryskills_id]=interviewer.secondaryskills_id
+      params[:calender][:timeslot]=params["interviewer_#{interviewer.id}"].to_s
+      if @calender.update(params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status,:primaryskills_id,:secondaryskills_id))
         format.html { redirect_to @calender, notice: 'Calender was successfully updated.' }
         format.json { render :show, status: :ok, location: @calender }
       else
@@ -84,6 +101,6 @@ class CalendersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def calender_params
-      params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status)
+      params.require(:calender).permit(:dateformat, :timeslot, :interviewername,:interviewer_id,:status,:primaryskills_id,:secondaryskills_id)
     end
 end

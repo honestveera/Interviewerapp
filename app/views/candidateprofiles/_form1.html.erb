@@ -71,7 +71,7 @@
       </div>
       <div class="form-group">
         <%= f.label 'interviewername',"Interviewer Name"%><br>
-        <%= select_tag 'interviewername',options_from_collection_for_select(Interviewer.all,"id","interviewername"),:prompt=>"--Select Interviewername--"%>
+        <%= select_tag 'interviewername',options_from_collection_for_select(Calender.where(:interviewer_id=>"#{@candidateprofile.interviewer_id}",:dateformat=>"#{@candidateprofile.scheduledate}"),"interviewer_id","interviewername"),:prompt=>"--Select Interviewername--"%>
       </div>
 
       <div class="form-group">
@@ -131,8 +131,10 @@
 </div>
 <% end %>
  <script type="text/javascript">
-   var pd = new Date();
-   pd.setDate(pd.getDate());
+ var pd = new Date();
+ pd.setDate(pd.getDate()-1);
+  var input = $('#candidateprofile_scheduledate').attr('value', moment().format("DD-MM-YYYY"));
+
   $('#datetimepicker3').datetimepicker({
       format: 'LT'
     });
@@ -241,32 +243,48 @@
  }
  });
 
-  function dropdownInterviewer()
-  {
-    var psid= $('#candidateprofile_primaryskills_id').val();
-    var ssid= $('#candidateprofile_secondaryskills_id').val();
-    //var osid= $('#candidateprofile_otherskills_id').val();
-    alert(psid+ssid);
-   $.ajax({
-     type: 'GET',
-     url: '/interviewers/searchinterviewer',
-     dataType: 'json',
-     data: {
-       'primaryskills': psid,
-       'secondaryskills':ssid
-     },
-     success: function(result) {
-       $('#interviewername').empty();
-       $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
-       $.each(result, function (key, val) {
-         $('#interviewername').append('<option value="' + val.id + '">'+ val.interviewername + '</option>');
-       })
-     },
-     error: function() {
-       alert('Error!');
-     }
-   });
-  }
+ function dropdownInterviewer()
+ {
+   var psid= $('#candidateprofile_primaryskills_id').val();
+   var ps= $('#candidateprofile_primaryskills').val();
+   var ssid= $('#candidateprofile_secondaryskills_id').val();
+   var ss= $('#candidateprofile_secondaryskills').val();
+   var date=$('#candidateprofile_scheduledate').val();
+   var status="new"
+   //var osid= $('#candidateprofile_otherskills_id').val();
+  $.ajax({
+    type: 'GET',
+    url: '/calenders/searchinterviewer',
+    dataType: 'json',
+    data: {
+      'primaryskills_id': psid,
+      'secondaryskills_id':ssid,
+      'status' :status,
+      'dateformat' :date
+    },
+    success: function(result) {
+      var json, parse;
+      json = JSON.stringify(result);
+      parse = $.parseJSON(json);
+      if(json=="[]")
+      {
+        alert("No interviewer schedule in Primary Skills:"+ps+" and Secondary skills:"+ss+"");
+      }
+      else {
+        $('#interviewername').empty();
+       // $('#interviewername').prop({"class":"selectpicker","data": {"live_search": 'true',"width":"auto" } });
+        $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
+        $.each(result, function (key, val) {
+
+          $('#interviewername').append('<option value="' + val.interviewer_id + '">'+ val.interviewername + '</option>');
+        })
+      }
+    },
+    error: function() {
+      alert('Error!');
+    }
+  });
+ }
 
   function dropdownScheduletime(name,date)
   {
@@ -282,7 +300,13 @@
        var json, parse;
        json = JSON.stringify(result);
        parse = $.parseJSON(json);
-       if(parse[0]['timeslot'].length<=10)
+       if(json=="[]")
+       {
+         $('#scheduletime').empty();
+         $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+         alert("The interviewer "+$("#interviewername option:selected").text()+" don't gave a schedule for:"+date+"")
+       }
+       else if(parse[0]['timeslot'].length<=10)
        {
           var b=parse[0]['timeslot'];
           $('#scheduletime').empty();

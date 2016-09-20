@@ -9,6 +9,13 @@ class CandidateprofilesController < ApplicationController
         redirect_to root_url
      end
    end
+
+# private
+#    def mainmethods
+#      Candidateprofile.updateprofilestatus(params[:identity])
+#      Candidateprofile.updatecalender(params[:candidateprofile][:interviewer_id],params[:candidateprofile][:scheduletime],params[:candidateprofile][:scheduledate])
+#      ExampleMailer.sample_email(@candidateprofile).deliver_now
+#    end
   # GET /candidateprofiles
   # GET /candidateprofiles.json
   def index
