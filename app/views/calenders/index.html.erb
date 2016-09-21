@@ -1,6 +1,7 @@
+<div class="jumbotron">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Calendar</h1>
+<h3>Listing Calendar</h3>
 <div class="table-responsive">
 <table class="datatable table table-bordered table-hover sortable">
   <thead class="bg-success">
@@ -22,7 +23,7 @@
     <% @calenders.each do |calender| %>
       <tr>
         <td><%= calender.dateformat %></td>
-        <td style="font-size:10px"><%= calender.timeslot %></td>
+        <td style="font-size:9px"><%= calender.timeslot %></td>
         <td><%= calender.interviewername%></td>
         <td><%= calender.interviewer_id%></td>
         <td><%= calender.primaryskills_id%></td>
@@ -47,4 +48,5 @@
 </script>
 <br>
 </div>
-<%= link_to 'New Calender', new_calender_path %>
+<%= link_to 'New Calender', new_calender_path,:class=>"btn btn-info btn-md" %>
+</div>

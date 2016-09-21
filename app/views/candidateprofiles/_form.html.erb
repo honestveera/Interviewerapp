@@ -70,7 +70,7 @@
 
       <div class="form-group">
         <%= f.label 'interviewername',"Interviewer Name"%><br>
-        <%= select_tag 'interviewername',"<option value="">--Select Interviewername--</option>".html_safe%>
+        <%= select_tag 'interviewername',"<option value="">--Select Interviewername--</option>".html_safe,:class=>'selectpicker',"data-live-search"=>"true","data-width"=>"auto"%>
       </div>
 
       <div class="form-group">
@@ -91,7 +91,7 @@
   </div>
   <div class="form-group">
     <%= f.label :scheduletime,"Schedule Time"%><br>
-    <%= select_tag 'scheduletime',"<option value="">--Select Schedule Time--</option>".html_safe%>
+    <%= select_tag 'scheduletime',"<option value="">--Select Schedule Time--</option>".html_safe,:class=>'selectpicker',"data-live-search"=>"true","data-width"=>"auto"%>
   </div>
   <div class="form-group">
     <%= f.hidden_field :scheduletime%>
@@ -190,6 +190,7 @@
        $('#candidateprofile_previouscompany').val(parse[0]['previouscompany']);
        $('#scheduletime').empty();
        $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+       $(".selectpicker").selectpicker('refresh');
        dropdownInterviewer();
      },
      error: function() {
@@ -215,6 +216,7 @@
     $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
     $('#scheduletime').empty();
     $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+    $(".selectpicker").selectpicker('refresh');
   }
  });
 
@@ -252,6 +254,7 @@
     $("#candidateprofile_intervieweremail").val("");
     $('#scheduletime').empty();
     $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+    $(".selectpicker").selectpicker('refresh');
  }
  });
 
@@ -283,7 +286,7 @@
          $('#interviewername').empty();
         // $('#interviewername').prop({"class":"selectpicker","data": {"live_search": 'true',"width":"auto" } });
          $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
-
+         $(".selectpicker").selectpicker('refresh');
          alert("No interviewer schedule in Primary Skills:"+ps+" and Secondary skills:"+ss+"");
        }
        else {
@@ -291,11 +294,10 @@
         // $('#interviewername').prop({"class":"selectpicker","data": {"live_search": 'true',"width":"auto" } });
          $('#interviewername').append($("<option />").attr("value", '').text('--Select Interviewername--'));
          $.each(result, function (key, val) {
-
            $('#interviewername').append('<option value="' + val.interviewer_id + '">'+ val.interviewername + '</option>');
          })
+         $(".selectpicker").selectpicker('refresh');
        }
-
 
      },
      error: function() {
@@ -322,6 +324,7 @@
        {
          $('#scheduletime').empty();
          $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
+         $(".selectpicker").selectpicker('refresh');
          alert("The interviewer "+$("#interviewername option:selected").text()+" don't gave a schedule for:"+date+"");
 
        }
@@ -331,6 +334,7 @@
           $('#scheduletime').empty();
           $('#scheduletime').append($("<option />").attr("value", '').text('--Select Scheduletime--'));
           $('#scheduletime').append('<option value="' +b.replace(/[[""]/g,"").replace(/]/g,"")+ '">'+b.replace(/[[""]/g,"").replace(/]/g,"")+ '</option>');
+          $(".selectpicker").selectpicker('refresh');
        }
        else
        {
@@ -340,6 +344,7 @@
          $.each(b, function (key, val) {
            $('#scheduletime').append('<option value="' +val.replace(/[[""]/g,"").replace(/]/g,"")+ '">'+val.replace(/[[""]/g,"").replace(/]/g,"")+ '</option>');
          })
+         $(".selectpicker").selectpicker('refresh');
        }
 
 

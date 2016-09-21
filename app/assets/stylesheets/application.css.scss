@@ -87,13 +87,24 @@
      white-space: nowrap;
      background-color: white;
   }
-
-  .btn  .caret
+  @media not all and (-webkit-min-device-pixel-ratio:0)
   {
-    float:right;
-   margin-top:-10px;
-
- }
+    .btn .caret
+     {
+       float: right;
+       
+     }
+  }
+ .btn .caret
+  {
+    float: right;
+    margin-top: 10px;
+  }
+  .btn .caret
+  {
+    float: right;
+    margin-top: -10px;
+  }
 .bs-searchbox
  {
    width: 250px;
