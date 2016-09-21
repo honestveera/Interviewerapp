@@ -36,8 +36,8 @@
             <%=f.text_field :interviewername,:placeholder=>"Interviewer Name",:class=>"form-control",:readonly=>true%>
            </div>
            <div class="field">
-             <%= f.label :skills,"Skills"%><br>
-             <%=f.text_field :skills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true%>
+             <%= f.label :primaryskills,"Primary Skills"%><br>
+             <%=f.text_field :primaryskills,:class=>"form-control",:placeholder=>"Skills",:readonly=>true%>
            </div>
 
          </div>
@@ -45,8 +45,8 @@
        <div class="col-lg-4 col-lg-offset-1">
          <div class="input-group">
            <div class="field">
-             <%= f.label :yoe,"Years of Experience" %><br>
-             <%= f.text_field :yoe,:placeholder=>"Years of Experience",:class => "form-control required",:required => true,:readonly=>true,:style=>"width:300px"%>
+             <%= f.label :secondaryskills,"Secondary Skills" %><br>
+             <%= f.text_field :secondaryskills,:placeholder=>"Secondary Skills",:class => "form-control required",:required => true,:readonly=>true,:style=>"width:300px"%>
            </div>
            <div class="field">
             <%=f.label :scheduledate,"Schedule Date"%><br>
@@ -219,11 +219,11 @@
          parse = $.parseJSON(json);
          alert(json);
          $('#interviewerfeedback_interviewername').val(parse[0]['interviewername']);
-         $('#interviewerfeedback_skills').val(parse[0]['primaryskills']);
+         $('#interviewerfeedback_primaryskills').val(parse[0]['primaryskills']);
          $('#interviewerfeedback_scheduledate').val(parse[0]['scheduledate']);
          $('#interviewerfeedback_scheduletime').val(parse[0]['scheduletime']);
          $('#interviewerfeedback_candidatemail').val(parse[0]['candidateemail']);
-         $('#interviewerfeedback_yoe').val(parse[0]['YOE']);
+         $('#interviewerfeedback_secondaryskills').val(parse[0]['secondaryskills']);
          },
         error: function() {
          alert('Error!');

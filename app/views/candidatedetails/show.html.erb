@@ -16,18 +16,13 @@
 </p>
 
 <p>
-  <strong>Yoe:</strong>
-  <%= @candidatedetail.yoe %>
-</p>
-
-<p>
   <strong>Skills:</strong>
-  <%= @candidatedetail.skills %>
+  <%= @candidatedetail.primaryskills_id %>
 </p>
 
 <p>
-  <strong>Jobdescription:</strong>
-  <%= @candidatedetail.jobdescription %>
+  <strong>Job Title:</strong>
+  <%= @candidatedetail.jobtitle %>
 </p>
 
 <%= link_to 'Edit', edit_candidatedetail_path(@candidatedetail) %> |

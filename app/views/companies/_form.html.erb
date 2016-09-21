@@ -32,26 +32,24 @@
          <% end -%>
         <div class="row">
                <div class="input-group">
-              <div class="field">
-                <%= f.text_field :companyname,:placeholder=>"company name",:class => "form-control"%>
-              </div>
-              <div class="field">
-              <%= f.text_area :companyaddress,:placeholder=>"company address",:class => "form-control",:id=>"textarea"%>
-              </div>
-              <div class="form-group">
-                  <%= f.text_field :contactperson,:placeholder=>"contact person",:class => "form-control"%>
-              </div>
-              <div class="form-group">
-                <%= f.text_field :contactnumber,:placeholder=>"contact number",:class => "form-control",:onkeypress=>"return isNumberKey(event)" %>
-              </div>
-              <div class="form-group">
+               <div class="form-group">
+                <%= f.label :companyemail,"Company Email",:style=>"color:orange" %><br>
                 <%= f.text_field :companyemail,:placeholder=>"Email",:class => "form-control required",:required => true,:onblur=>"validateEmail(this);"%>
               </div>
               <div class="form-group">
+                <%= f.label :password,"Password",:style=>"color:orange" %><br>
                 <%= f.password_field :password,:placeholder=>" Password",:class => "form-control required",:required => true%>
               </div>
               <div class="form-group">
+                <%= f.label :password_confirmation,"Password Confirmation",:style=>"color:orange" %><br>
                 <%= f.password_field :password_confirmation,:placeholder=>"Confirm Password",:class => "form-control required",:required => true %>
+              </div>
+              <div class="form-group">
+                <%= f.label :role,"Role",:style=>"color:orange" %><br>
+                <%b=["Interviewer","Recruiter"]%>
+                <% b.each do |a|%>
+                <%= f.radio_button :role,a,:style=>"color:red" %> <label style="color:white"><%=a%></label>
+                <% end %>
               </div>
               <div class="form-group">
               <input name="cecky" id="checky" value="1" type="checkbox" /><label style="color:white" class="terms">I accept the terms of use</label>

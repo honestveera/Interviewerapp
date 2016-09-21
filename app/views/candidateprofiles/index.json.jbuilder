@@ -1,4 +1,4 @@
 json.array!(@candidateprofiles) do |candidateprofile|
-  json.extract! candidateprofile, :id, :candidatename, :candidateemail, :candidatecontact, :skills, :YOE, :interviewername, :intervieweremail, :scheduledate, :scheduletime, :jobdescription
+  json.extract! candidateprofile, :id, :candidatename, :primaryskills,:secondaryskills,:otherskills, :interviewername,:interviewer_id,:intervieweremail, :scheduledate, :scheduletime,:jobtitle,:jobdescription,:candidatedetail_id,:status,:skypeid
   json.url candidateprofile_url(candidateprofile, format: :json)
 end

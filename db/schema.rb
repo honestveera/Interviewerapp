@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20160915082616) do
     t.string   "candidatename"
     t.string   "candidateemail"
     t.decimal  "candidatecontact"
-    t.integer  "yoe"
     t.string   "primaryskills"
     t.string   "secondaryskills"
     t.string   "otherskills"
@@ -44,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160915082616) do
     t.datetime "attachedfile_updated_at"
     t.string   "status"
     t.string   "jobtitle"
-    t.string   "previouscompany"
+    t.string   "skypeid"
   end
 
   create_table "candidateprofiles", force: :cascade do |t|
@@ -53,7 +52,6 @@ ActiveRecord::Schema.define(version: 20160915082616) do
     t.string   "primaryskills"
     t.string   "secondaryskills"
     t.string   "otherskills"
-    t.integer  "YOE"
     t.string   "interviewername"
     t.string   "intervieweremail"
     t.string   "scheduledate"
@@ -66,23 +64,19 @@ ActiveRecord::Schema.define(version: 20160915082616) do
     t.integer  "candidatedetail_id"
     t.integer  "interviewer_id"
     t.string   "status"
-    t.string   "previouscompany"
+    t.string   "skypeid"
   end
 
   add_index "candidateprofiles", ["candidatedetail_id"], name: "index_candidateprofiles_on_candidatedetail_id"
   add_index "candidateprofiles", ["interviewer_id"], name: "index_candidateprofiles_on_interviewer_id"
 
   create_table "companies", force: :cascade do |t|
-    t.string   "companyname"
-    t.text     "companyaddress"
-    t.string   "contactperson"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "companyemail"
-    t.string   "username"
+    t.string   "role"
     t.string   "password"
     t.string   "password_confirmation"
-    t.decimal  "contactnumber"
   end
 
   create_table "companycreations", force: :cascade do |t|
@@ -128,7 +122,8 @@ ActiveRecord::Schema.define(version: 20160915082616) do
     t.string   "status"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.string   "skills"
+    t.string   "primaryskills"
+    t.string   "secondaryskills"
     t.string   "attachedfile_file_name"
     t.string   "attachedfile_content_type"
     t.integer  "attachedfile_file_size"
@@ -158,7 +153,6 @@ ActiveRecord::Schema.define(version: 20160915082616) do
     t.float    "overallassesment"
     t.string   "candidatemail"
     t.text     "othercomment"
-    t.string   "yoe"
   end
 
   create_table "interviewers", force: :cascade do |t|

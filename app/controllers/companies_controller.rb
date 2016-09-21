@@ -13,6 +13,8 @@ class CompaniesController < ApplicationController
         if @check>=1
           session[:comapanyemail]=params[:company][:companyemail]
           session[:password]=params[:company][:password]
+          rol=Company.allwhere(params[:company][:companyemail],params[:company][:password])
+          session[:role]=rol[0].role
           format.html { redirect_to schedulereport_url }
         else
           format.html { redirect_to login_url}
@@ -103,6 +105,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:companyname, :companyaddress, :contactperson, :contactnumber,:companyemail,:password,:password_confirmation)
+      params.require(:company).permit(:companyemail,:password,:password_confirmation,:role)
     end
 end

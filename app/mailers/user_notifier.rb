@@ -10,6 +10,7 @@ class UserNotifier < ActionMailer::Base
           =================
           Comapanymail: "+@user.companyemail+"
           Password    : "+@user.password+"
+          Role        : "+@user.role+"
            " )
  end
 
@@ -22,6 +23,7 @@ class UserNotifier < ActionMailer::Base
           =================
           Comapanymail: "+@user.companyemail+"
           Password    : "+@user.password+"
+          Role        : "+@user.role+"
            " )
  end
 

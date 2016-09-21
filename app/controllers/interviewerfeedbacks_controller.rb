@@ -81,6 +81,6 @@ class InterviewerfeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interviewerfeedback_params
-      params.require(:interviewerfeedback).permit(:interviewername, :candidatename,:skills,:attachedfile, :status,:communication,:technicalskills,:analyticalskills,:attitude,:timemanagement,:commitementtask,:leadership,:teamwork,:creativity,:flexibility,:overallassesment,:scheduletime,:scheduledate,:candidatemail,:othercomment,:communicationcomment,:technicalskillscomment,:analyticalskillscomment,:attitudecomment,:timemanagementcomment,:commitementtaskcomment,:leadershipcomment,:teamworkcomment,:creativitycomment,:flexibilitycomment,:yoe)
+      params.require(:interviewerfeedback).permit(:interviewername, :candidatename,:primaryskills,:secondaryskills,:attachedfile, :status,:communication,:technicalskills,:analyticalskills,:attitude,:timemanagement,:commitementtask,:leadership,:teamwork,:creativity,:flexibility,:overallassesment,:scheduletime,:scheduledate,:candidatemail,:othercomment,:communicationcomment,:technicalskillscomment,:analyticalskillscomment,:attitudecomment,:timemanagementcomment,:commitementtaskcomment,:leadershipcomment,:teamworkcomment,:creativitycomment,:flexibilitycomment)
     end
 end

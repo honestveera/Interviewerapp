@@ -58,17 +58,14 @@
     <%= f.hidden_field "otherskills_id",:value=>session[:otherskills_id]%>
   </div>
   <div class="field">
-    <%= f.label :YOE,"Year Of Experience " %><br>
-    <%= f.text_field :YOE,:placeholder=>"Year Of Experience",:readonly => true,:class => "form-control required",:required => true%>
+    <%= f.label :jobtitle,"Job Title" %><br>
+    <%= f.text_field :jobtitle,:placeholder=>"Job Title",:class => "form-control required",:required => true%>
   </div>
 </div>
 </div>
 <div class="col-lg-3 col-lg-offset-1">
     <div class="input-group">
-      <div class="field">
-        <%= f.label :jobtitle,"Job Title" %><br>
-        <%= f.text_field :jobtitle,:placeholder=>"Job Title",:class => "form-control required",:required => true%>
-      </div>
+
       <div class="form-group">
         <%= f.label 'interviewername',"Interviewer Name"%><br>
         <%= select_tag 'interviewername',options_from_collection_for_select(Calender.where(:interviewer_id=>"#{@candidateprofile.interviewer_id}",:dateformat=>"#{@candidateprofile.scheduledate}"),"interviewer_id","interviewername"),:prompt=>"--Select Interviewername--"%>
@@ -96,7 +93,7 @@
   </div>
   <div class="field">
     <%= f.label :jobdescription,"Job Description" %><br>
-    <%= f.text_area :jobdescription,:placeholder=>"Job Description" ,:class => "form-control required",:required => true%>
+    <%= f.text_area :jobdescription,:placeholder=>"Job Description" ,:class => "form-control required",:required => true,:style=>"height: 110px;"%>
   </div>
   <div class="form-group">
     <%= f.hidden_field "companyemail",:class=>"required",:value => session[:companyemail]%>
@@ -117,7 +114,7 @@
     <%= f.hidden_field :candidatedetail_id%>
   </div>
   <div class="form-group">
-    <%= f.hidden_field :previouscompany%>
+    <%= f.hidden_field :skypeid%>
   </div>
 </div>
 </div>
@@ -176,7 +173,7 @@
            $('#candidateprofile_secondaryskills_id').val(parse[0]['secondaryskills_id']);
            $('#candidateprofile_otherskills').val(parse[0]['otherskills']);
            $('#candidateprofile_otherskills_id').val(parse[0]['otherskills_id']);
-           $('#candidateprofile_YOE').val(parse[0]['yoe']);
+           $('#candidateprofile_skypeid').val(parse[0]['yoe']);
            $('#candidateprofile_jobtitle').val(parse[0]['jobtitle']);
            $('#candidateprofile_previouscompany').val(parse[0]['previouscompany']);
            dropdownInterviewer();
@@ -196,7 +193,7 @@
         $('#candidateprofile_secondaryskills_id').val("");
         $('#candidateprofile_otherskills').val("");
         $('#candidateprofile_otherskills_id').val("");
-        $('#candidateprofile_YOE').val("");
+        $('#candidateprofile_skypeid').val("");
         $('#candidateprofile_jobtitle').val("");
         $('#candidateprofile_previouscompany').val("");
         $("#candidateprofile_intervieweremail").val("");
