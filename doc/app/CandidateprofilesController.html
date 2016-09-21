@@ -178,13 +178,14 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 44</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@candidateprofile</span> = <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">candidateprofile_params</span>)
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@candidateprofile</span>.<span class="ruby-identifier">save</span>
       <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">updateprofilestatus</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:identity</span>])
+      <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">updatecalender</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:candidateprofile</span>][<span class="ruby-value">:interviewer_id</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:candidateprofile</span>][<span class="ruby-value">:scheduletime</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:candidateprofile</span>][<span class="ruby-value">:scheduledate</span>])
       <span class="ruby-constant">ExampleMailer</span>.<span class="ruby-identifier">sample_email</span>(<span class="ruby-ivar">@candidateprofile</span>).<span class="ruby-identifier">deliver_now</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">candidateschedule_url</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Candidateprofile was successfully created.&#39;</span> }
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:show</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@candidateprofile</span> }
@@ -223,7 +224,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 77</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@candidateprofile</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -260,7 +261,7 @@
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 39</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -286,13 +287,22 @@
 
         <div class="method-description">
           
-          <p>GET /candidateprofiles GET /candidateprofiles.json</p>
+          <p>private</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">mainmethods</span>
+  <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">updateprofilestatus</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">identity</span>])
+  <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">updatecalender</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">candidateprofile</span>][:<span class="ruby-identifier">interviewer_id</span>],<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">candidateprofile</span>][:<span class="ruby-identifier">scheduletime</span>],<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">candidateprofile</span>][:<span class="ruby-identifier">scheduledate</span>])
+  <span class="ruby-constant">ExampleMailer</span>.<span class="ruby-identifier">sample_email</span>(<span class="ruby-ivar">@candidateprofile</span>).<span class="ruby-identifier">deliver_now</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>GET /candidateprofiles GET /candidateprofiles.json</p>
           
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 14</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@candidateprofiles</span> = <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
@@ -325,7 +335,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 34</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@candidateprofile</span> = <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -358,7 +368,7 @@
 
           
           <div class="method-source-code" id="schedulereport-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">schedulereport</span>
   <span class="ruby-ivar">@candidateprofiles</span> = <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
@@ -391,7 +401,7 @@
 
           
           <div class="method-source-code" id="search-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 22</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 29</span>
 <span class="ruby-keyword">def</span>  <span class="ruby-identifier">search</span>
   <span class="ruby-identifier">candidatescheduleid</span>=<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
   <span class="ruby-ivar">@schedule</span>=<span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">candidateprofile</span>(<span class="ruby-identifier">candidatescheduleid</span>)
@@ -426,7 +436,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 30</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -458,10 +468,11 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 62</span>
+            <pre><span class="ruby-comment"># File app/controllers/candidateprofiles_controller.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@candidateprofile</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">candidateprofile_params</span>)
+      <span class="ruby-constant">Candidateprofile</span>.<span class="ruby-identifier">updatecalender</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:candidateprofile</span>][<span class="ruby-value">:interviewer_id</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:candidateprofile</span>][<span class="ruby-value">:scheduletime</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:candidateprofile</span>][<span class="ruby-value">:scheduledate</span>])
       <span class="ruby-constant">ExampleMailer</span>.<span class="ruby-identifier">sample_email_update</span>(<span class="ruby-ivar">@candidateprofile</span>).<span class="ruby-identifier">deliver_now</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">candidateschedule_url</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Candidateprofile was successfully updated.&#39;</span> }
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:show</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:ok</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@candidateprofile</span> }

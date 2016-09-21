@@ -70,6 +70,8 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-send_forgotpassword">#send_forgotpassword</a>
+    
     <li ><a href="#method-i-send_signup_email">#send_signup_email</a>
     
   </ul>
@@ -106,6 +108,47 @@
        </header>
 
     
+      <div id="method-i-send_forgotpassword" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_forgotpassword</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="send_forgotpassword-source">
+            <pre><span class="ruby-comment"># File app/mailers/user_notifier.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send_forgotpassword</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">companyemail</span>,<span class="ruby-value">:from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;honestraj.it@gmail.com&quot;</span>,<span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Thanks for Siginup Interviewapp&#39;</span>,
+  <span class="ruby-value">:body=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Hi,\n  Your Password: URL:https://interviewerapps.herokuapp.com/
+
+         Login Credential:
+         =================
+         Comapanymail: &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">companyemail</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
+         Password    : &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">password</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
+          &quot;</span> )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-send_signup_email" class="method-detail ">
         
         <div class="method-heading">
@@ -130,10 +173,10 @@ the user&#39;s email address</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">send_signup_email</span>(<span class="ruby-identifier">user</span>)
   <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
   <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">companyemail</span>,<span class="ruby-value">:from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;honestraj.it@gmail.com&quot;</span>,<span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Thanks for Siginup Interviewapp&#39;</span>,
-  <span class="ruby-value">:body=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Hi,\nThank you for Login Interview app URL:https://interviewerapp.herokuapp.com/
+  <span class="ruby-value">:body=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Hi,\nThank you for Login Interview app URL:https://interviewerapps.herokuapp.com/
 
          Login Credential:
-         =================   
+         =================
          Comapanymail: &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">companyemail</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
          Password    : &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">password</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
           &quot;</span> )
