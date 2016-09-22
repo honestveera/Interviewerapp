@@ -25,11 +25,11 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 $(document).ready(function(){
-  $('.selectpicker').selectpicker({
-      size: "fit",
-      showTick:true,
-      tickIcon:"",
-      showTick:true
-  });
+
+  window.navigator=function(){
+    location.reload();
+  }
+  
+
 
 });

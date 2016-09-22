@@ -94,6 +94,9 @@
 </div>
 <% end %>
 <script type="text/javascript">
+$(document).ready(function() {
+
+
     $(":file").filestyle({buttonName: "btn-primary",buttonBefore: true,size:"sm",placeholder:"Choose File"});
     $('.selectpicker').selectpicker({
         size: "fit",
@@ -159,5 +162,5 @@
     $('select').change(function(){
          $(this).css({"border-color":"skyblue"});
     });
-
+});
 </script>

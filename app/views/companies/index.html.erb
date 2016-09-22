@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
 
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
+
+<p id="notice"><%= notice %></p>
 <h1>Listing Companies</h1>
 <div class="table-responsive">
 <table class="table table-bordered table-hover sortable">
@@ -18,7 +21,7 @@
         <td><%= company.role %></td>
         <td><%= link_to 'Show', company,:class=>"btn btn-primary btn-sm"%></td>
         <td><%= link_to 'Edit', edit_company_path(company),:class=>"btn btn-info btn-sm" %></td>
-        <td><%= link_to 'Destroy', company, method: :delete,:class=>"btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>
   </tbody>

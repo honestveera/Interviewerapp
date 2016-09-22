@@ -30,7 +30,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Candidates<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/candidateentry" style="">Candidates Profile</a></li>
+            <li><a href="/candidateentry" >Candidates Profile</a></li>
             <li class="divider"></li>
             <li><a href="/candidateschedule">Candidates Schedule</a></li>
           </ul>
@@ -109,25 +109,34 @@
 <%= yield %>
 </div>
 <script type="text/javascript">
-   $('.navbar-toggle .collapsed').click(function(){
-        alert("Sidebar");
-   });
+$(".dropdown-menu li a").click(function (e) {
+       e.preventDefault();
+       var href = $(this).attr("href");
+       window.location= href;
+});
+$('.navbar-toggle .collapsed').click(function(){
+     alert("Sidebar");
+});
 
-   $('.navbar-bran').mouseover(function(){
-     $('.navbar-bran').css({"background-color":"skyblue","color":"black"});
-   });
-   $('.navbar-bran').mouseout(function(){
-     $('.navbar-bran').css({"background-color":"#3396D1","color":"white"});
-   });
-   /* Set the width of the side navigation to 250px */
- function openNav() {
-     document.getElementById("mySidenav").style.width = "250px";
- }
+$('.navbar-bran').mouseover(function(){
+  $('.navbar-bran').css({"background-color":"skyblue","color":"black"});
+});
+$('.navbar-bran').mouseout(function(){
+  $('.navbar-bran').css({"background-color":"#3396D1","color":"white"});
+});
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
 
- /* Set the width of the side navigation to 0 */
- function closeNav() {
-     document.getElementById("mySidenav").style.width = "0";
- }
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+window.onunload = function() {
+  null;
+};
+
 </script>
 
 </body>
