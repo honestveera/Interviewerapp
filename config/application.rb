@@ -16,7 +16,7 @@ module Interviewerapp
     # config.generators do |g|
     #   g.template_engine :slim
     # end
-
+    #  config.console = Pry
 
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
