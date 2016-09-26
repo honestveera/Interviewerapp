@@ -1,6 +1,6 @@
 class CalendersController < ApplicationController
   before_action :set_calender, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate
+  before_action :authenticate,:roleauthentication
   respond_to :html,:json
   # GET /calenders
   # GET /calenders.json
@@ -9,6 +9,10 @@ class CalendersController < ApplicationController
     if ((session[:companyemail]||session[:password]=="")||((session[:companyemail]||session[:password])==nil))
        redirect_to root_url
     end
+  end
+
+  def roleauthentication
+    redirect_to schedulereport_url if session[:role]=="Recruiter"
   end
 
   def index

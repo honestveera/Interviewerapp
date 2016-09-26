@@ -20,8 +20,7 @@ class Candidateprofile < ActiveRecord::Base
  end
  #  a=i.gsub(/[\[\"]/,'').gsub(/]/,'')
  #  a=i.gsub(/[\[\]"]/,'')
-
-   def self.updatecalender interviewerid,interviewtime,interviewdate
+def self.updatecalender interviewerid,interviewtime,interviewdate
      #1.Get interviewerid,interviewtime and date
        id=interviewerid
        timeslot1=interviewtime
@@ -35,6 +34,6 @@ class Candidateprofile < ActiveRecord::Base
        c[0].update(timeslot:ct)
        c[0].update(status:"new") if c[0].timeslot.length>=10
        c[0].update(status:"schedule") if c[0].timeslot.length<=10
-   end
+ end
 
 end

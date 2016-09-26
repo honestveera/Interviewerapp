@@ -1,13 +1,17 @@
 class InterviewersController < ApplicationController
   before_action :set_interviewer, only: [:show, :edit, :update, :destroy]
   respond_to :html,:json
-  before_action :authenticate
+  before_action :authenticate,:roleauthentication
 
   def authenticate
     if ((session[:companyemail]||session[:password]=="")||((session[:companyemail]||session[:password])==nil))
        redirect_to root_url
     end
   end
+  def roleauthentication
+    redirect_to schedulereport_url if session[:role]=="Recruiter"
+  end
+
 
   # GET /interviewers
   # GET /interviewers.json
