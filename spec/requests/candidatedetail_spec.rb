@@ -21,7 +21,8 @@ RSpec.describe "Automation script",type: :request do
          fill_in "interviewer[interviewername]",:with=>interviewer.interviewername
          fill_in "interviewer[interviewercompany]",:with=>interviewer.interviewercompany
          fill_in "interviewer[companyemail]",:with=>interviewer.companyemail
-         select skillset.skills,:from=>"interviewer[skills]"
+         select skillset.skills,:from=>"interviewer[primaryskills]"
+         select skillset.skills,:from=>"interviewer[secondaryskills]"
          click_button('Create Interviewer')
          visit '/interviewers'
 
