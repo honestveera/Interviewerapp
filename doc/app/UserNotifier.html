@@ -127,7 +127,7 @@
 
           
           <div class="method-source-code" id="send_forgotpassword-source">
-            <pre><span class="ruby-comment"># File app/mailers/user_notifier.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/mailers/user_notifier.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">send_forgotpassword</span>(<span class="ruby-identifier">user</span>)
   <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>[<span class="ruby-value">0</span>]
   <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">companyemail</span>,<span class="ruby-value">:from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;honestraj.it@gmail.com&quot;</span>,<span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Thanks for Siginup Interviewapp&#39;</span>,
@@ -137,6 +137,7 @@
          =================
          Comapanymail: &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">companyemail</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
          Password    : &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">password</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
+         Role        : &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">role</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
           &quot;</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -179,6 +180,7 @@ the user&#39;s email address</p>
          =================
          Comapanymail: &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">companyemail</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
          Password    : &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">password</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
+         Role        : &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">role</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;
           &quot;</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>

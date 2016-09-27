@@ -29,7 +29,7 @@ $(document).ready(function(){
   window.navigator=function(){
     location.reload();
   }
-  
+
 
 
 });

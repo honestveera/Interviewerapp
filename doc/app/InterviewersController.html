@@ -82,6 +82,8 @@
     
     <li ><a href="#method-i-new">#new</a>
     
+    <li ><a href="#method-i-roleauthentication">#roleauthentication</a>
+    
     <li ><a href="#method-i-search">#search</a>
     
     <li ><a href="#method-i-searchinterviewer">#searchinterviewer</a>
@@ -178,7 +180,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 47</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@interviewer</span> = <span class="ruby-constant">Interviewer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">interviewer_params</span>)
 
@@ -221,7 +223,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 77</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@interviewer</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -258,7 +260,7 @@
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 42</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -290,7 +292,7 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 14</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@interviewers</span> = <span class="ruby-constant">Interviewer</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
@@ -323,9 +325,42 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 37</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@interviewer</span> = <span class="ruby-constant">Interviewer</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-roleauthentication" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">roleauthentication</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="roleauthentication-source">
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">roleauthentication</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">schedulereport_url</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:role</span>]<span class="ruby-operator">==</span><span class="ruby-string">&quot;Recruiter&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -356,7 +391,7 @@
 
           
           <div class="method-source-code" id="search-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 23</span>
 <span class="ruby-keyword">def</span>  <span class="ruby-identifier">search</span>
   <span class="ruby-identifier">interviewername</span>=<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
   <span class="ruby-ivar">@detail</span>=<span class="ruby-constant">Interviewer</span>.<span class="ruby-identifier">interviewerdetail</span>(<span class="ruby-identifier">interviewername</span>)
@@ -391,7 +426,7 @@
 
           
           <div class="method-source-code" id="searchinterviewer-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 25</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 29</span>
 <span class="ruby-keyword">def</span>  <span class="ruby-identifier">searchinterviewer</span>
   <span class="ruby-identifier">candidateps</span>=<span class="ruby-identifier">params</span>[<span class="ruby-value">:primaryskills</span>]
   <span class="ruby-identifier">candidatess</span>=<span class="ruby-identifier">params</span>[<span class="ruby-value">:secondaryskills</span>]
@@ -427,7 +462,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 33</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -459,7 +494,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 63</span>
+            <pre><span class="ruby-comment"># File app/controllers/interviewers_controller.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@interviewer</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">interviewer_params</span>)

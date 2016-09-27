@@ -128,22 +128,22 @@ href="\">a=i.gsub(/[</a>“]/,&#39;&#39;)</p>
 
           
           <div class="method-source-code" id="updatecalender-source">
-            <pre><span class="ruby-comment"># File app/models/candidateprofile.rb, line 24</span>
+            <pre><span class="ruby-comment"># File app/models/candidateprofile.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">updatecalender</span> <span class="ruby-identifier">interviewerid</span>,<span class="ruby-identifier">interviewtime</span>,<span class="ruby-identifier">interviewdate</span>
-  <span class="ruby-comment">#1.Get interviewerid,interviewtime and date</span>
-    <span class="ruby-identifier">id</span>=<span class="ruby-identifier">interviewerid</span>
-    <span class="ruby-identifier">timeslot1</span>=<span class="ruby-identifier">interviewtime</span>
-    <span class="ruby-identifier">dates</span>=<span class="ruby-identifier">interviewdate</span>
-   <span class="ruby-comment">#2.pass above valuses Calender</span>
-    <span class="ruby-identifier">c</span>=<span class="ruby-constant">Calender</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;interviewer_id= ? AND dateformat = ?&quot;</span>, <span class="ruby-identifier">id</span>,<span class="ruby-identifier">dates</span>).<span class="ruby-identifier">to_a</span>
-   <span class="ruby-comment">#3.time get from calender table</span>
-    <span class="ruby-identifier">ct</span>= <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">timeslot</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[\[\]&quot;]/</span>,<span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>)
-   <span class="ruby-comment">#4.Delete timeslot</span>
-    <span class="ruby-identifier">ct</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">timeslot1</span>)
-    <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">update</span>(<span class="ruby-identifier">timeslot</span><span class="ruby-value">:ct</span>)
-    <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">update</span>(<span class="ruby-identifier">status</span><span class="ruby-value">:&quot;new&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">timeslot</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">&gt;=</span><span class="ruby-value">10</span>
-    <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">update</span>(<span class="ruby-identifier">status</span><span class="ruby-value">:&quot;schedule&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">timeslot</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">&lt;=</span><span class="ruby-value">10</span>
-<span class="ruby-keyword">end</span></pre>
+     <span class="ruby-comment">#1.Get interviewerid,interviewtime and date</span>
+       <span class="ruby-identifier">id</span>=<span class="ruby-identifier">interviewerid</span>
+       <span class="ruby-identifier">timeslot1</span>=<span class="ruby-identifier">interviewtime</span>
+       <span class="ruby-identifier">dates</span>=<span class="ruby-identifier">interviewdate</span>
+      <span class="ruby-comment">#2.pass above valuses Calender</span>
+       <span class="ruby-identifier">c</span>=<span class="ruby-constant">Calender</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;interviewer_id= ? AND dateformat = ?&quot;</span>, <span class="ruby-identifier">id</span>,<span class="ruby-identifier">dates</span>).<span class="ruby-identifier">to_a</span>
+      <span class="ruby-comment">#3.time get from calender table</span>
+       <span class="ruby-identifier">ct</span>= <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">timeslot</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[\[\]&quot;]/</span>,<span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>)
+      <span class="ruby-comment">#4.Delete timeslot</span>
+       <span class="ruby-identifier">ct</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">timeslot1</span>)
+       <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">update</span>(<span class="ruby-identifier">timeslot</span><span class="ruby-value">:ct</span>)
+       <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">update</span>(<span class="ruby-identifier">status</span><span class="ruby-value">:&quot;new&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">timeslot</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">&gt;=</span><span class="ruby-value">10</span>
+       <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">update</span>(<span class="ruby-identifier">status</span><span class="ruby-value">:&quot;schedule&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">timeslot</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">&lt;=</span><span class="ruby-value">10</span>
+ <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

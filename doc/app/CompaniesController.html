@@ -143,7 +143,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 59</span>
+            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@company</span> = <span class="ruby-constant">Company</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">company_params</span>)
 
@@ -194,6 +194,8 @@
      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@check</span><span class="ruby-operator">&gt;=</span><span class="ruby-value">1</span>
        <span class="ruby-identifier">session</span>[<span class="ruby-value">:comapanyemail</span>]=<span class="ruby-identifier">params</span>[<span class="ruby-value">:company</span>][<span class="ruby-value">:companyemail</span>]
        <span class="ruby-identifier">session</span>[<span class="ruby-value">:password</span>]=<span class="ruby-identifier">params</span>[<span class="ruby-value">:company</span>][<span class="ruby-value">:password</span>]
+       <span class="ruby-identifier">rol</span>=<span class="ruby-constant">Company</span>.<span class="ruby-identifier">allwhere</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:company</span>][<span class="ruby-value">:companyemail</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:company</span>][<span class="ruby-value">:password</span>])
+       <span class="ruby-identifier">session</span>[<span class="ruby-value">:role</span>]=<span class="ruby-identifier">rol</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">role</span>
        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">schedulereport_url</span> }
      <span class="ruby-keyword">else</span>
        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">login_url</span>}
@@ -230,7 +232,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 90</span>
+            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@company</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -267,7 +269,7 @@
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 54</span>
+            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -299,7 +301,7 @@
 
           
           <div class="method-source-code" id="forgotpasswor-source">
-            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 30</span>
+            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">forgotpasswor</span>
     <span class="ruby-ivar">@mailid</span>=<span class="ruby-constant">Company</span>.<span class="ruby-identifier">password</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:company</span>][<span class="ruby-value">:companyemail</span>]);
    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -374,7 +376,7 @@
 
           
           <div class="method-source-code" id="login-source">
-            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 26</span>
+            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 28</span>
 <span class="ruby-keyword">def</span>  <span class="ruby-identifier">login</span>
    <span class="ruby-identifier">render</span> <span class="ruby-string">&quot;login&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -407,7 +409,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 49</span>
+            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@company</span> = <span class="ruby-constant">Company</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -440,7 +442,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 45</span>
+            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -472,7 +474,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 76</span>
+            <pre><span class="ruby-comment"># File app/controllers/companies_controller.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@company</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">company_params</span>)

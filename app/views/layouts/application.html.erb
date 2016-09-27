@@ -109,7 +109,7 @@
 <%= yield %>
 </div>
 <script type="text/javascript">
-$(".dropdown-menu li a").click(function (e) {
+$("nav .dropdown-menu li a").click(function (e) {
        e.preventDefault();
        var href = $(this).attr("href");
        window.location= href;
